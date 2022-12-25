@@ -4,10 +4,21 @@
  */
 package Venda;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Willian Murayama
  */
-public class Venda {
-    
+public class Venda implements Serializable {
+
+    private String nometeste;
+
+    public Venda(String nometeste) {
+        this.nometeste = nometeste;
+    }
+
+    public String getVenda() {
+        return this.nometeste;
+    }
 }

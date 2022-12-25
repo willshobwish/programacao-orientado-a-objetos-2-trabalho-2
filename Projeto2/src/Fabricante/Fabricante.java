@@ -4,10 +4,12 @@
  */
 package Fabricante;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Willian Murayama
  */
-public class Fabricante {
-    
+public class Fabricante implements Serializable {
+
 }

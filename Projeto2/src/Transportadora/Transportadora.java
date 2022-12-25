@@ -4,10 +4,12 @@
  */
 package Transportadora;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Willian Murayama
  */
-public class Transportadora {
-    
+public class Transportadora implements Serializable {
+
 }

@@ -4,10 +4,12 @@
  */
 package Usuario;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Willian Murayama
  */
-public class Gerente extends Usuario {
-    
+public class Gerente extends Usuario implements Serializable {
+
 }

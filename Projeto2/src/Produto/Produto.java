@@ -4,10 +4,12 @@
  */
 package Produto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Willian Murayama
  */
-public class Produto {
-    
+public class Produto implements Serializable {
+
 }
