@@ -1,5 +1,8 @@
 
+import Usuario.Cliente;
+import Usuario.Usuario;
 import Venda.Venda;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /*
@@ -19,5 +22,8 @@ public class MainTest {
 //        Controller.ControladorSerializable.salvarVendas(venda);
         venda = Controller.ControladorSerializable.carregarVendas();
         System.out.println(venda.get(0).getVenda());
+        Usuario Usuario = new Cliente(0, "nometeste", "cpfteste", "rgteste", LocalDate.now(), "endereco teste", "cep teste", "emal teste", LocalDate.now());
+
+        System.out.println(Usuario.toString());
     }
 }
