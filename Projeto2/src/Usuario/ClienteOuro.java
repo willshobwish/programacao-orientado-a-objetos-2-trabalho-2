@@ -12,8 +12,8 @@ import java.time.LocalDate;
  */
 public class ClienteOuro extends Cliente {
 
-    public ClienteOuro(LocalDate dataCadastro, int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email) {
-        super(dataCadastro, codigo, nome, cpf, rg, dataNascimento, endereco, cep, email);
+    public ClienteOuro(int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email, LocalDate dataCadastro) {
+        super(codigo, nome, cpf, rg, dataNascimento, endereco, cep, email, dataCadastro);
     }
 
 }

@@ -4,16 +4,10 @@
  */
 package Controller;
 
-import Usuario.Cliente;
-import Usuario.Usuario;
-import java.util.ArrayList;
-
 /**
  *
  * @author Willian Murayama
  */
 public class ControladorDeTestes {
-
-    ArrauList<Usuario> Clientes = new ArrayList<Cliente>();
 
 }
