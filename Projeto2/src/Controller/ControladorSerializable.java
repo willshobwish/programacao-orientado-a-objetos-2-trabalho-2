@@ -96,7 +96,7 @@ public class ControladorSerializable {
     }
 
     public static ArrayList<Venda> carregarVendas() {
-        ArrayList<Venda> Venda = null;
+        ArrayList<Venda> Venda = new ArrayList<>();
         try {
             FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoVendas());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
@@ -115,7 +115,7 @@ public class ControladorSerializable {
     }
 
     public static ArrayList<Produto> carregarProdutos() {
-        ArrayList<Produto> Produto = null;
+        ArrayList<Produto> Produto = new ArrayList<>();
         try {
             FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoProdutos());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
@@ -134,7 +134,7 @@ public class ControladorSerializable {
     }
 
     public static ArrayList<Fabricante> carregarFabricantes() {
-        ArrayList<Fabricante> Fabricante = null;
+        ArrayList<Fabricante> Fabricante = new ArrayList<>();
         try {
             FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoFabricantes());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
@@ -153,7 +153,7 @@ public class ControladorSerializable {
     }
 
     public static ArrayList<Transportadora> carregarTransportadoras() {
-        ArrayList<Transportadora> Transportadora = null;
+        ArrayList<Transportadora> Transportadora = new ArrayList<>();
         try {
             FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoTransportadoras());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
@@ -193,7 +193,7 @@ public class ControladorSerializable {
     }
 
     public static ArrayList<Gerente> carregarGerentes() {
-        ArrayList<Gerente> Gerente = null;
+        ArrayList<Gerente> Gerente = new ArrayList<>();
         try {
             FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoGerentes());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
