@@ -16,4 +16,10 @@ public class ClienteOuro extends Cliente {
         super(codigo, nome, cpf, rg, dataNascimento, endereco, cep, email, dataCadastro);
     }
 
+    public String toString() {
+        return super.toString()
+                + """
+                Cliente: ouro
+                """;
+    }
 }
