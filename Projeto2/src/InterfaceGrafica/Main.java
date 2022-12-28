@@ -5,6 +5,7 @@
 package InterfaceGrafica;
 
 import InterfaceGrafica.Cadastro.CadastroCliente;
+import InterfaceGrafica.Cadastro.CadastroGerente;
 import java.util.Iterator;
 
 /**
@@ -89,6 +90,11 @@ public class Main extends javax.swing.JFrame {
         jMenu7.add(jMenuItem24);
 
         jMenuItem25.setText("Gerente");
+        jMenuItem25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem25ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem25);
 
         jMenuItem26.setText("Móveis");
@@ -169,6 +175,11 @@ public class Main extends javax.swing.JFrame {
         jMenu5.setText("Usuários");
 
         jMenuItem6.setText("Listar todos os gerentes cadastrados");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem6);
 
         jMenuItem17.setText("Listar todos os clientes cadastrados");
@@ -233,7 +244,7 @@ public class Main extends javax.swing.JFrame {
         CadastroCliente Cliente = new CadastroCliente();
         Cliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem24ActionPerformed
-
+    
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         // TODO add your handling code here:
 
@@ -247,6 +258,25 @@ public class Main extends javax.swing.JFrame {
         }
         jTextArea1.setText(dados);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
+    
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        String dados = """
+                       Todos os gerentes cadastrados:
+                       
+                       """;
+        Iterator gerentesCadastrados = Controller.ControladorUsuario.iteratorTodosGerentes();
+        while (gerentesCadastrados.hasNext()) {
+            dados += gerentesCadastrados.next().toString() + "\n";
+        }
+        jTextArea1.setText(dados);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    
+    private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
+        // TODO add your handling code here:
+        CadastroGerente CadastroGerente = new CadastroGerente();
+        CadastroGerente.setVisible(true);
+    }//GEN-LAST:event_jMenuItem25ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,7 +287,7 @@ public class Main extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

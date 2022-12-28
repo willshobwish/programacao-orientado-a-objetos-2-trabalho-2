@@ -42,6 +42,12 @@ public class ComercioEletronico {
         Controller.ControladorSerializable.salvarClientes(clientes);
     }
 
+    public static void cadastrarGerente(float salario, String pis, LocalDate dataAdmissao, int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email) {
+        Gerente gerenteCadastro = new Gerente(salario, pis, dataAdmissao, codigo, nome, cpf, rg, dataNascimento, endereco, cep, email);
+        gerentes.add(gerenteCadastro);
+        Controller.ControladorSerializable.salvarGerentes(gerentes);
+    }
+
     public static ArrayList<Venda> getVendas() {
         return vendas;
     }

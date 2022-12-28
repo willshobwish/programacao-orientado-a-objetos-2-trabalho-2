@@ -4,7 +4,9 @@
  */
 package Controller;
 
+import Comercio.ComercioEletronico;
 import Usuario.Cliente;
+import Usuario.Gerente;
 import java.time.LocalDate;
 import java.util.Iterator;
 
@@ -28,5 +30,17 @@ public class ControladorUsuario {
 
     public static int codigoCliente() {
         return Comercio.ComercioEletronico.getClientes().size();
+    }
+
+    public static void cadastrarGerente(float salario, String pis, LocalDate dataAdmissao, int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email) {
+        Comercio.ComercioEletronico.cadastrarGerente(salario, pis, dataAdmissao, codigo, nome, cpf, rg, dataNascimento, endereco, cep, email);
+    }
+
+    public static int codigoGerente() {
+        return Comercio.ComercioEletronico.getGerentes().size();
+    }
+
+    public static Iterator<Gerente> iteratorTodosGerentes() {
+        return ComercioEletronico.getGerentes().iterator();
     }
 }
