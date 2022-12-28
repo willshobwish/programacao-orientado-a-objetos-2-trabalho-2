@@ -8,7 +8,10 @@ import Fabricante.Fabricante;
 import Produto.Produto;
 import Transportadora.Transportadora;
 import Usuario.Cliente;
+import Usuario.ClienteOuro;
+import Usuario.Gerente;
 import Venda.Venda;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -17,10 +20,50 @@ import java.util.ArrayList;
  */
 public class ComercioEletronico {
 
-    private ArrayList<Venda> Vendas = Controller.ControladorSerializable.carregarVendas();
-    private ArrayList<Produto> Produtos = Controller.ControladorSerializable.carregarProdutos();
-    private ArrayList<Fabricante> Fabricantes = Controller.ControladorSerializable.carregarFabricantes();
-    private ArrayList<Transportadora> Transportadoras = Controller.ControladorSerializable.carregarTransportadoras();
-    private ArrayList<Cliente> Clientes = Controller.ControladorSerializable.carregarClientes();
+    private static ArrayList<Venda> vendas = Controller.ControladorSerializable.carregarVendas();
+    private static ArrayList<Produto> produtos = Controller.ControladorSerializable.carregarProdutos();
+    private static ArrayList<Fabricante> fabricantes = Controller.ControladorSerializable.carregarFabricantes();
+    private static ArrayList<Transportadora> transportadoras = Controller.ControladorSerializable.carregarTransportadoras();
+    private static ArrayList<Cliente> clientes = Controller.ControladorSerializable.carregarClientes();
+    private static ArrayList<Gerente> gerentes = Controller.ControladorSerializable.carregarGerentes();
+
+    public ComercioEletronico() {
+    }
+
+    public static void cadastrarCliente(int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email, LocalDate dataCadastro) {
+        Cliente clienteCadastro = new Cliente(codigo, nome, cpf, rg, dataNascimento, endereco, cep, email, dataCadastro);
+        clientes.add(clienteCadastro);
+        Controller.ControladorSerializable.salvarClientes(clientes);
+    }
+
+    public static void cadastrarClienteOuro(int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email, LocalDate dataCadastro) {
+        ClienteOuro clienteCadastro = new ClienteOuro(codigo, nome, cpf, rg, dataNascimento, endereco, cep, email, dataCadastro);
+        clientes.add(clienteCadastro);
+        Controller.ControladorSerializable.salvarClientes(clientes);
+    }
+
+    public static ArrayList<Venda> getVendas() {
+        return vendas;
+    }
+
+    public static ArrayList<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public static ArrayList<Fabricante> getFabricantes() {
+        return fabricantes;
+    }
+
+    public static ArrayList<Transportadora> getTransportadoras() {
+        return transportadoras;
+    }
+
+    public static ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public static ArrayList<Gerente> getGerentes() {
+        return gerentes;
+    }
 
 }
