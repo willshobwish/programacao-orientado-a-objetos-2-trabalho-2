@@ -6,6 +6,9 @@ package InterfaceGrafica.Cadastro;
 
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,19 +59,12 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel1.setText("Código");
 
         codigo.setEditable(false);
-        codigo.setText("jTextField1");
 
         jLabel2.setText("Nome");
 
-        nome.setText("jTextField1");
-
         jLabel4.setText("CPF");
 
-        cpf.setText("jTextField1");
-
         jLabel3.setText("RG");
-
-        rg.setText("jTextField1");
 
         jLabel5.setText("Data de nascimento");
 
@@ -76,15 +72,9 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         jLabel6.setText("Endereço");
 
-        endereco.setText("jTextField1");
-
         jLabel8.setText("CEP");
 
-        cep.setText("jTextField1");
-
         jLabel7.setText("E-mail");
-
-        email.setText("jTextField1");
 
         jLabel9.setText("Data de cadastro");
 
@@ -118,22 +108,19 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addComponent(codigo)
                     .addComponent(cep)
                     .addComponent(endereco, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9)
-                            .addComponent(dataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox1))
-                        .addGap(0, 259, Short.MAX_VALUE))
-                    .addComponent(cadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel9)
+                    .addComponent(jCheckBox1)
+                    .addComponent(cadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dataNascimento)
+                    .addComponent(dataCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -189,13 +176,22 @@ public class CadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         Date dateDataNascimento = (Date) dataNascimento.getValue();
         Date dateDataCadastro = (Date) dataCadastro.getValue();
-        if (jCheckBox1.isSelected()) {
-            Controller.ControladorUsuario.cadastrarClienteOuro(Integer.parseInt(codigo.getText()), nome.getText(), cpf.getText(), rg.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), cep.getText(), email.getText(), dateDataCadastro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher matcher = pattern.matcher(email.getText());
+        if (matcher.find()) {
+            System.out.println("E-mail correto");
+            if (jCheckBox1.isSelected()) {
+                Controller.ControladorUsuario.cadastrarClienteOuro(Integer.parseInt(codigo.getText()), nome.getText(), cpf.getText(), rg.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), cep.getText(), email.getText(), dateDataCadastro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            } else {
+                Controller.ControladorUsuario.cadastrarCliente(Integer.parseInt(codigo.getText()), nome.getText(), cpf.getText(), rg.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), cep.getText(), email.getText(), dateDataCadastro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            }
+            codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoCliente()));
+            JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso");
         } else {
-            Controller.ControladorUsuario.cadastrarCliente(Integer.parseInt(codigo.getText()), nome.getText(), cpf.getText(), rg.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), cep.getText(), email.getText(), dateDataCadastro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            System.out.println("E-mail incorreto");
+            JOptionPane.showMessageDialog(this, "Insira um e-mail correto\nExemplo(email@email.com)", "E-mail incorreto", JOptionPane.WARNING_MESSAGE);
         }
 
-        codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoCliente()));
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
