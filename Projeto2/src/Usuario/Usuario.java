@@ -37,6 +37,7 @@ public class Usuario implements Serializable {
     public String toString() {
         return """
                Codigo: %d
+               Nome: %s
                CPF: %s
                RG: %s
                Data de nascimento: %s
