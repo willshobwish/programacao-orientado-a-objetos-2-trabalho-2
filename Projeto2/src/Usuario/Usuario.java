@@ -4,6 +4,7 @@
  */
 package Usuario;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -11,7 +12,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author Willian Murayama
  */
-public class Usuario {
+public class Usuario implements Serializable {
 
     protected int codigo;
     protected String nome;
