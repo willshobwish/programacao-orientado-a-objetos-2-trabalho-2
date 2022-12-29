@@ -48,9 +48,9 @@ public class BuscarHistoricoVendas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Listar o histórico de vendas de um cliente específico");
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Cliente");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Buscar histórico de vendas");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
