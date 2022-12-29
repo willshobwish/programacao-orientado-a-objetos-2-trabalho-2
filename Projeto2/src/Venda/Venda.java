@@ -12,13 +12,4 @@ import java.io.Serializable;
  */
 public class Venda implements Serializable {
 
-    private String nometeste;
-
-    public Venda(String nometeste) {
-        this.nometeste = nometeste;
-    }
-
-    public String getVenda() {
-        return this.nometeste;
-    }
 }
