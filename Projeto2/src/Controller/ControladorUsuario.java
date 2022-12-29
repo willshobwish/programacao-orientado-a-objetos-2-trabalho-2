@@ -32,6 +32,17 @@ public class ControladorUsuario {
         return Comercio.ComercioEletronico.getClientes().size();
     }
 
+    public static Cliente buscarClienteNome(String nome) {
+        Iterator clientes = iteratorTodosClientes();
+        while (clientes.hasNext()) {
+            Cliente cliente = (Cliente) clientes.next();
+            if (cliente.getNome().equals(nome)) {
+                return cliente;
+            }
+        }
+        return null;
+    }
+
     public static void cadastrarGerente(float salario, String pis, LocalDate dataAdmissao, int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email) {
         Comercio.ComercioEletronico.cadastrarGerente(salario, pis, dataAdmissao, codigo, nome, cpf, rg, dataNascimento, endereco, cep, email);
     }
@@ -42,5 +53,16 @@ public class ControladorUsuario {
 
     public static Iterator<Gerente> iteratorTodosGerentes() {
         return ComercioEletronico.getGerentes().iterator();
+    }
+
+    public static Gerente buscarGerenteNome(String nome) {
+        Iterator gerentes = iteratorTodosGerentes();
+        while (gerentes.hasNext()) {
+            Gerente gerente = (Gerente) gerentes.next();
+            if (gerente.getNome().equals(nome)) {
+                return gerente;
+            }
+        }
+        return null;
     }
 }
