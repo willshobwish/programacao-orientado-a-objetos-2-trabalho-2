@@ -6,6 +6,7 @@ package InterfaceGrafica;
 
 import InterfaceGrafica.Cadastro.CadastroCliente;
 import InterfaceGrafica.Cadastro.CadastroGerente;
+import InterfaceGrafica.Cadastro.CadastroVenda;
 import java.util.Iterator;
 
 /**
@@ -42,6 +43,7 @@ public class Main extends javax.swing.JFrame {
         jMenuItem29 = new javax.swing.JMenuItem();
         jMenuItem30 = new javax.swing.JMenuItem();
         jMenuItem31 = new javax.swing.JMenuItem();
+        jMenuItem32 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -114,6 +116,14 @@ public class Main extends javax.swing.JFrame {
 
         jMenuItem31.setText("Transportadora");
         jMenu7.add(jMenuItem31);
+
+        jMenuItem32.setText("Venda");
+        jMenuItem32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem32ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem32);
 
         jMenuBar1.add(jMenu7);
 
@@ -198,6 +208,11 @@ public class Main extends javax.swing.JFrame {
         jMenu6.setText("Vendas");
 
         jMenuItem7.setText("Listar o histórico de vendas de um cliente específico");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem7);
 
         jMenuItem19.setText("Listar todas as vendas realizadas");
@@ -277,6 +292,18 @@ public class Main extends javax.swing.JFrame {
         CadastroGerente CadastroGerente = new CadastroGerente();
         CadastroGerente.setVisible(true);
     }//GEN-LAST:event_jMenuItem25ActionPerformed
+    
+    private void jMenuItem32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem32ActionPerformed
+        // TODO add your handling code here:
+        CadastroVenda CadastroVenda = new CadastroVenda();
+        CadastroVenda.setVisible(true);
+    }//GEN-LAST:event_jMenuItem32ActionPerformed
+    
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        BuscarHistoricoVendas BuscarVendas = new BuscarHistoricoVendas();
+        BuscarVendas.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -347,6 +374,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem30;
     private javax.swing.JMenuItem jMenuItem31;
+    private javax.swing.JMenuItem jMenuItem32;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

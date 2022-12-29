@@ -4,7 +4,10 @@
  */
 package InterfaceGrafica.Cadastro;
 
+import Usuario.Cliente;
+import Usuario.Gerente;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -18,12 +21,23 @@ public class CadastroVenda extends javax.swing.JFrame {
      */
     public CadastroVenda() {
         initComponents();
-        ArrayList<String> lista = new ArrayList<>();
-        lista.add("teste");
-        lista.add("outroteste");
-        String[] listaString = lista.toArray(new String[0]);
-        DefaultComboBoxModel model = new DefaultComboBoxModel(listaString);
-        transportadora.setModel(model);
+        Iterator iteratorClientes = Controller.ControladorUsuario.iteratorTodosClientes();
+        ArrayList<String> nomesClientes = new ArrayList<>();
+        while (iteratorClientes.hasNext()) {
+            Cliente cliente = (Cliente) iteratorClientes.next();
+            nomesClientes.add(cliente.getNome());
+        }
+        DefaultComboBoxModel modelClientes = new DefaultComboBoxModel(nomesClientes.toArray(new String[0]));
+        cliente.setModel(modelClientes);
+
+        Iterator iteratorGerentes = Controller.ControladorUsuario.iteratorTodosGerentes();
+        ArrayList<String> nomesGerentes = new ArrayList<>();
+        while (iteratorGerentes.hasNext()) {
+            Gerente gerente = (Gerente) iteratorGerentes.next();
+            nomesGerentes.add(gerente.getNome());
+        }
+        DefaultComboBoxModel modelGerentes = new DefaultComboBoxModel(nomesGerentes.toArray(new String[0]));
+        gerente.setModel(modelGerentes);
     }
 
     /**
@@ -48,15 +62,17 @@ public class CadastroVenda extends javax.swing.JFrame {
         dataEntrega = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        informacoesCliente = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        informacoesGerente = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         itensVenda = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         adicionarItem = new javax.swing.JButton();
+        jSpinner1 = new javax.swing.JSpinner();
+        jLabel18 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         itensSelecionados = new javax.swing.JScrollPane();
@@ -93,11 +109,30 @@ public class CadastroVenda extends javax.swing.JFrame {
 
         jLabel3.setText("Gerente");
 
+        cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clienteActionPerformed(evt);
+            }
+        });
+
+        gerente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                gerenteFocusLost(evt);
+            }
+        });
+        gerente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gerenteActionPerformed(evt);
+            }
+        });
+
         dataVenda.setModel(new javax.swing.SpinnerDateModel());
 
         jLabel4.setText("Data de venda");
 
         jLabel5.setText("Data de entrega");
+
+        dataEntrega.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,19 +179,19 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        informacoesCliente.setEditable(false);
+        informacoesCliente.setColumns(20);
+        informacoesCliente.setRows(5);
+        jScrollPane2.setViewportView(informacoesCliente);
 
-        jTextArea3.setEditable(false);
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        informacoesGerente.setEditable(false);
+        informacoesGerente.setColumns(20);
+        informacoesGerente.setRows(5);
+        jScrollPane3.setViewportView(informacoesGerente);
 
-        jLabel6.setText("Informações do gerente");
+        jLabel6.setText("Informações do cliente");
 
-        jLabel7.setText("Informações do cliente");
+        jLabel7.setText("Informações do gerente");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -188,6 +223,13 @@ public class CadastroVenda extends javax.swing.JFrame {
         jLabel8.setText("Itens para venda");
 
         adicionarItem.setText("Adicionar item");
+        adicionarItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionarItemActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setText("Quantidade");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -196,11 +238,14 @@ public class CadastroVenda extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(adicionarItem, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(itensVenda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel18))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(adicionarItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(itensVenda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSpinner1))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -210,6 +255,10 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(itensVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adicionarItem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -408,6 +457,26 @@ public class CadastroVenda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void adicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarItemActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_adicionarItemActionPerformed
+
+    private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
+        // TODO add your handling code here:
+        informacoesCliente.setText(Controller.ControladorUsuario.buscarClienteNome((String) cliente.getSelectedItem()).toString());
+    }//GEN-LAST:event_clienteActionPerformed
+
+    private void gerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenteActionPerformed
+        // TODO add your handling code here:
+        informacoesGerente.setText(Controller.ControladorUsuario.buscarGerenteNome((String) gerente.getSelectedItem()).toString());
+    }//GEN-LAST:event_gerenteActionPerformed
+
+    private void gerenteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gerenteFocusLost
+        // TODO add your handling code here:    
+
+    }//GEN-LAST:event_gerenteFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -493,6 +562,8 @@ public class CadastroVenda extends javax.swing.JFrame {
     private javax.swing.JSpinner dataVenda;
     private javax.swing.JComboBox<String> formaPagamento;
     private javax.swing.JComboBox<String> gerente;
+    private javax.swing.JTextArea informacoesCliente;
+    private javax.swing.JTextArea informacoesGerente;
     private javax.swing.JScrollPane itensSelecionados;
     private javax.swing.JComboBox<String> itensVenda;
     private javax.swing.JLabel jLabel1;
@@ -504,6 +575,7 @@ public class CadastroVenda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -522,8 +594,7 @@ public class CadastroVenda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField nomeCartao;
     private javax.swing.JTextField numeroCartao;
     private javax.swing.JComboBox<String> transportadora;
