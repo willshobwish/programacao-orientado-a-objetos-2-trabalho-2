@@ -37,7 +37,7 @@ public class CadastroVenda extends javax.swing.JFrame {
             nomesGerentes.add(gerente.getNome());
         }
         DefaultComboBoxModel modelGerentes = new DefaultComboBoxModel(nomesGerentes.toArray(new String[0]));
-        gerente.setModel(modelGerentes);
+        formaPagamentoActionPerformed(null);
     }
 
     /**
@@ -292,6 +292,11 @@ public class CadastroVenda extends javax.swing.JFrame {
         );
 
         formaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão de crédito", "PIX" }));
+        formaPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                formaPagamentoActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Forma de pagamento");
 
@@ -476,6 +481,32 @@ public class CadastroVenda extends javax.swing.JFrame {
         // TODO add your handling code here:    
 
     }//GEN-LAST:event_gerenteFocusLost
+
+    private void formaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formaPagamentoActionPerformed
+        // TODO add your handling code here:
+        switch (formaPagamento.getSelectedIndex()) {
+            case 0:
+                nomeCartao.setEnabled(false);
+                bandeiraCartao.setEnabled(false);
+                numeroCartao.setEnabled(false);
+                codigoPix.setEnabled(false);
+                break;
+            case 1:
+                nomeCartao.setEnabled(true);
+                bandeiraCartao.setEnabled(true);
+                numeroCartao.setEnabled(true);
+                codigoPix.setEnabled(false);
+                break;
+            case 2:
+                nomeCartao.setEnabled(false);
+                bandeiraCartao.setEnabled(false);
+                numeroCartao.setEnabled(false);
+                codigoPix.setEnabled(true);
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }//GEN-LAST:event_formaPagamentoActionPerformed
 
     /**
      * @param args the command line arguments
