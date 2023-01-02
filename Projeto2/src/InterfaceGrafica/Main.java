@@ -201,6 +201,11 @@ public class Main extends javax.swing.JFrame {
         jMenu5.add(jMenuItem17);
 
         jMenuItem18.setText("Listar todos os clientes Ouro cadastrados");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem18);
 
         jMenuBar1.add(jMenu5);
@@ -259,7 +264,7 @@ public class Main extends javax.swing.JFrame {
         CadastroCliente Cliente = new CadastroCliente();
         Cliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem24ActionPerformed
-    
+
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         // TODO add your handling code here:
 
@@ -273,7 +278,7 @@ public class Main extends javax.swing.JFrame {
         }
         jTextArea1.setText(dados);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
-    
+
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
         String dados = """
@@ -286,24 +291,37 @@ public class Main extends javax.swing.JFrame {
         }
         jTextArea1.setText(dados);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-    
+
     private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
         // TODO add your handling code here:
         CadastroGerente CadastroGerente = new CadastroGerente();
         CadastroGerente.setVisible(true);
     }//GEN-LAST:event_jMenuItem25ActionPerformed
-    
+
     private void jMenuItem32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem32ActionPerformed
         // TODO add your handling code here:
         CadastroVenda CadastroVenda = new CadastroVenda();
         CadastroVenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem32ActionPerformed
-    
+
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
         BuscarHistoricoVendas BuscarVendas = new BuscarHistoricoVendas();
         BuscarVendas.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        // TODO add your handling code here:
+        String dados = """
+                       Todos os clientes ouro cadastrados:
+                       
+                       """;
+        Iterator clientesOuroCadastrados = Controller.ControladorUsuario.iteratorTodosGerentes();
+        while (clientesOuroCadastrados.hasNext()) {
+            dados += clientesOuroCadastrados.next().toString() + "\n";
+        }
+        jTextArea1.setText(dados);
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,7 +332,7 @@ public class Main extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
