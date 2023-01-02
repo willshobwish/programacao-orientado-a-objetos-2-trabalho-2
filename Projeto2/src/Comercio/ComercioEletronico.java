@@ -25,6 +25,7 @@ public class ComercioEletronico {
     private static ArrayList<Fabricante> fabricantes = Controller.ControladorSerializable.carregarFabricantes();
     private static ArrayList<Transportadora> transportadoras = Controller.ControladorSerializable.carregarTransportadoras();
     private static ArrayList<Cliente> clientes = Controller.ControladorSerializable.carregarClientes();
+    private static ArrayList<ClienteOuro> clientesOuro = Controller.ControladorSerializable.carregarClientesOuro();
     private static ArrayList<Gerente> gerentes = Controller.ControladorSerializable.carregarGerentes();
 
     public ComercioEletronico() {
@@ -38,8 +39,8 @@ public class ComercioEletronico {
 
     public static void cadastrarClienteOuro(int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email, LocalDate dataCadastro) {
         ClienteOuro clienteCadastro = new ClienteOuro(codigo, nome, cpf, rg, dataNascimento, endereco, cep, email, dataCadastro);
-        clientes.add(clienteCadastro);
-        Controller.ControladorSerializable.salvarClientes(clientes);
+        clientesOuro.add(clienteCadastro);
+        Controller.ControladorSerializable.salvarClientesOuro(clientesOuro);
     }
 
     public static void cadastrarGerente(float salario, String pis, LocalDate dataAdmissao, int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email) {
@@ -66,6 +67,10 @@ public class ComercioEletronico {
 
     public static ArrayList<Cliente> getClientes() {
         return clientes;
+    }
+
+    public static ArrayList<ClienteOuro> getClientesOuro() {
+        return clientesOuro;
     }
 
     public static ArrayList<Gerente> getGerentes() {

@@ -8,6 +8,7 @@ import Fabricante.Fabricante;
 import Produto.Produto;
 import Transportadora.Transportadora;
 import Usuario.Cliente;
+import Usuario.ClienteOuro;
 import Usuario.Gerente;
 import Venda.Venda;
 import java.io.FileInputStream;
@@ -83,6 +84,18 @@ public class ControladorSerializable {
         }
     }
 
+    public static void salvarClientesOuro(ArrayList<ClienteOuro> ClientesOuro) {
+        try {
+            FileOutputStream arquivoStream = new FileOutputStream(Configuracao.Configuracao.getArquivoClientesOuro());
+            ObjectOutputStream arquivoObjeto = new ObjectOutputStream(arquivoStream);
+            arquivoObjeto.writeObject(ClientesOuro);
+            arquivoObjeto.close();
+            arquivoStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void salvarGerentes(ArrayList<Gerente> Gerentes) {
         try {
             FileOutputStream arquivoStream = new FileOutputStream(Configuracao.Configuracao.getArquivoGerentes());
@@ -103,6 +116,8 @@ public class ControladorSerializable {
             Venda = (ArrayList<Venda>) arquivoObjeto.readObject();
             if (Venda == null) {
                 Venda = new ArrayList<Venda>();
+            } else {
+                System.out.println("Vendas carregados com sucesso");
             }
             arquivoObjeto.close();
             arquivoStream.close();
@@ -122,6 +137,8 @@ public class ControladorSerializable {
             Produto = (ArrayList<Produto>) arquivoObjeto.readObject();
             if (Produto == null) {
                 Produto = new ArrayList<Produto>();
+            } else {
+                System.out.println("Produtos carregados com sucesso");
             }
             arquivoObjeto.close();
             arquivoStream.close();
@@ -141,6 +158,8 @@ public class ControladorSerializable {
             Fabricante = (ArrayList<Fabricante>) arquivoObjeto.readObject();
             if (Fabricante == null) {
                 Fabricante = new ArrayList<Fabricante>();
+            } else {
+                System.out.println("Fabricantes carregados com sucesso");
             }
             arquivoObjeto.close();
             arquivoStream.close();
@@ -160,6 +179,8 @@ public class ControladorSerializable {
             Transportadora = (ArrayList<Transportadora>) arquivoObjeto.readObject();
             if (Transportadora == null) {
                 Transportadora = new ArrayList<Transportadora>();
+            } else {
+                System.out.println("Transportadoras carregados com sucesso");
             }
             arquivoObjeto.close();
             arquivoStream.close();
@@ -192,6 +213,27 @@ public class ControladorSerializable {
         return Cliente;
     }
 
+    public static ArrayList<ClienteOuro> carregarClientesOuro() {
+        ArrayList<ClienteOuro> ClienteOuro = new ArrayList<>();
+        try {
+            FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoClientesOuro());
+            ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
+            ClienteOuro = (ArrayList<ClienteOuro>) arquivoObjeto.readObject();
+            if (ClienteOuro == null) {
+                ClienteOuro = new ArrayList<>();
+            } else {
+                System.out.println("Clientes ouro carregados com sucesso");
+            }
+            arquivoObjeto.close();
+            arquivoStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return ClienteOuro;
+    }
+
     public static ArrayList<Gerente> carregarGerentes() {
         ArrayList<Gerente> Gerente = new ArrayList<>();
         try {
@@ -200,6 +242,8 @@ public class ControladorSerializable {
             Gerente = (ArrayList<Gerente>) arquivoObjeto.readObject();
             if (Gerente == null) {
                 Gerente = new ArrayList<Gerente>();
+            } else {
+                System.out.println("Gerentes carregados com sucesso");
             }
             arquivoObjeto.close();
             arquivoStream.close();

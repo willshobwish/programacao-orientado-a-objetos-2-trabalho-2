@@ -15,6 +15,7 @@ public class Configuracao {
     final static private String arquivoFabricantes = "src\\Arquivos\\arquivoFabricantes.ser";
     final static private String arquivoTransportadoras = "src\\Arquivos\\arquivoTransportadoras.ser";
     final static private String arquivoClientes = "src\\Arquivos\\arquivoClientes.ser";
+    final static private String arquivoClientesOuro = "src\\Arquivos\\arquivoClientesOuro.ser";
     final static private String arquivoGerentes = "src\\Arquivos\\arquivoGerentes.ser";
 
     public static String getArquivoVendas() {
@@ -35,6 +36,10 @@ public class Configuracao {
 
     public static String getArquivoClientes() {
         return arquivoClientes;
+    }
+
+    public static String getArquivoClientesOuro() {
+        return arquivoClientesOuro;
     }
 
     public static String getArquivoGerentes() {
