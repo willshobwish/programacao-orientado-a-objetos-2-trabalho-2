@@ -4,10 +4,6 @@
  */
 package InterfaceGrafica.Cadastro;
 
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -157,26 +153,9 @@ public class CadastroProduto extends javax.swing.JFrame {
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
-        Date dateDataNascimento = (Date) dataFabricacao.getValue();
-//float salario, String pis, LocalDate dataAdmissao, int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email
-        Pattern salarioPattern = Pattern.compile("\\d{1,3}(?:[.]\\d{3})*(?:[.]\\d{2})");
-        Matcher salarioMatcher = salarioPattern.matcher(valor.getText());
-        boolean salarioCorreto = salarioMatcher.find();
-        if (!emailCorreto) {
-            JOptionPane.showMessageDialog(this, "Insira um e-mail correto", "E-mail incorreto", JOptionPane.WARNING_MESSAGE);
-        }
-        if (!salarioCorreto) {
-            JOptionPane.showMessageDialog(this, "Insira um salário correto", "Salário incorreto", JOptionPane.WARNING_MESSAGE);
-        }
-        if (emailCorreto && salarioCorreto) {
-            Controller.ControladorUsuario.cadastrarGerente(Float.parseFloat(valor.getText()), pis.getText(), dateDataAdmissao.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Integer.parseInt(codigo.getText()), nome.getText(), descricao.getText(), rg.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), cep.getText(), email.getText());
-            codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoGerente()));
-            JOptionPane.showMessageDialog(this, "Gerente cadastrado com sucesso");
-        }
-//        else {
-//            System.out.println("E-mail incorreto");
-//            JOptionPane.showMessageDialog(this, "Insira um e-mail correto", "E-mail incorreto", JOptionPane.WARNING_MESSAGE);
-//        }
+
+        JOptionPane.showMessageDialog(this, "Gerente cadastrado com sucesso");
+
     }//GEN-LAST:event_cadastrarActionPerformed
 
     /**

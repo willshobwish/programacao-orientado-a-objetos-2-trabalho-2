@@ -4,10 +4,6 @@
  */
 package InterfaceGrafica.Cadastro;
 
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -142,24 +138,8 @@ public class CadastroFabricante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        // TODO add your handling code here:
-        Date dateDataNascimento = (Date) dataNascimento.getValue();
-        Date dateDataCadastro = (Date) dataCadastro.getValue();
-        Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-        Matcher matcher = pattern.matcher(email.getText());
-        if (matcher.find()) {
-            System.out.println("E-mail correto");
-            if (jCheckBox1.isSelected()) {
-                Controller.ControladorUsuario.cadastrarClienteOuro(Integer.parseInt(codigo.getText()), nome.getText(), cnpj.getText(), descricao.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), telefone.getText(), email.getText(), dateDataCadastro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-            } else {
-                Controller.ControladorUsuario.cadastrarCliente(Integer.parseInt(codigo.getText()), nome.getText(), cnpj.getText(), descricao.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), telefone.getText(), email.getText(), dateDataCadastro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-            }
-            codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoCliente()));
-            JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso");
-        } else {
-            System.out.println("E-mail incorreto");
-            JOptionPane.showMessageDialog(this, "Insira um e-mail correto\nExemplo(email@email.com)", "E-mail incorreto", JOptionPane.WARNING_MESSAGE);
-        }
+
+        JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso");
 
     }//GEN-LAST:event_cadastrarActionPerformed
 
