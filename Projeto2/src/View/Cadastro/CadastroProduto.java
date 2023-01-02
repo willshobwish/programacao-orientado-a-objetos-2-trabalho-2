@@ -6,9 +6,10 @@ package View.Cadastro;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Willian Murayama
+/*
+Bruno Augusto Furquim
+Giovanna Silva Custodio
+Willian Yoshio Murayama
  */
 public class CadastroProduto extends javax.swing.JFrame {
 

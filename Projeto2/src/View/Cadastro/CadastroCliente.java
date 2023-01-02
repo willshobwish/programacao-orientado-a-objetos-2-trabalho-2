@@ -10,9 +10,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Willian Murayama
+/*
+Bruno Augusto Furquim
+Giovanna Silva Custodio
+Willian Yoshio Murayama
  */
 public class CadastroCliente extends javax.swing.JFrame {
 

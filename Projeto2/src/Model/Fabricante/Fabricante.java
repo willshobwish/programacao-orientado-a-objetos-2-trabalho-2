@@ -6,9 +6,10 @@ package Model.Fabricante;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Willian Murayama
+/*
+Bruno Augusto Furquim
+Giovanna Silva Custodio
+Willian Yoshio Murayama
  */
 public class Fabricante implements Serializable {
 

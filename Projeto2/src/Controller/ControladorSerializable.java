@@ -18,9 +18,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-/**
- *
- * @author Willian Murayama
+/*
+Bruno Augusto Furquim
+Giovanna Silva Custodio
+Willian Yoshio Murayama
  */
 public class ControladorSerializable {
 

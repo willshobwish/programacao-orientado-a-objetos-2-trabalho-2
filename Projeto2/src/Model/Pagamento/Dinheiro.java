@@ -4,10 +4,11 @@
  */
 package Model.Pagamento;
 
-/**
- *
- * @author Willian Murayama
+/*
+Bruno Augusto Furquim
+Giovanna Silva Custodio
+Willian Yoshio Murayama
  */
-public class Dinheiro extends Pagamento{
-    
+public class Dinheiro extends Pagamento {
+
 }

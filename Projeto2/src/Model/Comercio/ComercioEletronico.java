@@ -14,9 +14,10 @@ import Model.Venda.Venda;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-/**
- *
- * @author Willian Murayama
+/*
+Bruno Augusto Furquim
+Giovanna Silva Custodio
+Willian Yoshio Murayama
  */
 public class ComercioEletronico {
 

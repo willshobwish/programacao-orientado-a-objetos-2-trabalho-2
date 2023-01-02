@@ -6,9 +6,10 @@ package Model.Usuario;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author Willian Murayama
+/*
+Bruno Augusto Furquim
+Giovanna Silva Custodio
+Willian Yoshio Murayama
  */
 public class ClienteOuro extends Cliente {
 

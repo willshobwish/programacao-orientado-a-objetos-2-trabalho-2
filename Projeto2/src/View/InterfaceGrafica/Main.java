@@ -9,9 +9,10 @@ import View.Cadastro.CadastroGerente;
 import View.Cadastro.CadastroVenda;
 import java.util.Iterator;
 
-/**
- *
- * @author Willian Murayama
+/*
+Bruno Augusto Furquim
+Giovanna Silva Custodio
+Willian Yoshio Murayama
  */
 public class Main extends javax.swing.JFrame {
 

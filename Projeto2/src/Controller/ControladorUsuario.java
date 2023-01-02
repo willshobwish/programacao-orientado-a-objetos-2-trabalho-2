@@ -11,9 +11,10 @@ import Model.Usuario.Gerente;
 import java.time.LocalDate;
 import java.util.Iterator;
 
-/**
- *
- * @author Willian Murayama
+/*
+Bruno Augusto Furquim
+Giovanna Silva Custodio
+Willian Yoshio Murayama
  */
 public class ControladorUsuario {
 

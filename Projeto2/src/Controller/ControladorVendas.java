@@ -4,10 +4,11 @@
  */
 package Controller;
 
-/**
- *
- * @author Willian Murayama
+/*
+Bruno Augusto Furquim
+Giovanna Silva Custodio
+Willian Yoshio Murayama
  */
 public class ControladorVendas {
-    
+
 }
