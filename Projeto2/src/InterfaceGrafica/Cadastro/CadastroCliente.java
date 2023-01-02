@@ -55,6 +55,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de cliente");
 
         jLabel1.setText("Código");
 
