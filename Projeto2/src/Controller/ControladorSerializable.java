@@ -4,13 +4,13 @@
  */
 package Controller;
 
-import Fabricante.Fabricante;
-import Produto.Produto;
-import Transportadora.Transportadora;
-import Usuario.Cliente;
-import Usuario.ClienteOuro;
-import Usuario.Gerente;
-import Venda.Venda;
+import Model.Fabricante.Fabricante;
+import Model.Produto.Produto;
+import Model.Transportadora.Transportadora;
+import Model.Usuario.Cliente;
+import Model.Usuario.ClienteOuro;
+import Model.Usuario.Gerente;
+import Model.Venda.Venda;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class ControladorSerializable {
 
     public static void salvarVendas(ArrayList<Venda> Vendas) {
         try {
-            FileOutputStream arquivoStream = new FileOutputStream(Configuracao.Configuracao.getArquivoVendas());
+            FileOutputStream arquivoStream = new FileOutputStream(Model.Configuracao.Configuracao.getArquivoVendas());
             ObjectOutputStream arquivoObjeto = new ObjectOutputStream(arquivoStream);
             arquivoObjeto.writeObject(Vendas);
             arquivoObjeto.close();
@@ -38,7 +38,7 @@ public class ControladorSerializable {
 
     public static void salvarProdutos(ArrayList<Produto> Produtos) {
         try {
-            FileOutputStream arquivoStream = new FileOutputStream(Configuracao.Configuracao.getArquivoProdutos());
+            FileOutputStream arquivoStream = new FileOutputStream(Model.Configuracao.Configuracao.getArquivoProdutos());
             ObjectOutputStream arquivoObjeto = new ObjectOutputStream(arquivoStream);
             arquivoObjeto.writeObject(Produtos);
             arquivoObjeto.close();
@@ -50,7 +50,7 @@ public class ControladorSerializable {
 
     public static void salvarFabricantes(ArrayList<Fabricante> Fabricantes) {
         try {
-            FileOutputStream arquivoStream = new FileOutputStream(Configuracao.Configuracao.getArquivoFabricantes());
+            FileOutputStream arquivoStream = new FileOutputStream(Model.Configuracao.Configuracao.getArquivoFabricantes());
             ObjectOutputStream arquivoObjeto = new ObjectOutputStream(arquivoStream);
             arquivoObjeto.writeObject(Fabricantes);
             arquivoObjeto.close();
@@ -62,7 +62,7 @@ public class ControladorSerializable {
 
     public static void salvarTransportadoras(ArrayList<Transportadora> Transportadoras) {
         try {
-            FileOutputStream arquivoStream = new FileOutputStream(Configuracao.Configuracao.getArquivoTransportadoras());
+            FileOutputStream arquivoStream = new FileOutputStream(Model.Configuracao.Configuracao.getArquivoTransportadoras());
             ObjectOutputStream arquivoObjeto = new ObjectOutputStream(arquivoStream);
             arquivoObjeto.writeObject(Transportadoras);
             arquivoObjeto.close();
@@ -74,7 +74,7 @@ public class ControladorSerializable {
 
     public static void salvarClientes(ArrayList<Cliente> Clientes) {
         try {
-            FileOutputStream arquivoStream = new FileOutputStream(Configuracao.Configuracao.getArquivoClientes());
+            FileOutputStream arquivoStream = new FileOutputStream(Model.Configuracao.Configuracao.getArquivoClientes());
             ObjectOutputStream arquivoObjeto = new ObjectOutputStream(arquivoStream);
             arquivoObjeto.writeObject(Clientes);
             arquivoObjeto.close();
@@ -86,7 +86,7 @@ public class ControladorSerializable {
 
     public static void salvarClientesOuro(ArrayList<ClienteOuro> ClientesOuro) {
         try {
-            FileOutputStream arquivoStream = new FileOutputStream(Configuracao.Configuracao.getArquivoClientesOuro());
+            FileOutputStream arquivoStream = new FileOutputStream(Model.Configuracao.Configuracao.getArquivoClientesOuro());
             ObjectOutputStream arquivoObjeto = new ObjectOutputStream(arquivoStream);
             arquivoObjeto.writeObject(ClientesOuro);
             arquivoObjeto.close();
@@ -98,7 +98,7 @@ public class ControladorSerializable {
 
     public static void salvarGerentes(ArrayList<Gerente> Gerentes) {
         try {
-            FileOutputStream arquivoStream = new FileOutputStream(Configuracao.Configuracao.getArquivoGerentes());
+            FileOutputStream arquivoStream = new FileOutputStream(Model.Configuracao.Configuracao.getArquivoGerentes());
             ObjectOutputStream arquivoObjeto = new ObjectOutputStream(arquivoStream);
             arquivoObjeto.writeObject(Gerentes);
             arquivoObjeto.close();
@@ -111,7 +111,7 @@ public class ControladorSerializable {
     public static ArrayList<Venda> carregarVendas() {
         ArrayList<Venda> Venda = new ArrayList<>();
         try {
-            FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoVendas());
+            FileInputStream arquivoStream = new FileInputStream(Model.Configuracao.Configuracao.getArquivoVendas());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
             Venda = (ArrayList<Venda>) arquivoObjeto.readObject();
             if (Venda == null) {
@@ -132,7 +132,7 @@ public class ControladorSerializable {
     public static ArrayList<Produto> carregarProdutos() {
         ArrayList<Produto> Produto = new ArrayList<>();
         try {
-            FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoProdutos());
+            FileInputStream arquivoStream = new FileInputStream(Model.Configuracao.Configuracao.getArquivoProdutos());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
             Produto = (ArrayList<Produto>) arquivoObjeto.readObject();
             if (Produto == null) {
@@ -153,7 +153,7 @@ public class ControladorSerializable {
     public static ArrayList<Fabricante> carregarFabricantes() {
         ArrayList<Fabricante> Fabricante = new ArrayList<>();
         try {
-            FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoFabricantes());
+            FileInputStream arquivoStream = new FileInputStream(Model.Configuracao.Configuracao.getArquivoFabricantes());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
             Fabricante = (ArrayList<Fabricante>) arquivoObjeto.readObject();
             if (Fabricante == null) {
@@ -174,7 +174,7 @@ public class ControladorSerializable {
     public static ArrayList<Transportadora> carregarTransportadoras() {
         ArrayList<Transportadora> Transportadora = new ArrayList<>();
         try {
-            FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoTransportadoras());
+            FileInputStream arquivoStream = new FileInputStream(Model.Configuracao.Configuracao.getArquivoTransportadoras());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
             Transportadora = (ArrayList<Transportadora>) arquivoObjeto.readObject();
             if (Transportadora == null) {
@@ -195,7 +195,7 @@ public class ControladorSerializable {
     public static ArrayList<Cliente> carregarClientes() {
         ArrayList<Cliente> Cliente = new ArrayList<>();
         try {
-            FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoClientes());
+            FileInputStream arquivoStream = new FileInputStream(Model.Configuracao.Configuracao.getArquivoClientes());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
             Cliente = (ArrayList<Cliente>) arquivoObjeto.readObject();
             if (Cliente == null) {
@@ -216,7 +216,7 @@ public class ControladorSerializable {
     public static ArrayList<ClienteOuro> carregarClientesOuro() {
         ArrayList<ClienteOuro> ClienteOuro = new ArrayList<>();
         try {
-            FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoClientesOuro());
+            FileInputStream arquivoStream = new FileInputStream(Model.Configuracao.Configuracao.getArquivoClientesOuro());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
             ClienteOuro = (ArrayList<ClienteOuro>) arquivoObjeto.readObject();
             if (ClienteOuro == null) {
@@ -237,7 +237,7 @@ public class ControladorSerializable {
     public static ArrayList<Gerente> carregarGerentes() {
         ArrayList<Gerente> Gerente = new ArrayList<>();
         try {
-            FileInputStream arquivoStream = new FileInputStream(Configuracao.Configuracao.getArquivoGerentes());
+            FileInputStream arquivoStream = new FileInputStream(Model.Configuracao.Configuracao.getArquivoGerentes());
             ObjectInputStream arquivoObjeto = new ObjectInputStream(arquivoStream);
             Gerente = (ArrayList<Gerente>) arquivoObjeto.readObject();
             if (Gerente == null) {

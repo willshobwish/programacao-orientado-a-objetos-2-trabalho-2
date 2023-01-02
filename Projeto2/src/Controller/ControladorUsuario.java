@@ -4,10 +4,10 @@
  */
 package Controller;
 
-import Comercio.ComercioEletronico;
-import Usuario.Cliente;
-import Usuario.ClienteOuro;
-import Usuario.Gerente;
+import Model.Comercio.ComercioEletronico;
+import Model.Usuario.Cliente;
+import Model.Usuario.ClienteOuro;
+import Model.Usuario.Gerente;
 import java.time.LocalDate;
 import java.util.Iterator;
 
@@ -18,19 +18,19 @@ import java.util.Iterator;
 public class ControladorUsuario {
 
     public static void cadastrarCliente(int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email, LocalDate dataCadastro) {
-        Comercio.ComercioEletronico.cadastrarCliente(codigo, nome, cpf, rg, dataNascimento, endereco, cep, email, dataCadastro);
+        Model.Comercio.ComercioEletronico.cadastrarCliente(codigo, nome, cpf, rg, dataNascimento, endereco, cep, email, dataCadastro);
     }
 
     public static void cadastrarClienteOuro(int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email, LocalDate dataCadastro) {
-        Comercio.ComercioEletronico.cadastrarClienteOuro(codigo, nome, cpf, rg, dataNascimento, endereco, cep, email, dataCadastro);
+        Model.Comercio.ComercioEletronico.cadastrarClienteOuro(codigo, nome, cpf, rg, dataNascimento, endereco, cep, email, dataCadastro);
     }
 
     public static Iterator<Cliente> iteratorTodosClientes() {
-        return Comercio.ComercioEletronico.getClientes().iterator();
+        return Model.Comercio.ComercioEletronico.getClientes().iterator();
     }
 
     public static int codigoCliente() {
-        return Comercio.ComercioEletronico.getClientes().size();
+        return Model.Comercio.ComercioEletronico.getClientes().size();
     }
 
     public static Cliente buscarClienteNome(String nome) {
@@ -45,15 +45,15 @@ public class ControladorUsuario {
     }
 
     public static Iterator<ClienteOuro> iteratorTodosClienteOuro() {
-        return Comercio.ComercioEletronico.getClientesOuro().iterator();
+        return Model.Comercio.ComercioEletronico.getClientesOuro().iterator();
     }
 
     public static void cadastrarGerente(float salario, String pis, LocalDate dataAdmissao, int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email) {
-        Comercio.ComercioEletronico.cadastrarGerente(salario, pis, dataAdmissao, codigo, nome, cpf, rg, dataNascimento, endereco, cep, email);
+        Model.Comercio.ComercioEletronico.cadastrarGerente(salario, pis, dataAdmissao, codigo, nome, cpf, rg, dataNascimento, endereco, cep, email);
     }
 
     public static int codigoGerente() {
-        return Comercio.ComercioEletronico.getGerentes().size();
+        return Model.Comercio.ComercioEletronico.getGerentes().size();
     }
 
     public static Iterator<Gerente> iteratorTodosGerentes() {
