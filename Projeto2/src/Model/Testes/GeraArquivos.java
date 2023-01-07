@@ -18,10 +18,6 @@ Willian Yoshio Murayama
 public class GeraArquivos {
 
     public static void main(String[] args) {
-//        ArrayList<Venda> vendas = new ArrayList<>();
-//        ArrayList<Produto> produtos = new ArrayList<>();
-//        ArrayList<Fabricante> fabricantes = new ArrayList<>();
-//        ArrayList<Transportadora> transportadoras = new ArrayList<>();
         int codigo = 0;
         ArrayList<Cliente> clientes = new ArrayList<>();
         ArrayList<Gerente> gerentes = new ArrayList<>();
