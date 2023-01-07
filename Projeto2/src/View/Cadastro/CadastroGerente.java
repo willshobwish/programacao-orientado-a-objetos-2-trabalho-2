@@ -59,6 +59,7 @@ public class CadastroGerente extends javax.swing.JFrame {
         pis = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de gerente");
 
         jLabel1.setText("Código");
 
