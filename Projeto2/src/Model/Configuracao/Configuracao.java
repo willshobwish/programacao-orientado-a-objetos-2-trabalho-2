@@ -7,13 +7,14 @@ Willian Yoshio Murayama
  */
 public class Configuracao {
 
-    final static private String arquivoVendas = "src\\Arquivos\\arquivoVendas.ser";
-    final static private String arquivoProdutos = "src\\Arquivos\\arquivoProdutos.ser";
-    final static private String arquivoFabricantes = "src\\Arquivos\\arquivoFabricantes.ser";
-    final static private String arquivoTransportadoras = "src\\Arquivos\\arquivoTransportadoras.ser";
-    final static private String arquivoClientes = "src\\Arquivos\\arquivoClientes.ser";
-    final static private String arquivoClientesOuro = "src\\Arquivos\\arquivoClientesOuro.ser";
-    final static private String arquivoGerentes = "src\\Arquivos\\arquivoGerentes.ser";
+    final static private String diretorio = "src\\Arquivos\\";
+    final static private String arquivoVendas = diretorio + "arquivoVendas.ser";
+    final static private String arquivoProdutos = diretorio + "arquivoProdutos.ser";
+    final static private String arquivoFabricantes = diretorio + "arquivoFabricantes.ser";
+    final static private String arquivoTransportadoras = diretorio + "arquivoTransportadoras.ser";
+    final static private String arquivoClientes = diretorio + "arquivoClientes.ser";
+    final static private String arquivoClientesOuro = diretorio + "arquivoClientesOuro.ser";
+    final static private String arquivoGerentes = diretorio + "arquivoGerentes.ser";
 
     public static String getArquivoVendas() {
         return arquivoVendas;
