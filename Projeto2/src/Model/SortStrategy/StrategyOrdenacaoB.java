@@ -28,6 +28,6 @@ public class StrategyOrdenacaoB implements OrdenacaoStrategy {
             VetorOrdenar.add(i, menorValor);
         }
 
-        return null;
+        return VetorOrdenar;
     }
 }
