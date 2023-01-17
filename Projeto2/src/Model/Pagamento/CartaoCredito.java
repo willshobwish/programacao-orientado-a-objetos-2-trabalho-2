@@ -24,11 +24,11 @@ public class CartaoCredito extends Pagamento {
 
     public String toString() {
         return """
-               Código da nota: %d
-               Nome: %s
-               Bandeira: %s
-               Número %s
-               """.formatted(codigoNota, nome, bandeira, numero);
+                Código da nota: %d
+                Nome: %s
+                Bandeira: %s
+                Número %s
+                """.formatted(codigoNota, nome, bandeira, numero);
     }
 
     public String getNome() {
@@ -36,7 +36,9 @@ public class CartaoCredito extends Pagamento {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        if (nome == "Credito") {
+            this.nome = nome;
+        }
     }
 
     public String getBandeira() {
