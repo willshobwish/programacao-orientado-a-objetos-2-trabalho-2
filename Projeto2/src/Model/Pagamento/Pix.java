@@ -9,6 +9,10 @@ public class Pix extends Pagamento {
 
     private String codigoPix;
 
+    public Pix(int codigoNota) {
+        super(codigoNota);
+    }
+
     public Pix(String codigoPix, int codigoNota) {
         super(codigoNota);
         this.codigoPix = codigoPix;
