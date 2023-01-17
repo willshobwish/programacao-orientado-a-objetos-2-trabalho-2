@@ -17,10 +17,10 @@ public class Contexto {
 
     public void selecionarEstrategia(String metodo) {
         switch (metodo) {
-            case "quick sort":
+            case "insertion":
                 ordenacao = new StrategyOrdenacaoA();
                 break;
-            case "merge sort":
+            case "selection":
                 ordenacao = new StrategyOrdenacaoB();
                 break;
             default:

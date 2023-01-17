@@ -4,6 +4,7 @@
  */
 package Model.SortStrategy;
 
+import Model.Produto.Produto;
 import java.util.ArrayList;
 
 /*
@@ -13,7 +14,20 @@ Willian Yoshio Murayama
  */
 public class StrategyOrdenacaoB implements OrdenacaoStrategy {
 
-    public ArrayList executarOrdenacao(ArrayList VetorOrdenar) {
+    public ArrayList<Produto> executarOrdenacao(ArrayList<Produto> VetorOrdenar) {
+        for (int i = 0; i < VetorOrdenar.size() - 1; i++) {
+            int index = i;
+            for (int j = i + 1; j < VetorOrdenar.size(); j++) {
+                if (VetorOrdenar.get(j).getValor() < VetorOrdenar.get(index).getValor()) {
+//                    Procura o produto de menor valor
+                    index = j;
+                }
+            }
+            Produto menorValor = VetorOrdenar.get(index);
+            VetorOrdenar.add(index, VetorOrdenar.get(i));
+            VetorOrdenar.add(i, menorValor);
+        }
+
         return null;
     }
 }

@@ -1,5 +1,6 @@
 package Model.SortStrategy;
 
+import Model.Produto.Produto;
 import java.util.ArrayList;
 
 /*
@@ -9,5 +10,5 @@ Willian Yoshio Murayama
  */
 public interface OrdenacaoStrategy {
 
-    public ArrayList executarOrdenacao(ArrayList VetorOrdenar);
+    public ArrayList<Produto> executarOrdenacao(ArrayList<Produto> VetorOrdenar);
 }
