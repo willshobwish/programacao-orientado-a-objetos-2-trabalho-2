@@ -14,15 +14,15 @@ public class FactoryProduto {
 
     }
 
-    public static Produto factoryProduto(String tipoDeProduto, int codigo, String nome, String descricao, LocalDate dataFabricacao, float valor, Fabricante fabricante, boolean disponivel) {
+    public static Produto factoryProduto(String tipoDeProduto, int codigo, String nome, String descricao, LocalDate dataFabricacao, double valor, Fabricante fabricante, boolean disponivel) {
         switch (tipoDeProduto) {
-            case "eletrodomesticos":
+            case "eletrodomestico":
                 return new Eletrodomesticos(codigo, nome, descricao, dataFabricacao, valor, fabricante, disponivel);
 
-            case "eletronicos":
+            case "eletronico":
                 return new Eletronicos(codigo, nome, descricao, dataFabricacao, valor, fabricante, disponivel);
 
-            case "moveis":
+            case "movel":
                 return new Moveis(codigo, nome, descricao, dataFabricacao, valor, fabricante, disponivel);
 
             case "vestuario":

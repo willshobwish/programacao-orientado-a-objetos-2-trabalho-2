@@ -10,6 +10,7 @@ Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
 public abstract class Produto implements Serializable {
+
     protected int codigo;
     protected String nome;
     protected String descricao;
@@ -18,7 +19,7 @@ public abstract class Produto implements Serializable {
     protected Fabricante fabricante;
     protected boolean disponivel;
 
-    public Produto(int codigo, String nome, String descricao, LocalDate dataFabricacao, float valor, Fabricante fabricante, boolean disponivel) {
+    public Produto(int codigo, String nome, String descricao, LocalDate dataFabricacao, double valor, Fabricante fabricante, boolean disponivel) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -27,10 +28,10 @@ public abstract class Produto implements Serializable {
         this.fabricante = fabricante;
         this.disponivel = disponivel;
     }
-    
+
     abstract double calcularValor();
-    
-    public String toString(){
+
+    public String toString() {
         return """
                Codigo: %s
                Nome: %s
@@ -39,13 +40,13 @@ public abstract class Produto implements Serializable {
                Valor: R$ %.2f
                Fabricante: %s
                Disponivel: %b
-               """.formatted(codigo,nome,descricao,dataFabricacao.getDayOfMonth(),dataFabricacao.getMonthValue(),dataFabricacao.getYear(),valor,fabricante,disponivel);
+               """.formatted(codigo, nome, descricao, dataFabricacao.getDayOfMonth(), dataFabricacao.getMonthValue(), dataFabricacao.getYear(), valor, fabricante, disponivel);
     }
-    
-    public boolean estaDisponivel(){
+
+    public boolean estaDisponivel() {
         return this.estaDisponivel();
     }
-    
+
     public int getCodigo() {
         return codigo;
     }
@@ -101,5 +102,5 @@ public abstract class Produto implements Serializable {
     public void setDisponiel(boolean disponivel) {
         this.disponivel = disponivel;
     }
-    
+
 }

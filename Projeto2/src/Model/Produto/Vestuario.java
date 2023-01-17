@@ -11,7 +11,7 @@ Willian Yoshio Murayama
  */
 public class Vestuario extends Produto implements Serializable {
 
-    public Vestuario(int codigo, String nome, String descricao, LocalDate dataFabricacao, float valor, Fabricante fabricante, boolean disponivel) {
+    public Vestuario(int codigo, String nome, String descricao, LocalDate dataFabricacao, double valor, Fabricante fabricante, boolean disponivel) {
         super(codigo, nome, descricao, dataFabricacao, valor, fabricante, disponivel);
     }
 
