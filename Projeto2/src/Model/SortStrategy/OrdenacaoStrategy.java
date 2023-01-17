@@ -5,6 +5,6 @@ Bruno Augusto Furquim
 Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
-public class OrdenacaoStrategy {
+public interface OrdenacaoStrategy {
 
 }
