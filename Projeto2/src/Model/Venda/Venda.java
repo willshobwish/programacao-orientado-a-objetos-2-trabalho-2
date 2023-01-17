@@ -39,6 +39,8 @@ public class Venda implements Serializable {
         this.valorComDesconto = valorComDesconto;
         this.formaPagamento = formaPagamento;
         this.transportadora = transportadora;
+
+        transportadora.realizarTransporte();
     }
 
     public int getCodigo() {
