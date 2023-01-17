@@ -4,6 +4,11 @@
  */
 package View.Cadastro;
 
+import Model.Comercio.ComercioEletronico;
+import Model.Fabricante.Fabricante;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /*
@@ -18,7 +23,8 @@ public class CadastroProduto extends javax.swing.JFrame {
      */
     public CadastroProduto() {
         initComponents();
-        codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoGerente()));
+        codigo.setText(Integer.toString(Controller.ControladorProduto.getCodigoProduto()));
+        disponivel.setSelected(true);
     }
 
     /**
@@ -30,6 +36,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        disponibilidadeGrupo = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         codigo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -38,15 +45,16 @@ public class CadastroProduto extends javax.swing.JFrame {
         nome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         descricao = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        rg = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         dataFabricacao = new javax.swing.JSpinner();
         cadastrar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         valor = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        fabricante = new javax.swing.JComboBox<>();
+        disponivel = new javax.swing.JRadioButton();
+        naoDisponivel = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de produtos");
@@ -63,8 +71,6 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         jLabel4.setText("Descrição");
 
-        jLabel3.setText("RG");
-
         jLabel5.setText("Data de fabricação");
 
         dataFabricacao.setModel(new javax.swing.SpinnerDateModel());
@@ -80,6 +86,14 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         jLabel11.setText("Fabricante");
 
+        disponibilidadeGrupo.add(disponivel);
+        disponivel.setText("Disponível");
+
+        disponibilidadeGrupo.add(naoDisponivel);
+        naoDisponivel.setText("Não disponível");
+
+        jLabel3.setText("Disponibilidade");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,23 +104,24 @@ public class CadastroProduto extends javax.swing.JFrame {
                     .addComponent(codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
                     .addComponent(descricao, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(nome)
-                    .addComponent(rg)
-                    .addComponent(cadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tipoProduto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(valor)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fabricante, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dataFabricacao)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel6)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel3)
                             .addComponent(jLabel5)
                             .addComponent(jLabel11)
-                            .addComponent(jLabel10))
+                            .addComponent(jLabel10)
+                            .addComponent(disponivel)
+                            .addComponent(naoDisponivel)
+                            .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(dataFabricacao)
-                    .addComponent(tipoProduto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -129,10 +144,6 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dataFabricacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,7 +154,13 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fabricante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(disponivel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(naoDisponivel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cadastrar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -154,8 +171,40 @@ public class CadastroProduto extends javax.swing.JFrame {
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
+        String tipoProdutoString = tipoProduto.getSelectedItem().toString();
+        int codigoProduto = Integer.valueOf(codigo.getText());
+        String nomeProduto = nome.getText();
+        String descricaoProduto = descricao.getText();
+        LocalDate dataFabricacaoProduto = ((Date) dataFabricacao.getValue()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        double valorProduto = Double.valueOf(valor.getText());
+//        Fabricante fabricanteProduto = ComercioEletronico.getFabricantes().get(fabricante.getSelectedIndex());
+        Fabricante fabricanteProduto = null;
+        boolean disponivelProduto;
+        if (disponivel.isSelected()) {
+            disponivelProduto = true;
+        } else {
+            disponivelProduto = false;
+        }
 
-        JOptionPane.showMessageDialog(this, "Gerente cadastrado com sucesso");
+        switch (tipoProdutoString) {
+            case "Móvel":
+                Controller.ControladorProduto.cadastrarProduto("movel", codigoProduto, nomeProduto, descricaoProduto, dataFabricacaoProduto, valorProduto, fabricanteProduto, disponivelProduto);
+                break;
+            case "Eletrodomésticos":
+                Controller.ControladorProduto.cadastrarProduto("eletrodomestico", codigoProduto, nomeProduto, descricaoProduto, dataFabricacaoProduto, valorProduto, fabricanteProduto, disponivelProduto);
+                break;
+            case "Eletrônicos":
+                Controller.ControladorProduto.cadastrarProduto("eletronico", codigoProduto, nomeProduto, descricaoProduto, dataFabricacaoProduto, valorProduto, fabricanteProduto, disponivelProduto);
+                break;
+            case "Vestuário":
+                Controller.ControladorProduto.cadastrarProduto("vestuario", codigoProduto, nomeProduto, descricaoProduto, dataFabricacaoProduto, valorProduto, fabricanteProduto, disponivelProduto);
+                break;
+            default:
+                throw new AssertionError();
+        }
+
+        JOptionPane.showMessageDialog(this, """
+                                            %s %s cadastrado com sucesso""".formatted(tipoProdutoString, ComercioEletronico.getProdutos().get(codigoProduto).getNome()));
 
     }//GEN-LAST:event_cadastrarActionPerformed
 
@@ -222,7 +271,9 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JTextField codigo;
     private javax.swing.JSpinner dataFabricacao;
     private javax.swing.JTextField descricao;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.ButtonGroup disponibilidadeGrupo;
+    private javax.swing.JRadioButton disponivel;
+    private javax.swing.JComboBox<String> fabricante;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -231,8 +282,8 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JRadioButton naoDisponivel;
     private javax.swing.JTextField nome;
-    private javax.swing.JTextField rg;
     private javax.swing.JComboBox<String> tipoProduto;
     private javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables

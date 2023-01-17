@@ -6,6 +6,7 @@ package View.InterfaceGrafica;
 
 import View.Cadastro.CadastroCliente;
 import View.Cadastro.CadastroGerente;
+import View.Cadastro.CadastroProduto;
 import View.Cadastro.CadastroVenda;
 import java.util.Iterator;
 
@@ -39,9 +40,6 @@ public class Main extends javax.swing.JFrame {
         jMenuItem24 = new javax.swing.JMenuItem();
         jMenuItem25 = new javax.swing.JMenuItem();
         jMenuItem26 = new javax.swing.JMenuItem();
-        jMenuItem27 = new javax.swing.JMenuItem();
-        jMenuItem28 = new javax.swing.JMenuItem();
-        jMenuItem29 = new javax.swing.JMenuItem();
         jMenuItem30 = new javax.swing.JMenuItem();
         jMenuItem31 = new javax.swing.JMenuItem();
         jMenuItem32 = new javax.swing.JMenuItem();
@@ -100,17 +98,13 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu7.add(jMenuItem25);
 
-        jMenuItem26.setText("Móveis");
+        jMenuItem26.setText("Produtos");
+        jMenuItem26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem26ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem26);
-
-        jMenuItem27.setText("Eletrodomésticos");
-        jMenu7.add(jMenuItem27);
-
-        jMenuItem28.setText("Eletrônicos");
-        jMenu7.add(jMenuItem28);
-
-        jMenuItem29.setText("Vestuário");
-        jMenu7.add(jMenuItem29);
 
         jMenuItem30.setText("Fabricante");
         jMenu7.add(jMenuItem30);
@@ -265,7 +259,7 @@ public class Main extends javax.swing.JFrame {
         CadastroCliente Cliente = new CadastroCliente();
         Cliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem24ActionPerformed
-
+    
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         // TODO add your handling code here:
 
@@ -279,7 +273,7 @@ public class Main extends javax.swing.JFrame {
         }
         jTextArea1.setText(dados);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
-
+    
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
         String dados = """
@@ -292,25 +286,25 @@ public class Main extends javax.swing.JFrame {
         }
         jTextArea1.setText(dados);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-
+    
     private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
         // TODO add your handling code here:
         CadastroGerente CadastroGerente = new CadastroGerente();
         CadastroGerente.setVisible(true);
     }//GEN-LAST:event_jMenuItem25ActionPerformed
-
+    
     private void jMenuItem32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem32ActionPerformed
         // TODO add your handling code here:
         CadastroVenda CadastroVenda = new CadastroVenda();
         CadastroVenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem32ActionPerformed
-
+    
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
         BuscarHistoricoVendas BuscarVendas = new BuscarHistoricoVendas();
         BuscarVendas.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
-
+    
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
         // TODO add your handling code here:
         String dados = """
@@ -323,6 +317,12 @@ public class Main extends javax.swing.JFrame {
         }
         jTextArea1.setText(dados);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
+    
+    private void jMenuItem26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem26ActionPerformed
+        // TODO add your handling code here:
+        CadastroProduto CadastroProduto = new CadastroProduto();
+        CadastroProduto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem26ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,7 +333,7 @@ public class Main extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -387,9 +387,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem24;
     private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem26;
-    private javax.swing.JMenuItem jMenuItem27;
-    private javax.swing.JMenuItem jMenuItem28;
-    private javax.swing.JMenuItem jMenuItem29;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem30;
     private javax.swing.JMenuItem jMenuItem31;

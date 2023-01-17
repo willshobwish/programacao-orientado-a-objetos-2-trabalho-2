@@ -46,6 +46,10 @@ public class ComercioEletronico {
         Controller.ControladorSerializable.salvarGerentes(gerentes);
     }
 
+    public static void cadastrarProduto(Produto Produto) {
+        produtos.add(Produto);
+    }
+
     public static ArrayList<Venda> getVendas() {
         return vendas;
     }
