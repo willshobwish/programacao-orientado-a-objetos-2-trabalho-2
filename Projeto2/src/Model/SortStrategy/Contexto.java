@@ -9,7 +9,7 @@ Willian Yoshio Murayama
  */
 public class Contexto {
 
-    private OrdenacaoStrategy ordenacao;
+    private SortStrategy ordenacao;
 
     public ArrayList executarEstrategia(ArrayList VetorOrdenar) {
         return ordenacao.executarOrdenacao(VetorOrdenar);
@@ -18,10 +18,10 @@ public class Contexto {
     public void selecionarEstrategia(String metodo) {
         switch (metodo) {
             case "insertion":
-                ordenacao = new StrategyOrdenacaoA();
+                ordenacao = new InsertionSort();
                 break;
             case "selection":
-                ordenacao = new StrategyOrdenacaoB();
+                ordenacao = new SelectionSort();
                 break;
             default:
                 throw new AssertionError();

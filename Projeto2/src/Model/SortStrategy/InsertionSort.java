@@ -8,7 +8,7 @@ Bruno Augusto Furquim
 Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
-public class StrategyOrdenacaoA implements OrdenacaoStrategy {
+public class InsertionSort implements SortStrategy {
 
     public ArrayList<Produto> executarOrdenacao(ArrayList<Produto> VetorOrdenar) {
         for (int i = 1; i < VetorOrdenar.size() - 1; i++) {
