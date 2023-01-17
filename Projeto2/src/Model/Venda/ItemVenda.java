@@ -6,22 +6,22 @@ Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
 public class ItemVenda {
-    private int coddigoProduto;
+    private int codigoProduto;
     private float valor;
     private int quantidade;
 
-    public void cadastrarItemVenda(int coddigoProduto, float valor, int quantidade) {
-        this.coddigoProduto = coddigoProduto;
+    public void cadastrarItemVenda(int codigoProduto, float valor, int quantidade) {
+        this.codigoProduto = codigoProduto;
         this.valor = valor;
         this.quantidade = quantidade;
     }
 
-    public int getCoddigoProduto() {
-        return coddigoProduto;
+    public int getcodigoProduto() {
+        return codigoProduto;
     }
 
-    public void setCoddigoProduto(int coddigoProduto) {
-        this.coddigoProduto = coddigoProduto;
+    public void setcodigoProduto(int codigoProduto) {
+        this.codigoProduto = codigoProduto;
     }
 
     public float getValor() {
