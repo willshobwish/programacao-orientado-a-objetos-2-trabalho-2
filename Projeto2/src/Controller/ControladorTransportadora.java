@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import Model.Transportadora.Transportadora;
+import Model.Venda.Venda;
 
 /*
 Bruno Augusto Furquim
@@ -22,32 +23,35 @@ public class ControladorTransportadora {
         return transportadoras;
     }
 
-    public static ArrayList<Transportadora> listarTransportadorasComMaiorTransportesRealizado() {
+    public static ArrayList<Transportadora> topTransportadoras() {
 
-        Transportadora Transportadora1 = new Transportadora();
-        Transportadora Transportadora2 = new Transportadora();
-        Transportadora Transportadora3 = new Transportadora();
+        Transportadora transportadora1 = new Transportadora();
+        Transportadora transportadora2 = new Transportadora();
+        Transportadora transportadora3 = new Transportadora();
         ArrayList<Transportadora> topTransportadoras = new ArrayList<Transportadora>();
 
         Iterator transportadorasCadastradas = Model.Comercio.ComercioEletronico.getTransportadoras().iterator();
+        Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
 
-        while (transportadorasCadastradas.hasNext()) {
+        while (vendas.hasNext()) {
+            Venda venda = (Venda) vendas.next();
             Transportadora transportadora = (Transportadora) transportadorasCadastradas.next();
-            if (transportadora.getQtdTransportes() > Transportadora1.getQtdTransportes()) {
-                Transportadora3 = Transportadora2;
-                Transportadora2 = Transportadora1;
-                Transportadora1 = transportadora;
-            } else if (transportadora.getQtdTransportes() > Transportadora2.getQtdTransportes()) {
-                Transportadora3 = Transportadora2;
-                Transportadora2 = transportadora;
-            } else if (transportadora.getQtdTransportes() > Transportadora3.getQtdTransportes()) {
-                Transportadora3 = transportadora;
+
+            if (venda.vendasTransportadoras(transportadora) > venda.vendasTransportadoras(transportadora1)) {
+                transportadora3 = transportadora2;
+                transportadora2 = transportadora1;
+                transportadora1 = transportadora;
+            } else if (venda.vendasTransportadoras(transportadora) > venda.vendasTransportadoras(transportadora2)) {
+                transportadora3 = transportadora2;
+                transportadora2 = transportadora;
+            } else if (venda.vendasTransportadoras(transportadora) > venda.vendasTransportadoras(transportadora3)) {
+                transportadora3 = transportadora;
             }
         }
 
-        topTransportadoras.add(Transportadora1);
-        topTransportadoras.add(Transportadora2);
-        topTransportadoras.add(Transportadora3);
+        topTransportadoras.add(transportadora1);
+        topTransportadoras.add(transportadora2);
+        topTransportadoras.add(transportadora3);
 
         return topTransportadoras;
     }

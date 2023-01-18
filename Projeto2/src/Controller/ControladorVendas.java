@@ -1,9 +1,6 @@
 package Controller;
 
 import java.time.LocalDate;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import Model.Pagamento.Pagamento;

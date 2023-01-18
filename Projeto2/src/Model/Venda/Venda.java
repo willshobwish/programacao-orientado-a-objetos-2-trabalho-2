@@ -8,6 +8,8 @@ import Model.Pagamento.Pagamento;
 import Model.Transportadora.Transportadora;
 import Model.Usuario.Cliente;
 import Model.Usuario.Gerente;
+import java.util.Iterator;
+import Model.Venda.Venda;
 
 /*
 Bruno Augusto Furquim
@@ -39,8 +41,6 @@ public class Venda implements Serializable {
         this.valorComDesconto = valorComDesconto;
         this.formaPagamento = formaPagamento;
         this.transportadora = transportadora;
-
-        transportadora.realizarTransporte();
     }
 
     public int getCodigo() {
@@ -133,5 +133,18 @@ public class Venda implements Serializable {
 
     public void calcularDataEntrega() {
         dataDaEntrega = dataVenda.plusDays(transportadora.getTempoDeEntrega());
+    }
+
+    public int vendasTransportadoras(Transportadora transportadora) {
+        int cont = 0;
+        Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
+
+        while (vendas.hasNext()) {
+            Venda venda = (Venda) vendas.next();
+            if (venda.getTransportadora().equals(transportadora)) {
+                cont++;
+            }
+        }
+        return cont;
     }
 }
