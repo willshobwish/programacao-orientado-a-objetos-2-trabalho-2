@@ -41,6 +41,15 @@ public class CadastroVenda extends javax.swing.JFrame {
         formaPagamentoActionPerformed(null);
     }
 
+    public void pagamentoCartao() {
+    }
+
+    public void pagamentoPix() {
+    }
+
+    public void pagamentoDinheiro() {
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -413,6 +422,11 @@ public class CadastroVenda extends javax.swing.JFrame {
         );
 
         cadastrarVenda.setText("Cadastrar venda");
+        cadastrarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarVendaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -479,7 +493,7 @@ public class CadastroVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_gerenteActionPerformed
 
     private void gerenteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gerenteFocusLost
-        // TODO add your handling code here:    
+        // TODO add your handling code here:
 
     }//GEN-LAST:event_gerenteFocusLost
 
@@ -509,6 +523,35 @@ public class CadastroVenda extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formaPagamentoActionPerformed
 
+    private void cadastrarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarVendaActionPerformed
+        // TODO add your handling code here:
+        switch (formaPagamento.getSelectedIndex()) {
+            case 0:
+//                Dinheiro
+                nomeCartao.setEnabled(false);
+                bandeiraCartao.setEnabled(false);
+                numeroCartao.setEnabled(false);
+                codigoPix.setEnabled(false);
+                break;
+            case 1:
+//                Cartao
+                nomeCartao.setEnabled(true);
+                bandeiraCartao.setEnabled(true);
+                numeroCartao.setEnabled(true);
+                codigoPix.setEnabled(false);
+                break;
+            case 2:
+//                Pix
+                nomeCartao.setEnabled(false);
+                bandeiraCartao.setEnabled(false);
+                numeroCartao.setEnabled(false);
+                codigoPix.setEnabled(true);
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }//GEN-LAST:event_cadastrarVendaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -516,7 +559,7 @@ public class CadastroVenda extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
