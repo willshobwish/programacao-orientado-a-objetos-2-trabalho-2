@@ -15,7 +15,6 @@ public class Transportadora implements Serializable {
     private String telefone;
     private String endereco;
     private int tempoDeEntrega;
-    private int qtdTransportes;
 
     public void cadastrarTransportadora(int codigo, String cnpj, String nome, String email, String telefone,
             String endereco,
@@ -83,14 +82,6 @@ public class Transportadora implements Serializable {
 
     public void setTempoDeEntrega(int tempoDeEntrega) {
         this.tempoDeEntrega = tempoDeEntrega;
-    }
-
-    public int getQtdTransportes() {
-        return qtdTransportes;
-    }
-
-    public void realizarTransporte() {
-        this.qtdTransportes++;
     }
 
     public String toString() {
