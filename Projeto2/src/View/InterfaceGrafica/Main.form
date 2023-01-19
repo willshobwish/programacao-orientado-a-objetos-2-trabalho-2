@@ -62,6 +62,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar todos produtos cadastrados"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
               <Properties>
@@ -97,12 +100,12 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listar todos produtos por valor usando sortingA"/>
+                <Property name="text" type="java.lang.String" value="Listar todos produtos por valor usando insertion sort"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listar todos produtos por valor usando sortingB"/>
+                <Property name="text" type="java.lang.String" value="Listar todos produtos por valor usando selection sort"/>
               </Properties>
             </MenuItem>
           </SubComponents>
