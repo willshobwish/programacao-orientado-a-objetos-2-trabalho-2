@@ -4,13 +4,11 @@ import Model.Comercio.ComercioEletronico;
 import Model.Fabricante.Fabricante;
 import Model.Produto.Eletrodomesticos;
 import Model.Produto.Eletronicos;
+import static Model.Produto.FactoryProduto.factoryProduto;
 import Model.Produto.Moveis;
 import Model.Produto.Produto;
 import Model.Produto.Vestuario;
-
-import static Model.Produto.FactoryProduto.factoryProduto;
 import java.time.LocalDate;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -43,6 +41,15 @@ public class ControladorProduto {
         return moveis;
     }
 
+    public static String getInfoMoveis() {
+        String info = "";
+        Iterator moveisIterator = getMoveis().iterator();
+        while (moveisIterator.hasNext()) {
+            info += moveisIterator.next().toString();
+        }
+        return info;
+    }
+
     public static ArrayList<Eletronicos> getEletronicos() {
         ArrayList<Eletronicos> eletronicos = new ArrayList<Eletronicos>();
         Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
@@ -54,6 +61,15 @@ public class ControladorProduto {
             }
         }
         return eletronicos;
+    }
+
+    public static String getInfoEletronicos() {
+        String info = "";
+        Iterator eletronicosIterator = getEletronicos().iterator();
+        while (eletronicosIterator.hasNext()) {
+            info += eletronicosIterator.next().toString();
+        }
+        return info;
     }
 
     public static ArrayList<Eletrodomesticos> getEletrodomesticos() {
@@ -71,6 +87,15 @@ public class ControladorProduto {
         return eletrodomesticos;
     }
 
+    public static String getInfoEletrodomesticos() {
+        String info = "";
+        Iterator eletrodomesticosIterator = getEletrodomesticos().iterator();
+        while (eletrodomesticosIterator.hasNext()) {
+            info += eletrodomesticosIterator.next().toString();
+        }
+        return info;
+    }
+
     public static ArrayList<Vestuario> getVestuario() {
         ArrayList<Vestuario> vestuario = new ArrayList<Vestuario>();
         Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
@@ -82,5 +107,23 @@ public class ControladorProduto {
             }
         }
         return vestuario;
+    }
+
+    public static String getInfoVestuario() {
+        String info = "";
+        Iterator vestuariosInfo = getVestuario().iterator();
+        while (vestuariosInfo.hasNext()) {
+            info += vestuariosInfo.next().toString();
+        }
+        return info;
+    }
+
+    public static String getInfoProdutos() {
+        String info = "";
+        Iterator vestuariosInfo = ComercioEletronico.getProdutos().iterator();
+        while (vestuariosInfo.hasNext()) {
+            info += vestuariosInfo.next().toString();
+        }
+        return info;
     }
 }
