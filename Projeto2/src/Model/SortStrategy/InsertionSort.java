@@ -11,14 +11,19 @@ Willian Yoshio Murayama
 public class InsertionSort implements SortStrategy {
 
     public ArrayList<Produto> executarOrdenacao(ArrayList<Produto> VetorOrdenar) {
-        for (int i = 1; i < VetorOrdenar.size() - 1; i++) {
-            Produto temporario = VetorOrdenar.get(i);
-            int j = i - 1;
-            while (j >= 0 && temporario.getValor() <= VetorOrdenar.get(i).getValor()) {
-                VetorOrdenar.add(i + 1, VetorOrdenar.get(i));
-                i = i - 1;
+        int tamanhoVetor = VetorOrdenar.size();
+        for (int i = 0; i < tamanhoVetor - 1; i++) {
+            int indexMinimo = i;
+            for (int j = i + 1; j < tamanhoVetor; j++) {
+                if (VetorOrdenar.get(j).getValor() < VetorOrdenar.get(indexMinimo).getValor()) {
+                    indexMinimo = j;
+                }
             }
-            VetorOrdenar.add(i + 1, temporario);
+            Produto temp = VetorOrdenar.get(indexMinimo);
+            VetorOrdenar.remove(indexMinimo);
+            VetorOrdenar.add(indexMinimo, VetorOrdenar.get(i));
+            VetorOrdenar.remove(i);
+            VetorOrdenar.add(i, temp);
         }
         return VetorOrdenar;
     }
