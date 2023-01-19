@@ -133,15 +133,35 @@ public class Main extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem8.setText("Listar todos produtos da categoria móveis");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem8);
 
         jMenuItem10.setText("Listar todos produtos da categoria eletrodomésticos");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem10);
 
         jMenuItem15.setText("Listar todos produtos da categoria eletrônicos");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem15);
 
         jMenuItem12.setText("Listar todos produtos da categoria vestuários");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem12);
 
         jMenuItem14.setText("Listar os dez produtos mais vendidos");
@@ -334,8 +354,41 @@ public class Main extends javax.swing.JFrame {
 
         jTextArea1.setText("""
                            Todos os produtos cadastrados:
-                           """ + Controller.ControladorProduto.getInfoProdutos() + "\n");
+                           
+                           """ + Controller.ControladorProduto.getInfoProdutos());
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("""
+                           Produtos da categoria móveis:
+                           
+                           """ + Controller.ControladorProduto.getInfoMoveis());
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("""
+                           Produtos da categoria eletrodomesticos:
+                           
+                           """ + Controller.ControladorProduto.getInfoEletrodomesticos());
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("""
+                           Produtos da categoria eletronicos:
+                           
+                           """ + Controller.ControladorProduto.getInfoEletronicos());
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("""
+                           Produtos da categoria vestuário:
+                           
+                           """ + Controller.ControladorProduto.getInfoVestuario());
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
