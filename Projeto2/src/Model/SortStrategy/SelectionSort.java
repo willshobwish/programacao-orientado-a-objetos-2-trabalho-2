@@ -24,10 +24,11 @@ public class SelectionSort implements SortStrategy {
                 }
             }
             Produto menorValor = VetorOrdenar.get(index);
+            VetorOrdenar.remove(index);
             VetorOrdenar.add(index, VetorOrdenar.get(i));
+            VetorOrdenar.remove(i);
             VetorOrdenar.add(i, menorValor);
         }
-
         return VetorOrdenar;
     }
 }
