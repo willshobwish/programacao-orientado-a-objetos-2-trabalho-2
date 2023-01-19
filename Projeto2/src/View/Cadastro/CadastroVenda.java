@@ -552,6 +552,7 @@ public class CadastroVenda extends javax.swing.JFrame {
             default:
                 throw new AssertionError();
         }
+        JOptionPane.showMessageDialog(this, "Venda cadastrado com sucesso");
     }//GEN-LAST:event_cadastrarVendaActionPerformed
 
     /**
