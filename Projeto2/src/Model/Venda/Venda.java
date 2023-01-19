@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Model.Pagamento.Pagamento;
-import Model.Produto.Produto;
 import Model.Transportadora.Transportadora;
 import Model.Usuario.Cliente;
 import Model.Usuario.Gerente;
