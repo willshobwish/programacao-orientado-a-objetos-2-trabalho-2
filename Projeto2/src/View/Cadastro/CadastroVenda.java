@@ -9,6 +9,7 @@ import Model.Usuario.Gerente;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /*
 Bruno Augusto Furquim
@@ -38,6 +39,7 @@ public class CadastroVenda extends javax.swing.JFrame {
             nomesGerentes.add(gerente.getNome());
         }
         DefaultComboBoxModel modelGerentes = new DefaultComboBoxModel(nomesGerentes.toArray(new String[0]));
+        gerente.setModel(modelGerentes);
         formaPagamentoActionPerformed(null);
     }
 
