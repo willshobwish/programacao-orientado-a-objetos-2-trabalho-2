@@ -1,6 +1,8 @@
 package Model.SortStrategy;
 
+import Model.Produto.Produto;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /*
 Bruno Augusto Furquim
@@ -11,13 +13,14 @@ public class Contexto {
 
     private SortStrategy ordenacao;
 
-    public ArrayList executarEstrategia(ArrayList VetorOrdenar) {
-        return ordenacao.executarOrdenacao(VetorOrdenar);
+    public ArrayList<Produto> executarEstrategia() {
+        return ordenacao.executarOrdenacao(Model.Comercio.ComercioEletronico.getProdutos());
     }
 
     public void selecionarEstrategia(String metodo) {
         switch (metodo) {
             case "insertion":
+                System.out.println("insertion selecionado");
                 ordenacao = new InsertionSort();
                 break;
             case "selection":
@@ -26,5 +29,14 @@ public class Contexto {
             default:
                 throw new AssertionError();
         }
+    }
+
+    public String exibirOrdenacao() {
+        String info = "";
+        Iterator produtosOrdenados = executarEstrategia().iterator();
+        while (produtosOrdenados.hasNext()) {
+            info += produtosOrdenados.next().toString() + "\n";
+        }
+        return info;
     }
 }

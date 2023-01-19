@@ -4,6 +4,7 @@
  */
 package View.InterfaceGrafica;
 
+import Model.SortStrategy.Contexto;
 import View.Cadastro.CadastroCliente;
 import View.Cadastro.CadastroGerente;
 import View.Cadastro.CadastroProduto;
@@ -172,9 +173,19 @@ public class Main extends javax.swing.JFrame {
         jMenu2.setText("Ordenação");
 
         jMenuItem2.setText("Listar todos produtos por valor usando insertion sort");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuItem4.setText("Listar todos produtos por valor usando selection sort");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -389,6 +400,20 @@ public class Main extends javax.swing.JFrame {
                            
                            """ + Controller.ControladorProduto.getInfoVestuario());
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        Contexto contexto = new Contexto();
+        contexto.selecionarEstrategia("insertion");
+        jTextArea1.setText("Produtos ordenados com o preço crescente utilizando o insertion sort:\n" + contexto.exibirOrdenacao());
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        Contexto contexto = new Contexto();
+        contexto.selecionarEstrategia("selection");
+        jTextArea1.setText("Produtos ordenados com o preço crescente utilizando o selection sort:\n" + contexto.exibirOrdenacao());
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
