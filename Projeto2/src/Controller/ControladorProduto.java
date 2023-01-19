@@ -46,6 +46,7 @@ public class ControladorProduto {
         Iterator moveisIterator = getMoveis().iterator();
         while (moveisIterator.hasNext()) {
             info += moveisIterator.next().toString();
+            info += "\n";
         }
         return info;
     }
@@ -68,6 +69,7 @@ public class ControladorProduto {
         Iterator eletronicosIterator = getEletronicos().iterator();
         while (eletronicosIterator.hasNext()) {
             info += eletronicosIterator.next().toString();
+            info += "\n";
         }
         return info;
     }
@@ -92,6 +94,7 @@ public class ControladorProduto {
         Iterator eletrodomesticosIterator = getEletrodomesticos().iterator();
         while (eletrodomesticosIterator.hasNext()) {
             info += eletrodomesticosIterator.next().toString();
+            info += "\n";
         }
         return info;
     }
@@ -104,6 +107,7 @@ public class ControladorProduto {
             Produto produto = (Produto) produtos.next();
             if (produto instanceof Vestuario) {
                 vestuario.add((Vestuario) produto);
+
             }
         }
         return vestuario;
@@ -114,6 +118,7 @@ public class ControladorProduto {
         Iterator vestuariosInfo = getVestuario().iterator();
         while (vestuariosInfo.hasNext()) {
             info += vestuariosInfo.next().toString();
+            info += "\n";
         }
         return info;
     }
@@ -123,6 +128,7 @@ public class ControladorProduto {
         Iterator vestuariosInfo = ComercioEletronico.getProdutos().iterator();
         while (vestuariosInfo.hasNext()) {
             info += vestuariosInfo.next().toString();
+            info += "\n";
         }
         return info;
     }
