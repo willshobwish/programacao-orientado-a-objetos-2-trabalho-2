@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Model.Pagamento.Pagamento;
+import Model.Produto.Produto;
 import Model.Transportadora.Transportadora;
 import Model.Usuario.Cliente;
 import Model.Usuario.Gerente;
@@ -107,8 +108,23 @@ public class Venda implements Serializable {
         this.formaPagamento = formaPagamento;
     }
 
+    public static String getFormaPagamento(Venda venda) {
+        if (venda.getFormaPagamento() instanceof Model.Pagamento.Dinheiro) {
+
+            return "Dinheiro";
+
+        } else if (venda.getFormaPagamento() instanceof Model.Pagamento.CartaoCredito) {
+            return "Credito";
+
+        } else if (venda.getFormaPagamento() instanceof Model.Pagamento.Pix) {
+            return "Pix";
+        }
+        return null;
+    }
+
     public Transportadora getTransportadora() {
         return transportadora;
+
     }
 
     public void setTransportadora(Transportadora transportadora) {
