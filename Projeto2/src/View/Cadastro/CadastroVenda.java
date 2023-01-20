@@ -23,6 +23,8 @@ public class CadastroVenda extends javax.swing.JFrame {
      */
     public CadastroVenda() {
         initComponents();
+
+        //Definindo o model do jcombobox de clientes com o nome dos clientes
         Iterator iteratorClientes = Controller.ControladorUsuario.iteratorTodosClientes();
         ArrayList<String> nomesClientes = new ArrayList<>();
         while (iteratorClientes.hasNext()) {
@@ -32,6 +34,7 @@ public class CadastroVenda extends javax.swing.JFrame {
         DefaultComboBoxModel modelClientes = new DefaultComboBoxModel(nomesClientes.toArray(new String[0]));
         cliente.setModel(modelClientes);
 
+        //Definindo o model do jcombobox de gerentes com o nome dos gerentes
         Iterator iteratorGerentes = Controller.ControladorUsuario.iteratorTodosGerentes();
         ArrayList<String> nomesGerentes = new ArrayList<>();
         while (iteratorGerentes.hasNext()) {
@@ -41,6 +44,11 @@ public class CadastroVenda extends javax.swing.JFrame {
         DefaultComboBoxModel modelGerentes = new DefaultComboBoxModel(nomesGerentes.toArray(new String[0]));
         gerente.setModel(modelGerentes);
         formaPagamentoActionPerformed(null);
+
+        //Definindo o model do jcombobox de produtos com o nome dos produtos
+        DefaultComboBoxModel modelProdutos = new DefaultComboBoxModel(Controller.ControladorProduto.getProdutosNomesArray());
+        itensVenda.setModel(modelProdutos);
+
     }
 
     public void pagamentoCartao() {
