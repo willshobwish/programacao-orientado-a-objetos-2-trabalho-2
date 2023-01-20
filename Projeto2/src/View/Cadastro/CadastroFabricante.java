@@ -18,7 +18,7 @@ public class CadastroFabricante extends javax.swing.JFrame {
      */
     public CadastroFabricante() {
         initComponents();
-        codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoCliente()));
+        codigo.setText(Integer.toString(Controller.ControladorUsuario.getCodigoCliente()));
     }
 
     /**

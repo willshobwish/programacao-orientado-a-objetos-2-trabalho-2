@@ -20,7 +20,7 @@ public class CadastroTransportadora extends javax.swing.JFrame {
      */
     public CadastroTransportadora() {
         initComponents();
-        codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoCliente()));
+        codigo.setText(Integer.toString(Controller.ControladorUsuario.getCodigoCliente()));
     }
 
     /**
@@ -154,7 +154,7 @@ public class CadastroTransportadora extends javax.swing.JFrame {
         if (matcher.find()) {
             System.out.println("E-mail correto");
 
-            codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoCliente()));
+            codigo.setText(Integer.toString(Controller.ControladorUsuario.getCodigoCliente()));
             JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso");
         } else {
             System.out.println("E-mail incorreto");

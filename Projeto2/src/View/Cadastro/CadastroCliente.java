@@ -22,7 +22,7 @@ public class CadastroCliente extends javax.swing.JFrame {
      */
     public CadastroCliente() {
         initComponents();
-        codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoCliente()));
+        codigo.setText(Integer.toString(Controller.ControladorUsuario.getCodigoCliente()));
     }
 
     /**
@@ -187,7 +187,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             } else {
                 Controller.ControladorUsuario.cadastrarCliente(Integer.parseInt(codigo.getText()), nome.getText(), cpf.getText(), rg.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), cep.getText(), email.getText(), dateDataCadastro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             }
-            codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoCliente()));
+            codigo.setText(Integer.toString(Controller.ControladorUsuario.getCodigoCliente()));
             JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso");
         } else {
             System.out.println("E-mail incorreto");
