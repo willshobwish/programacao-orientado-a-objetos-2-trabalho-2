@@ -27,17 +27,6 @@ public class Transportadora implements Serializable {
         this.tempoDeEntrega = tempoDeEntrega;
     }
 
-//    public void cadastrarTransportadora(int codigo, String cnpj, String nome, String email, String telefone,
-//            String endereco,
-//            int tempoDeEntrega) {
-//        this.codigo = codigo;
-//        this.cnpj = cnpj;
-//        this.nome = nome;
-//        this.email = email;
-//        this.telefone = telefone;
-//        this.endereco = endereco;
-//        this.tempoDeEntrega = tempoDeEntrega;
-//    }
     public int getCodigo() {
         return codigo;
     }
@@ -96,13 +85,13 @@ public class Transportadora implements Serializable {
 
     public String toString() {
         return """
-                Codigo: %d
+                Código: %d
                 CNPJ: %s
                 Nome: %s
                 Email: %s
-                Teleone: %s
+                Telefone: %s
                 Endereco: %s
-                Tempo de Entrega: %d
+                Tempo de Entrega: %d dia(s)
                 """.formatted(codigo, cnpj, nome, email, telefone, endereco, tempoDeEntrega);
     }
 }
