@@ -28,10 +28,18 @@ public class ControladorProduto {
                 factoryProduto(tipoDeProduto, codigo, nome, descricao, dataFabricacao, valor, fabricante, disponivel));
     }
 
+    public static String[] getProdutosNomesArray() {
+        Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
+        ArrayList<String> nomesProdutos = new ArrayList<>();
+        while (produtos.hasNext()) {
+            nomesProdutos.add(((Produto) produtos.next()).getNome());
+        }
+        return nomesProdutos.toArray(new String[0]);
+    }
+
     public static ArrayList<Moveis> getMoveis() {
         ArrayList<Moveis> moveis = new ArrayList<Moveis>();
         Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
-
         while (produtos.hasNext()) {
             Produto produto = (Produto) produtos.next();
             if (produto instanceof Moveis) {
@@ -125,9 +133,9 @@ public class ControladorProduto {
 
     public static String getInfoProdutos() {
         String info = "";
-        Iterator vestuariosInfo = ComercioEletronico.getProdutos().iterator();
-        while (vestuariosInfo.hasNext()) {
-            info += vestuariosInfo.next().toString();
+        Iterator produtosInfo = ComercioEletronico.getProdutos().iterator();
+        while (produtosInfo.hasNext()) {
+            info += produtosInfo.next().toString();
             info += "\n";
         }
         return info;
