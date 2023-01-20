@@ -20,7 +20,7 @@ public class CadastroTransportadora extends javax.swing.JFrame {
      */
     public CadastroTransportadora() {
         initComponents();
-        codigo.setText(Integer.toString(Controller.ControladorUsuario.getCodigoCliente()));
+        codigo.setText(Integer.toString(Controller.ControladorTransportadora.getCodigoTransportadora()));
     }
 
     /**
@@ -48,7 +48,7 @@ public class CadastroTransportadora extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
         cadastrar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        tempoDeEntrega = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de transportadora");
@@ -85,7 +85,7 @@ public class CadastroTransportadora extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tempoDeEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cnpj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,7 +126,7 @@ public class CadastroTransportadora extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tempoDeEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -153,9 +153,10 @@ public class CadastroTransportadora extends javax.swing.JFrame {
         Matcher matcher = pattern.matcher(email.getText());
         if (matcher.find()) {
             System.out.println("E-mail correto");
-
             codigo.setText(Integer.toString(Controller.ControladorUsuario.getCodigoCliente()));
-            JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso");
+            Controller.ControladorTransportadora.cadastrarTransportadora(Controller.ControladorUsuario.getCodigoCliente(), cnpj.getText(), nome.getText(), email.getText(), telefone.getText(), endereco.getText(), Integer.valueOf(tempoDeEntrega.getText()));
+            JOptionPane.showMessageDialog(this, "Transportadora cadastrado com sucesso");
+            codigo.setText(Integer.toString(Controller.ControladorTransportadora.getCodigoTransportadora()));
         } else {
             System.out.println("E-mail incorreto");
             JOptionPane.showMessageDialog(this, "Insira um e-mail correto\nExemplo(email@email.com)", "E-mail incorreto", JOptionPane.WARNING_MESSAGE);
@@ -236,8 +237,8 @@ public class CadastroTransportadora extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField nome;
     private javax.swing.JTextField telefone;
+    private javax.swing.JTextField tempoDeEntrega;
     // End of variables declaration//GEN-END:variables
 }
