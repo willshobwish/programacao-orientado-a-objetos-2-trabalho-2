@@ -9,7 +9,6 @@ import View.Cadastro.CadastroCliente;
 import View.Cadastro.CadastroGerente;
 import View.Cadastro.CadastroProduto;
 import View.Cadastro.CadastroVenda;
-import java.util.Iterator;
 
 /*
 Bruno Augusto Furquim
@@ -298,29 +297,12 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         // TODO add your handling code here:
-
-        String dados = """
-                       Todos os clientes cadastrados:
-                       
-                       """;
-        Iterator clientesCadastrados = Controller.ControladorUsuario.iteratorTodosClientes();
-        while (clientesCadastrados.hasNext()) {
-            dados += clientesCadastrados.next().toString() + "\n";
-        }
-        jTextArea1.setText(dados);
+        jTextArea1.setText("Todos os clientes cadastrados:\n" + Controller.ControladorUsuario.getInfoTodosClientesNormal());
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-        String dados = """
-                       Todos os gerentes cadastrados:
-                       
-                       """;
-        Iterator gerentesCadastrados = Controller.ControladorUsuario.iteratorTodosGerentes();
-        while (gerentesCadastrados.hasNext()) {
-            dados += gerentesCadastrados.next().toString() + "\n";
-        }
-        jTextArea1.setText(dados);
+        jTextArea1.setText("Todos os gerentes cadastrados:\n" + Controller.ControladorUsuario.getInfoTodosGerentes());
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
@@ -343,15 +325,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
         // TODO add your handling code here:
-        String dados = """
-                       Todos os clientes ouro cadastrados:
-                       
-                       """;
-        Iterator clientesOuroCadastrados = Controller.ControladorUsuario.iteratorTodosGerentes();
-        while (clientesOuroCadastrados.hasNext()) {
-            dados += clientesOuroCadastrados.next().toString() + "\n";
-        }
-        jTextArea1.setText(dados);
+        jTextArea1.setText("Todos os clientes ouro cadastrados:\n" + Controller.ControladorUsuario.getInfoTodosClientesOuro());
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void jMenuItem26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem26ActionPerformed

@@ -4,10 +4,6 @@
  */
 package View.Cadastro;
 
-import Model.Usuario.Cliente;
-import Model.Usuario.Gerente;
-import java.util.ArrayList;
-import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -25,23 +21,11 @@ public class CadastroVenda extends javax.swing.JFrame {
         initComponents();
 
         //Definindo o model do jcombobox de clientes com o nome dos clientes
-        Iterator iteratorClientes = Controller.ControladorUsuario.iteratorTodosClientes();
-        ArrayList<String> nomesClientes = new ArrayList<>();
-        while (iteratorClientes.hasNext()) {
-            Cliente cliente = (Cliente) iteratorClientes.next();
-            nomesClientes.add(cliente.getNome());
-        }
-        DefaultComboBoxModel modelClientes = new DefaultComboBoxModel(nomesClientes.toArray(new String[0]));
+        DefaultComboBoxModel modelClientes = new DefaultComboBoxModel(Controller.ControladorUsuario.getClientesNomesArray());
         cliente.setModel(modelClientes);
 
         //Definindo o model do jcombobox de gerentes com o nome dos gerentes
-        Iterator iteratorGerentes = Controller.ControladorUsuario.iteratorTodosGerentes();
-        ArrayList<String> nomesGerentes = new ArrayList<>();
-        while (iteratorGerentes.hasNext()) {
-            Gerente gerente = (Gerente) iteratorGerentes.next();
-            nomesGerentes.add(gerente.getNome());
-        }
-        DefaultComboBoxModel modelGerentes = new DefaultComboBoxModel(nomesGerentes.toArray(new String[0]));
+        DefaultComboBoxModel modelGerentes = new DefaultComboBoxModel(Controller.ControladorUsuario.getGerentesNomesArray());
         gerente.setModel(modelGerentes);
         formaPagamentoActionPerformed(null);
 
@@ -494,12 +478,13 @@ public class CadastroVenda extends javax.swing.JFrame {
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
         // TODO add your handling code here:
-        informacoesCliente.setText(Controller.ControladorUsuario.buscarClienteNome((String) cliente.getSelectedItem()).toString());
+        System.out.println(Controller.ControladorUsuario.buscarInfoClienteNome((String) cliente.getSelectedItem()));
+        informacoesCliente.setText(Controller.ControladorUsuario.buscarInfoClienteNome((String) cliente.getSelectedItem()));
     }//GEN-LAST:event_clienteActionPerformed
 
     private void gerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenteActionPerformed
         // TODO add your handling code here:
-        informacoesGerente.setText(Controller.ControladorUsuario.buscarGerenteNome((String) gerente.getSelectedItem()).toString());
+        informacoesGerente.setText(Controller.ControladorUsuario.buscarInfoGerenteNome((String) gerente.getSelectedItem()).toString());
     }//GEN-LAST:event_gerenteActionPerformed
 
     private void gerenteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gerenteFocusLost
