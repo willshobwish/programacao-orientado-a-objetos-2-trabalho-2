@@ -16,6 +16,8 @@ public class ControladorUsuario {
 
     public static void cadastrarCliente(int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email, LocalDate dataCadastro) {
         Model.Comercio.ComercioEletronico.cadastrarCliente(codigo, nome, cpf, rg, dataNascimento, endereco, cep, email, dataCadastro);
+    public static void cadastrarClienteNormal(int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email, LocalDate dataCadastro) {
+        Model.Comercio.ComercioEletronico.cadastrarClienteNormal(codigo, nome, cpf, rg, dataNascimento, endereco, cep, email, dataCadastro);
     }
 
     public static void cadastrarClienteOuro(int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email, LocalDate dataCadastro) {
