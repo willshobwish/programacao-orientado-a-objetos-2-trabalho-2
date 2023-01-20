@@ -20,6 +20,7 @@ public abstract class Produto implements Serializable {
     protected boolean disponivel;
 
     public Produto(int codigo, String nome, String descricao, LocalDate dataFabricacao, double valor, Fabricante fabricante, boolean disponivel) {
+
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -35,8 +36,8 @@ public abstract class Produto implements Serializable {
         return """
                Codigo: %s
                Nome: %s
-               Descricção: %s
-               Data de fabricação: %d de %d de %d
+               Descrição: %s
+               Data de fabricação: %d/%02d/%d
                Valor: R$ %.2f
                Fabricante: %s
                Disponivel: %b
