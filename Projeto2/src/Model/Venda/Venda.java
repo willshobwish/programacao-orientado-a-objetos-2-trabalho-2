@@ -1,15 +1,13 @@
 package Model.Venda;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.ArrayList;
-
 import Model.Pagamento.Pagamento;
 import Model.Transportadora.Transportadora;
 import Model.Usuario.Cliente;
 import Model.Usuario.Gerente;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
-import Model.Venda.Venda;
 
 /*
 Bruno Augusto Furquim
@@ -17,26 +15,25 @@ Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
 public class Venda implements Serializable {
+
     private int codigo;
     private Cliente cliente;
     private Gerente gerente;
     private LocalDate dataVenda;
     private LocalDate dataDaEntrega;
-    private ArrayList itensVenda = new ArrayList<ItemVenda>();
+    private ArrayList itensVenda;
     private float valorTotal;
     private float valorComDesconto;
     private Pagamento formaPagamento;
     private Transportadora transportadora;
 
-    public void cadastrarVenda(int codigo, Cliente cliente, Gerente gerente, LocalDate dataVenda,
-            LocalDate dataDaEntrega, float valorTotal, float valorComDesconto,
-            Pagamento formaPagamento, Transportadora transportadora) {
-
+    public Venda(int codigo, Cliente cliente, Gerente gerente, LocalDate dataVenda, LocalDate dataDaEntrega, ArrayList itensVenda, float valorTotal, float valorComDesconto, Pagamento formaPagamento, Transportadora transportadora) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.gerente = gerente;
         this.dataVenda = dataVenda;
         this.dataDaEntrega = dataDaEntrega;
+        this.itensVenda = itensVenda;
         this.valorTotal = valorTotal;
         this.valorComDesconto = valorComDesconto;
         this.formaPagamento = formaPagamento;

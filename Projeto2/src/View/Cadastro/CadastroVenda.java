@@ -4,7 +4,10 @@
  */
 package View.Cadastro;
 
+import Controller.ControladorVendas;
+import java.time.format.DateTimeFormatter;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /*
@@ -17,6 +20,10 @@ public class CadastroVenda extends javax.swing.JFrame {
     /**
      * Creates new form CadastroCliente
      */
+    DefaultListModel<String> model = new DefaultListModel<>();
+
+    double valorTotal;
+
     public CadastroVenda() {
         initComponents();
 
@@ -30,8 +37,12 @@ public class CadastroVenda extends javax.swing.JFrame {
         formaPagamentoActionPerformed(null);
 
         //Definindo o model do jcombobox de produtos com o nome dos produtos
-        DefaultComboBoxModel modelProdutos = new DefaultComboBoxModel(Controller.ControladorProduto.getProdutosNomesArray());
-        itensVenda.setModel(modelProdutos);
+//        DefaultComboBoxModel modelProdutos = ;
+        itensVenda.setModel(new DefaultComboBoxModel(Controller.ControladorProduto.getProdutosNomesArray()));
+
+        transportadora.setModel(new DefaultComboBoxModel(Controller.ControladorTransportadora.getNomesTransportadoras()));
+
+        codigo.setText(Integer.toString(Controller.ControladorProduto.getCodigoProduto()));
 
     }
 
@@ -94,7 +105,7 @@ public class CadastroVenda extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        valorTotal = new javax.swing.JTextField();
+        valorTotalText = new javax.swing.JTextField();
         valorComDesconto = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -137,6 +148,11 @@ public class CadastroVenda extends javax.swing.JFrame {
         jLabel5.setText("Data de entrega");
 
         dataEntrega.setEditable(false);
+        dataEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataEntregaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -223,6 +239,12 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        itensVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itensVendaActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Itens para venda");
 
@@ -359,7 +381,7 @@ public class CadastroVenda extends javax.swing.JFrame {
 
         jLabel15.setText("Valor total");
 
-        valorTotal.setEditable(false);
+        valorTotalText.setEditable(false);
 
         valorComDesconto.setEditable(false);
 
@@ -373,7 +395,7 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
-                    .addComponent(valorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valorTotalText, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
                     .addComponent(valorComDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -384,7 +406,7 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(valorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(valorTotalText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -393,6 +415,12 @@ public class CadastroVenda extends javax.swing.JFrame {
         );
 
         jLabel17.setText("Transportadora");
+
+        transportadora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transportadoraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -473,7 +501,12 @@ public class CadastroVenda extends javax.swing.JFrame {
 
     private void adicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarItemActionPerformed
         // TODO add your handling code here:
+        ControladorVendas controladorVendas = new ControladorVendas();
+        controladorVendas.cadastrarItemVenda(Controller.ControladorProduto.getProdutoString(itensVenda.getSelectedItem().toString()), (Integer) jSpinner1.getValue());
+        model.addElement(itensVenda.getSelectedItem().toString());
 
+        valorTotalText.setText("R$ %.2f".formatted(controladorVendas.calcularValorTotal()));
+        jList1.setModel(model);
     }//GEN-LAST:event_adicionarItemActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
@@ -547,6 +580,20 @@ public class CadastroVenda extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(this, "Venda cadastrado com sucesso");
     }//GEN-LAST:event_cadastrarVendaActionPerformed
+
+    private void transportadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transportadoraActionPerformed
+        // TODO add your handling code here:
+        dataEntrega.setText(Controller.ControladorTransportadora.getTempoEntrega(transportadora.getSelectedItem().toString()).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString());
+
+    }//GEN-LAST:event_transportadoraActionPerformed
+
+    private void dataEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataEntregaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataEntregaActionPerformed
+
+    private void itensVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itensVendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itensVendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -670,6 +717,6 @@ public class CadastroVenda extends javax.swing.JFrame {
     private javax.swing.JTextField numeroCartao;
     private javax.swing.JComboBox<String> transportadora;
     private javax.swing.JTextField valorComDesconto;
-    private javax.swing.JTextField valorTotal;
+    private javax.swing.JTextField valorTotalText;
     // End of variables declaration//GEN-END:variables
 }

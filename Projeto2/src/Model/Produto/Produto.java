@@ -30,7 +30,7 @@ public abstract class Produto implements Serializable {
         this.disponivel = disponivel;
     }
 
-    abstract double calcularValor();
+    public abstract double calcularValor();
 
     public String toString() {
         return """

@@ -22,10 +22,36 @@ public class ControladorProduto {
         return ComercioEletronico.getProdutos().size();
     }
 
+    public static Produto getProdutoString(String nome) {
+        Iterator produtos = ComercioEletronico.getProdutos().iterator();
+        while (produtos.hasNext()) {
+            Produto produtoTemp = (Produto) produtos.next();
+            if (produtoTemp.getNome().equals(nome)) {
+                return produtoTemp;
+            }
+        }
+        return null;
+    }
+
+    public static double getValorProdutoNome(String nome) {
+        Iterator produtos = ComercioEletronico.getProdutos().iterator();
+        while (produtos.hasNext()) {
+            Produto produtoTemp = (Produto) produtos.next();
+            if (produtoTemp.getNome().equals(nome)) {
+                return produtoTemp.getValor();
+            }
+        }
+        return 0;
+    }
+
     public static void cadastrarProduto(String tipoDeProduto, int codigo, String nome, String descricao,
             LocalDate dataFabricacao, double valor, Fabricante fabricante, boolean disponivel) {
         ComercioEletronico.cadastrarProduto(
                 factoryProduto(tipoDeProduto, codigo, nome, descricao, dataFabricacao, valor, fabricante, disponivel));
+    }
+
+    public static void cadastrarItemVenda(int codigoProduto, float valor, int quantidade) {
+
     }
 
     public static String[] getProdutosNomesArray() {
