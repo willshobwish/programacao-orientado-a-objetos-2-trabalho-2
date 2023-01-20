@@ -90,7 +90,7 @@ public class Transportadora implements Serializable {
                 Nome: %s
                 Email: %s
                 Telefone: %s
-                Endereco: %s
+                Endereço: %s
                 Tempo de Entrega: %d dia(s)
                 """.formatted(codigo, cnpj, nome, email, telefone, endereco, tempoDeEntrega);
     }
