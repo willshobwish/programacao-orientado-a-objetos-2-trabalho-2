@@ -87,6 +87,20 @@ public class ControladorUsuario {
         return nomesClientes.toArray(new String[0]);
     }
 
+    public static boolean isOuro(String nome) {
+        Iterator clientes = Model.Comercio.ComercioEletronico.getClientes().iterator();
+        while (clientes.hasNext()) {
+            Cliente cliente = (Cliente) clientes.next();
+            System.out.println(cliente.getNome());
+            if (cliente.getNome().equals(nome)) {
+                if (cliente instanceof ClienteOuro) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public static String buscarInfoClienteNome(String nome) {
         Iterator clientes = iteratorTodosClientes();
         while (clientes.hasNext()) {

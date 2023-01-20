@@ -44,6 +44,14 @@ public class ControladorVendas {
         return valor;
     }
 
+    public double calcularValorTotalDesconto(String nome) {
+        if (ControladorUsuario.isOuro(nome)) {
+            return calcularValorTotal() * 0.97;
+        } else {
+            return calcularValorTotal();
+        }
+    }
+
     public static String listarVendas() {
         String vendas = Model.Comercio.ComercioEletronico.getVendas().toString();
         return vendas;

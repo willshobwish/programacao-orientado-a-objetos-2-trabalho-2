@@ -20,6 +20,7 @@ public class CadastroVenda extends javax.swing.JFrame {
     /**
      * Creates new form CadastroCliente
      */
+    ControladorVendas controladorVendas = new ControladorVendas();
     DefaultListModel<String> model = new DefaultListModel<>();
 
     double valorTotal;
@@ -501,12 +502,14 @@ public class CadastroVenda extends javax.swing.JFrame {
 
     private void adicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarItemActionPerformed
         // TODO add your handling code here:
-        ControladorVendas controladorVendas = new ControladorVendas();
+
         controladorVendas.cadastrarItemVenda(Controller.ControladorProduto.getProdutoString(itensVenda.getSelectedItem().toString()), (Integer) jSpinner1.getValue());
         model.addElement(itensVenda.getSelectedItem().toString());
 
         valorTotalText.setText("R$ %.2f".formatted(controladorVendas.calcularValorTotal()));
+        valorComDesconto.setText("R$ %.2f".formatted(controladorVendas.calcularValorTotalDesconto(cliente.getSelectedItem().toString())));
         jList1.setModel(model);
+
     }//GEN-LAST:event_adicionarItemActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
