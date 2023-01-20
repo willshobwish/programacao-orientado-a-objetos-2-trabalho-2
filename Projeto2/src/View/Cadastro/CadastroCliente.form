@@ -43,7 +43,7 @@
                   <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="clienteOuro" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="cadastrar" alignment="0" max="32767" attributes="0"/>
                   <Component id="dataNascimento" alignment="0" max="32767" attributes="0"/>
                   <Component id="dataCadastro" alignment="0" pref="382" max="32767" attributes="0"/>
@@ -92,7 +92,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="dataCadastro" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+              <Component id="clienteOuro" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="cadastrar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -185,12 +185,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastrarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+    <Component class="javax.swing.JCheckBox" name="clienteOuro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cliente ouro"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clienteOuroActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
