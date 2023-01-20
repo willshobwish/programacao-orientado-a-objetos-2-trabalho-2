@@ -125,18 +125,43 @@ public class Main extends javax.swing.JFrame {
         jMenu1.setText("Produtos");
 
         jMenuItem1.setText("Listar todos produtos cadastrados");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem8.setText("Listar todos produtos da categoria móveis");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem8);
 
         jMenuItem10.setText("Listar todos produtos da categoria eletrodomésticos");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem10);
 
         jMenuItem15.setText("Listar todos produtos da categoria eletrônicos");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem15);
 
         jMenuItem12.setText("Listar todos produtos da categoria vestuários");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem12);
 
         jMenuItem14.setText("Listar os dez produtos mais vendidos");
@@ -146,10 +171,10 @@ public class Main extends javax.swing.JFrame {
 
         jMenu2.setText("Ordenação");
 
-        jMenuItem2.setText("Listar todos produtos por valor usando sortingA");
+        jMenuItem2.setText("Listar todos produtos por valor usando insertion sort");
         jMenu2.add(jMenuItem2);
 
-        jMenuItem4.setText("Listar todos produtos por valor usando sortingB");
+        jMenuItem4.setText("Listar todos produtos por valor usando selection sort");
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -259,7 +284,7 @@ public class Main extends javax.swing.JFrame {
         CadastroCliente Cliente = new CadastroCliente();
         Cliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem24ActionPerformed
-    
+
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         // TODO add your handling code here:
 
@@ -273,7 +298,7 @@ public class Main extends javax.swing.JFrame {
         }
         jTextArea1.setText(dados);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
-    
+
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
         String dados = """
@@ -286,25 +311,25 @@ public class Main extends javax.swing.JFrame {
         }
         jTextArea1.setText(dados);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-    
+
     private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
         // TODO add your handling code here:
         CadastroGerente CadastroGerente = new CadastroGerente();
         CadastroGerente.setVisible(true);
     }//GEN-LAST:event_jMenuItem25ActionPerformed
-    
+
     private void jMenuItem32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem32ActionPerformed
         // TODO add your handling code here:
         CadastroVenda CadastroVenda = new CadastroVenda();
         CadastroVenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem32ActionPerformed
-    
+
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
         BuscarHistoricoVendas BuscarVendas = new BuscarHistoricoVendas();
         BuscarVendas.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
-    
+
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
         // TODO add your handling code here:
         String dados = """
@@ -317,12 +342,53 @@ public class Main extends javax.swing.JFrame {
         }
         jTextArea1.setText(dados);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
-    
+
     private void jMenuItem26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem26ActionPerformed
         // TODO add your handling code here:
         CadastroProduto CadastroProduto = new CadastroProduto();
         CadastroProduto.setVisible(true);
     }//GEN-LAST:event_jMenuItem26ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+
+        jTextArea1.setText("""
+                           Todos os produtos cadastrados:
+                           
+                           """ + Controller.ControladorProduto.getInfoProdutos());
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("""
+                           Produtos da categoria móveis:
+                           
+                           """ + Controller.ControladorProduto.getInfoMoveis());
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("""
+                           Produtos da categoria eletrodomesticos:
+                           
+                           """ + Controller.ControladorProduto.getInfoEletrodomesticos());
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("""
+                           Produtos da categoria eletronicos:
+                           
+                           """ + Controller.ControladorProduto.getInfoEletronicos());
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("""
+                           Produtos da categoria vestuário:
+                           
+                           """ + Controller.ControladorProduto.getInfoVestuario());
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,7 +399,7 @@ public class Main extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

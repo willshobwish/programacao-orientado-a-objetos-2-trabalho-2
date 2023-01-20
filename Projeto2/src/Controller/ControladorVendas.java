@@ -78,7 +78,7 @@ public class ControladorVendas {
 
         while (vendas.hasNext()) {
             Venda venda = (Venda) vendas.next();
-            if (venda.getFormaPagamento().equals("Dinheiro")) {
+            if (Venda.getFormaPagamento(venda) == "Dinheiro") {
                 vendasDinheiro += venda.toString();
             }
         }
@@ -91,7 +91,7 @@ public class ControladorVendas {
 
         while (vendas.hasNext()) {
             Venda venda = (Venda) vendas.next();
-            if (venda.getFormaPagamento().equals("Credito")) {
+            if (Venda.getFormaPagamento(venda) == "Credito") {
                 vendasCredito += venda.toString();
             }
         }
@@ -104,7 +104,7 @@ public class ControladorVendas {
 
         while (vendas.hasNext()) {
             Venda venda = (Venda) vendas.next();
-            if (venda.getFormaPagamento().equals("Pix")) {
+            if (Venda.getFormaPagamento(venda) == "Pix") {
                 vendasPix += venda.toString();
             }
         }
