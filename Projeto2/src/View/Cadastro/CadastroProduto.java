@@ -205,6 +205,7 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, """
                                             %s %s cadastrado com sucesso""".formatted(tipoProdutoString, ComercioEletronico.getProdutos().get(codigoProduto).getNome()));
+        codigo.setText(Integer.toString(Controller.ControladorProduto.getCodigoProduto()));
 
     }//GEN-LAST:event_cadastrarActionPerformed
 
