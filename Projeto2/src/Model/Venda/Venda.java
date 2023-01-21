@@ -22,12 +22,12 @@ public class Venda implements Serializable {
     private LocalDate dataVenda;
     private LocalDate dataDaEntrega;
     private ArrayList itensVenda;
-    private float valorTotal;
-    private float valorComDesconto;
+    private double valorTotal;
+    private double valorComDesconto;
     private Pagamento formaPagamento;
     private Transportadora transportadora;
 
-    public Venda(int codigo, Cliente cliente, Gerente gerente, LocalDate dataVenda, LocalDate dataDaEntrega, ArrayList itensVenda, float valorTotal, float valorComDesconto, Pagamento formaPagamento, Transportadora transportadora) {
+    public Venda(int codigo, Cliente cliente, Gerente gerente, LocalDate dataVenda, LocalDate dataDaEntrega, ArrayList itensVenda, double valorTotal, double valorComDesconto, Pagamento formaPagamento, Transportadora transportadora) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.gerente = gerente;
@@ -80,7 +80,7 @@ public class Venda implements Serializable {
         this.dataDaEntrega = dataDaEntrega;
     }
 
-    public float getValorTotal() {
+    public double getValorTotal() {
         return valorTotal;
     }
 
@@ -88,7 +88,7 @@ public class Venda implements Serializable {
         this.valorTotal = valorTotal;
     }
 
-    public float getValorComDesconto() {
+    public double getValorComDesconto() {
         return valorComDesconto;
     }
 
@@ -106,7 +106,6 @@ public class Venda implements Serializable {
 
     public static String getFormaPagamento(Venda venda) {
         if (venda.getFormaPagamento() instanceof Model.Pagamento.Dinheiro) {
-
             return "Dinheiro";
 
         } else if (venda.getFormaPagamento() instanceof Model.Pagamento.CartaoCredito) {
