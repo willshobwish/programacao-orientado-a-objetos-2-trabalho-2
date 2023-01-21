@@ -1,11 +1,13 @@
 package Model.Pagamento;
 
+import java.io.Serializable;
+
 /*
 Bruno Augusto Furquim
 Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
-public class Dinheiro extends Pagamento {
+public class Dinheiro extends Pagamento implements Serializable {
 
     private String nome;
 
