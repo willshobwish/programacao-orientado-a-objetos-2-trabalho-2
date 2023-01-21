@@ -27,6 +27,18 @@ public class Fabricante implements Serializable {
         this.endereco = endereco;
     }
 
+    public String toString() {
+        return """
+               Código: %d
+               Nome: %s
+               CNPJ: %s
+               Descrição: %s
+               E-mail: %s
+               Telefone: %s
+               Endereço: %s
+               """.formatted(codigo, nome, cnpj, descricao, email, telefone, endereco);
+    }
+
     public int getCodigo() {
         return codigo;
     }
