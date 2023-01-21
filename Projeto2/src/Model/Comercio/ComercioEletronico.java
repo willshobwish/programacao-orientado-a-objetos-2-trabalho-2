@@ -60,8 +60,14 @@ public class ComercioEletronico {
 
     }
 
-    public static void cadastrarVenda(int codigo, Cliente cliente, Gerente gerente, LocalDate dataVenda, LocalDate dataDaEntrega, ArrayList<ItemVenda> itensVenda, float valorTotal, float valorComDesconto, Pagamento formaPagamento, Transportadora transportadora) {
-        vendas.add(new Venda(codigo, cliente, gerente, dataVenda, dataDaEntrega, itensVenda, valorTotal, valorComDesconto, formaPagamento, transportadora));
+    public void cadastrarVenda(int codigo, String nomeCliente, String nomeGerente, LocalDate dataVenda, LocalDate dataDaEntrega, ArrayList<ItemVenda> itensVenda, double valorTotal, double valorComDesconto, Pagamento formaPagamento, String nomeTransportadora) {
+        Cliente cliente = Controller.ControladorUsuario.getClienteNome(nomeCliente);
+        Gerente gerente = Controller.ControladorUsuario.getGerenteNome(nomeGerente);
+        Transportadora transportadora = Controller.ControladorTransportadora.getTransportadoraNome(nomeTransportadora);
+        Venda venda = new Venda(codigo, cliente, gerente, dataVenda, dataDaEntrega, itensVenda, valorTotal, valorComDesconto, formaPagamento, transportadora);
+        System.out.println(venda.toString());
+        vendas.add(venda);
+
         Controller.ControladorSerializable.salvarVendas(vendas);
     }
 

@@ -5,7 +5,11 @@
 package View.Cadastro;
 
 import Controller.ControladorVendas;
+import Model.Pagamento.Pagamento;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -36,13 +40,15 @@ public class CadastroVenda extends javax.swing.JFrame {
         DefaultComboBoxModel modelGerentes = new DefaultComboBoxModel(Controller.ControladorUsuario.getGerentesNomesArray());
         gerenteBox.setModel(modelGerentes);
 
-        formaPagamentoActionPerformed(null);
-
-        //Definindo o model do jcombobox de produtos com o nome dos produtos
+//Definindo o model do jcombobox de produtos com o nome dos produtos
         itensVendaBox.setModel(new DefaultComboBoxModel(Controller.ControladorProduto.getProdutosNomesArray()));
 
         transportadoraBox.setModel(new DefaultComboBoxModel(Controller.ControladorTransportadora.getNomesTransportadoras()));
 
+//        Atualiza os componentes da forma de pagamento
+        formaPagamentoDinheiro();
+
+//Pega o codigo quando a janela eh criada
         codigoText.setText(Integer.toString(Controller.ControladorProduto.getCodigoProduto()));
 
     }
@@ -565,11 +571,18 @@ public class CadastroVenda extends javax.swing.JFrame {
 
     private void cadastrarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarVendaActionPerformed
         // TODO add your handling code here:
-
+        int codigo = Integer.parseInt(codigoText.getText());
+        String nomeGerente = gerenteBox.getSelectedItem().toString(), nomeCliente = clienteBox.getSelectedItem().toString(), nomeTransportadora = transportadoraBox.getSelectedItem().toString();
+//        dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+        LocalDate dataVenda = ((Date) dataVendaBox.getValue()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate dataDaEntrega = ((Date) dataVendaBox.getValue()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        double valorTotal = controladorVendas.calcularValorTotal(), valorComDesconto = controladorVendas.calcularValorTotalDesconto(clienteBox.getSelectedItem().toString());
+        Pagamento formaPagamento = null;
         switch (formaPagamentoBox.getSelectedIndex()) {
             case 0:
 //                Dinheiro
-//                    public static void cadastrarVenda(int codigo, Cliente cliente, Gerente gerente, LocalDate dataVenda, LocalDate dataDaEntrega, ArrayList<ItemVenda> itensVenda, float valorTotal, float valorComDesconto, Pagamento formaPagamento, Transportadora transportadora)
+//                cadastrarVenda(int codigo, String nomeCliente, String nomeGerente, LocalDate dataVenda, LocalDate dataDaEntrega, double valorTotal, double valorComDesconto, Pagamento formaPagamento, String nomeTransportadora)
+                Controller.ControladorVendas.cadastrarVenda(codigo, nomeCliente, nomeGerente, dataVenda, dataDaEntrega, valorTotal, valorComDesconto, formaPagamento, nomeTransportadora);
                 break;
             case 1:
 //                Cartao

@@ -3,9 +3,7 @@ package Controller;
 import Model.Comercio.ComercioEletronico;
 import Model.Pagamento.Pagamento;
 import Model.Produto.Produto;
-import Model.Transportadora.Transportadora;
 import Model.Usuario.Cliente;
-import Model.Usuario.Gerente;
 import Model.Venda.ItemVenda;
 import Model.Venda.Venda;
 import java.time.LocalDate;
@@ -25,8 +23,9 @@ public class ControladorVendas {
         itensVenda = new ArrayList<ItemVenda>();
     }
 
-    public static void cadastrarVenda(int codigo, Cliente cliente, Gerente gerente, LocalDate dataVenda, LocalDate dataDaEntrega, ArrayList<ItemVenda> itensVenda, float valorTotal, float valorComDesconto, Pagamento formaPagamento, Transportadora transportadora) {
-        ComercioEletronico.cadastrarVenda(codigo, cliente, gerente, dataVenda, dataDaEntrega, itensVenda, valorTotal, valorComDesconto, formaPagamento, transportadora);
+    public static void cadastrarVenda(int codigo, String nomeCliente, String nomeGerente, LocalDate dataVenda, LocalDate dataDaEntrega, double valorTotal, double valorComDesconto, Pagamento formaPagamento, String nomeTransportadora) {
+        ComercioEletronico comercio = new ComercioEletronico();
+        comercio.cadastrarVenda(codigo, nomeCliente, nomeGerente, dataVenda, dataDaEntrega, itensVenda, valorTotal, valorComDesconto, formaPagamento, nomeTransportadora);
         itensVenda = new ArrayList<ItemVenda>();
     }
 
