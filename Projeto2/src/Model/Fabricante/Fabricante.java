@@ -8,6 +8,7 @@ Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
 public class Fabricante implements Serializable {
+
     private int codigo;
     private String cnpj;
     private String nome;
@@ -16,9 +17,7 @@ public class Fabricante implements Serializable {
     private String telefone;
     private String endereco;
 
-    public void cadastrarFabricante(int codigo, String cnpj, String nome, String descricao, String email,
-            String telefone,
-            String endereco) {
+    public Fabricante(int codigo, String cnpj, String nome, String descricao, String email, String telefone, String endereco) {
         this.codigo = codigo;
         this.cnpj = cnpj;
         this.nome = nome;
