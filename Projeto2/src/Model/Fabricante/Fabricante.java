@@ -35,8 +35,7 @@ public class Fabricante implements Serializable {
                Descrição: %s
                E-mail: %s
                Telefone: %s
-               Endereço: %s
-               """.formatted(codigo, nome, cnpj, descricao, email, telefone, endereco);
+               Endereço: %s""".formatted(codigo, nome, cnpj, descricao, email, telefone, endereco);
     }
 
     public int getCodigo() {

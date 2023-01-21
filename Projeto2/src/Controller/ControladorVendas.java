@@ -52,9 +52,13 @@ public class ControladorVendas {
         }
     }
 
-    public static String listarVendas() {
-        String vendas = Model.Comercio.ComercioEletronico.getVendas().toString();
-        return vendas;
+    public static String getInfoVendas() {
+        Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
+        String info = "";
+        while (vendas.hasNext()) {
+            info += ((Venda) vendas.next()).toString() + "-----------------------------------";
+        }
+        return info;
     }
 
     public static int getCodigoVenda() {
@@ -104,7 +108,7 @@ public class ControladorVendas {
         while (vendas.hasNext()) {
             Venda venda = (Venda) vendas.next();
             if (Venda.getFormaPagamento(venda) == "Dinheiro") {
-                vendasDinheiro += venda.toString();
+                vendasDinheiro += venda.toString() + "\n";
             }
         }
         return vendasDinheiro;
@@ -117,7 +121,7 @@ public class ControladorVendas {
         while (vendas.hasNext()) {
             Venda venda = (Venda) vendas.next();
             if (Venda.getFormaPagamento(venda) == "Credito") {
-                vendasCredito += venda.toString();
+                vendasCredito += venda.toString() + "\n";
             }
         }
         return vendasCredito;
@@ -130,7 +134,7 @@ public class ControladorVendas {
         while (vendas.hasNext()) {
             Venda venda = (Venda) vendas.next();
             if (Venda.getFormaPagamento(venda) == "Pix") {
-                vendasPix += venda.toString();
+                vendasPix += venda.toString() + "\n";
             }
         }
         return vendasPix;

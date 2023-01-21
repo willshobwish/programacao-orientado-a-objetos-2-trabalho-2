@@ -6,6 +6,7 @@ import Model.Usuario.Cliente;
 import Model.Usuario.Gerente;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -157,5 +158,25 @@ public class Venda implements Serializable {
             }
         }
         return cont;
+    }
+
+    public String toString() {
+        String infoItensVenda = "";
+        Iterator itens = itensVenda.iterator();
+        while (itens.hasNext()) {
+            infoItensVenda += ((ItemVenda) itens.next()).toString() + "\n";
+        }
+        return """
+               Código: %d
+               Cliente: %s
+               Gerente: %s
+               Data da venda: %s
+               Data da entrega: %s
+               Itens venda: %s
+               Valor total: R$ %.2f
+               Valor com desconto: R$ %.2f
+               Forma de pagamento: 
+               Transportadora: %s
+               """.formatted(codigo, cliente.toString(), gerente.toString(), dataVenda.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(), dataDaEntrega.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(), infoItensVenda, valorTotal, valorComDesconto, transportadora.toString());
     }
 }

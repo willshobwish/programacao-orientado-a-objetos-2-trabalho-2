@@ -43,4 +43,11 @@ public class ItemVenda implements Serializable {
     public double calcularTotal() {
         return valor * quantidade;
     }
+
+    public String toString() {
+        return """
+               Produto: %s
+               Valor: R$ %.2f
+               Quantidade: %d""".formatted(produto.toString(), valor, quantidade);
+    }
 }
