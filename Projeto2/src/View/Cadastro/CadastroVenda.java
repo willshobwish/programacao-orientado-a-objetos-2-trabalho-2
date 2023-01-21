@@ -35,10 +35,10 @@ public class CadastroVenda extends javax.swing.JFrame {
         //Definindo o model do jcombobox de gerentes com o nome dos gerentes
         DefaultComboBoxModel modelGerentes = new DefaultComboBoxModel(Controller.ControladorUsuario.getGerentesNomesArray());
         gerente.setModel(modelGerentes);
+
         formaPagamentoActionPerformed(null);
 
         //Definindo o model do jcombobox de produtos com o nome dos produtos
-//        DefaultComboBoxModel modelProdutos = ;
         itensVenda.setModel(new DefaultComboBoxModel(Controller.ControladorProduto.getProdutosNomesArray()));
 
         transportadora.setModel(new DefaultComboBoxModel(Controller.ControladorTransportadora.getNomesTransportadoras()));
@@ -47,13 +47,29 @@ public class CadastroVenda extends javax.swing.JFrame {
 
     }
 
-    public void pagamentoCartao() {
+    public void realizarPagamento() {
+
     }
 
-    public void pagamentoPix() {
+    public void formaPagamentoCartao() {
+        nomeCartao.setEnabled(true);
+        bandeiraCartao.setEnabled(true);
+        numeroCartao.setEnabled(true);
+        codigoPix.setEnabled(false);
     }
 
-    public void pagamentoDinheiro() {
+    public void formaPagamentoPix() {
+        nomeCartao.setEnabled(false);
+        bandeiraCartao.setEnabled(false);
+        numeroCartao.setEnabled(false);
+        codigoPix.setEnabled(true);
+    }
+
+    public void formaPagamentoDinheiro() {
+        nomeCartao.setEnabled(false);
+        bandeiraCartao.setEnabled(false);
+        numeroCartao.setEnabled(false);
+        codigoPix.setEnabled(false);
     }
 
     /**
@@ -534,22 +550,13 @@ public class CadastroVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
         switch (formaPagamento.getSelectedIndex()) {
             case 0:
-                nomeCartao.setEnabled(false);
-                bandeiraCartao.setEnabled(false);
-                numeroCartao.setEnabled(false);
-                codigoPix.setEnabled(false);
+                formaPagamentoDinheiro();
                 break;
             case 1:
-                nomeCartao.setEnabled(true);
-                bandeiraCartao.setEnabled(true);
-                numeroCartao.setEnabled(true);
-                codigoPix.setEnabled(false);
+                formaPagamentoCartao();
                 break;
             case 2:
-                nomeCartao.setEnabled(false);
-                bandeiraCartao.setEnabled(false);
-                numeroCartao.setEnabled(false);
-                codigoPix.setEnabled(true);
+                formaPagamentoPix();
                 break;
             default:
                 throw new AssertionError();
@@ -561,24 +568,15 @@ public class CadastroVenda extends javax.swing.JFrame {
         switch (formaPagamento.getSelectedIndex()) {
             case 0:
 //                Dinheiro
-                nomeCartao.setEnabled(false);
-                bandeiraCartao.setEnabled(false);
-                numeroCartao.setEnabled(false);
-                codigoPix.setEnabled(false);
+                formaPagamentoDinheiro();
                 break;
             case 1:
 //                Cartao
-                nomeCartao.setEnabled(true);
-                bandeiraCartao.setEnabled(true);
-                numeroCartao.setEnabled(true);
-                codigoPix.setEnabled(false);
+                formaPagamentoCartao();
                 break;
             case 2:
 //                Pix
-                nomeCartao.setEnabled(false);
-                bandeiraCartao.setEnabled(false);
-                numeroCartao.setEnabled(false);
-                codigoPix.setEnabled(true);
+                formaPagamentoPix();
                 break;
             default:
                 throw new AssertionError();
