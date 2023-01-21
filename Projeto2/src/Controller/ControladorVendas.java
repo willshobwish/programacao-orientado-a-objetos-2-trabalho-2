@@ -55,7 +55,7 @@ public class ControladorVendas {
         Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
         String info = "";
         while (vendas.hasNext()) {
-            info += ((Venda) vendas.next()).toString() + "-----------------------------------";
+            info += ((Venda) vendas.next()).toString() + "-------------------------------------------------------------------------------\n";
         }
         return info;
     }
