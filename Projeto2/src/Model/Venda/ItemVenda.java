@@ -1,13 +1,14 @@
 package Model.Venda;
 
 import Model.Produto.Produto;
+import java.io.Serializable;
 
 /*
 Bruno Augusto Furquim
 Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
-public class ItemVenda {
+public class ItemVenda implements Serializable {
 
     private Produto produto;
     private double valor;
