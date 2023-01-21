@@ -3,7 +3,7 @@ package Model.Produto;
 import Model.Fabricante.Fabricante;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 
 /*
@@ -40,12 +40,11 @@ public abstract class Produto implements Serializable {
                 Codigo: %s
                 Nome: %s
                 Descrição: %s
-                Data de fabricação: %d/%02d/%d
+                Data de fabricação: %s
                 Valor: R$ %.2f
                 Fabricante: %s
                 Disponivel: %b
-                """.formatted(codigo, nome, descricao, dataFabricacao.getDayOfMonth(), dataFabricacao.getMonthValue(),
-                dataFabricacao.getYear(), valor, fabricante, disponivel);
+                """.formatted(codigo, nome, descricao, dataFabricacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(), valor, fabricante, disponivel);
     }
 
     public boolean estaDisponivel() {

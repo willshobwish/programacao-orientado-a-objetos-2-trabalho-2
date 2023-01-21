@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.Comercio.ComercioEletronico;
 import Model.Usuario.Cliente;
 import Model.Usuario.ClienteNormal;
 import Model.Usuario.ClienteOuro;
@@ -34,6 +33,42 @@ public class ControladorUsuario {
 
     public static void cadastrarGerente(float salario, String pis, LocalDate dataAdmissao, int codigo, String nome, String cpf, String rg, LocalDate dataNascimento, String endereco, String cep, String email) {
         Model.Comercio.ComercioEletronico.cadastrarGerente(salario, pis, dataAdmissao, codigo, nome, cpf, rg, dataNascimento, endereco, cep, email);
+    }
+
+    public static Gerente getGerenteNome(String nome) {
+        Iterator gerentes = iteratorTodosGerentes();
+        while (gerentes.hasNext()) {
+            Gerente gerente = (Gerente) gerentes.next();
+            if (gerente.getNome().equals(nome)) {
+                System.out.println("Gerente encontrado: " + gerente.getNome());
+                return gerente;
+            }
+        }
+        System.out.println("Gerente não encontrado");
+        return null;
+    }
+
+//    public static String buscarInfoGerenteNome(String nome) {
+//        Iterator gerentes = iteratorTodosGerentes();
+//        while (gerentes.hasNext()) {
+//            Gerente gerente = (Gerente) gerentes.next();
+//            if (gerente.getNome().equals(nome)) {
+//                return gerente.toString();
+//            }
+//        }
+//        return "Informções do gerente não encontrado";
+//    }
+    public static Cliente getClienteNome(String nome) {
+        Iterator clientes = iteratorTodosClientes();
+        while (clientes.hasNext()) {
+            Cliente cliente = (Cliente) clientes.next();
+            if (cliente.getNome().equals(nome)) {
+                System.out.println("Cliente encontrado: " + cliente.getNome());
+                return cliente;
+            }
+        }
+        System.out.println("Cliente não encontrado");
+        return null;
     }
 
     public static String getInfoTodosGerentes() {
@@ -129,6 +164,6 @@ public class ControladorUsuario {
     }
 
     public static Iterator<Gerente> iteratorTodosGerentes() {
-        return ComercioEletronico.getGerentes().iterator();
+        return Model.Comercio.ComercioEletronico.getGerentes().iterator();
     }
 }

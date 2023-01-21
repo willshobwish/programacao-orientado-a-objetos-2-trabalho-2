@@ -15,6 +15,7 @@ public class ClienteOuro extends Cliente implements Serializable {
 
     }
 
+    @Override
     public String toString() {
         return super.toString()
                 + """

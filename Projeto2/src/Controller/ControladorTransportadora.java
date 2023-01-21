@@ -31,6 +31,17 @@ public class ControladorTransportadora {
         return transportadoras;
     }
 
+    public static Transportadora getTransportadoraNome(String nome) {
+        Iterator transportadoras = Model.Comercio.ComercioEletronico.getTransportadoras().iterator();
+        while (transportadoras.hasNext()) {
+            Transportadora transportadora = (Transportadora) transportadoras.next();
+            if (transportadora.getNome().equals(nome)) {
+                return transportadora;
+            }
+        }
+        return null;
+    }
+
     public static ArrayList<Model.Transportadora.Transportadora> topTransportadoras() {
         Map<Transportadora, Integer> map = new TreeMap<>();
         ArrayList<Transportadora> result = new ArrayList<>();

@@ -3,7 +3,6 @@ package Controller;
 import Model.Comercio.ComercioEletronico;
 import Model.Produto.Eletrodomesticos;
 import Model.Produto.Eletronicos;
-import static Model.Produto.FactoryProduto.factoryProduto;
 import Model.Produto.Moveis;
 import Model.Produto.Produto;
 import Model.Produto.Vestuario;
@@ -43,10 +42,8 @@ public class ControladorProduto {
         return 0;
     }
 
-    public static void cadastrarProduto(String tipoDeProduto, int codigo, String nome, String descricao,
-            LocalDate dataFabricacao, double valor, String nomeFabricante, boolean disponivel) {
-        ComercioEletronico.cadastrarProduto(
-                factoryProduto(tipoDeProduto, codigo, nome, descricao, dataFabricacao, valor, Controller.ControladorFabricante.getFabricanteString(nomeFabricante), disponivel));
+    public static void cadastrarProduto(String tipoDeProduto, int codigo, String nome, String descricao, LocalDate dataFabricacao, double valor, String nomeFabricante, boolean disponivel) {
+        ComercioEletronico.cadastrarProduto(tipoDeProduto, codigo, nome, descricao, dataFabricacao, valor, nomeFabricante, disponivel);
     }
 
     public static void cadastrarItemVenda(int codigoProduto, float valor, int quantidade) {
@@ -57,7 +54,10 @@ public class ControladorProduto {
         Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
         ArrayList<String> nomesProdutos = new ArrayList<>();
         while (produtos.hasNext()) {
-            nomesProdutos.add(((Produto) produtos.next()).getNome());
+            Produto produtoTemp = (Produto) produtos.next();
+            if (produtoTemp.isDisponiel()) {
+                nomesProdutos.add(produtoTemp.getNome());
+            }
         }
         return nomesProdutos.toArray(new String[0]);
     }
