@@ -30,20 +30,20 @@ public class CadastroVenda extends javax.swing.JFrame {
 
         //Definindo o model do jcombobox de clientes com o nome dos clientes
         DefaultComboBoxModel modelClientes = new DefaultComboBoxModel(Controller.ControladorUsuario.getClientesNomesArray());
-        cliente.setModel(modelClientes);
+        clienteBox.setModel(modelClientes);
 
         //Definindo o model do jcombobox de gerentes com o nome dos gerentes
         DefaultComboBoxModel modelGerentes = new DefaultComboBoxModel(Controller.ControladorUsuario.getGerentesNomesArray());
-        gerente.setModel(modelGerentes);
+        gerenteBox.setModel(modelGerentes);
 
         formaPagamentoActionPerformed(null);
 
         //Definindo o model do jcombobox de produtos com o nome dos produtos
-        itensVenda.setModel(new DefaultComboBoxModel(Controller.ControladorProduto.getProdutosNomesArray()));
+        itensVendaBox.setModel(new DefaultComboBoxModel(Controller.ControladorProduto.getProdutosNomesArray()));
 
-        transportadora.setModel(new DefaultComboBoxModel(Controller.ControladorTransportadora.getNomesTransportadoras()));
+        transportadoraBox.setModel(new DefaultComboBoxModel(Controller.ControladorTransportadora.getNomesTransportadoras()));
 
-        codigo.setText(Integer.toString(Controller.ControladorProduto.getCodigoProduto()));
+        codigoText.setText(Integer.toString(Controller.ControladorProduto.getCodigoProduto()));
 
     }
 
@@ -52,24 +52,24 @@ public class CadastroVenda extends javax.swing.JFrame {
     }
 
     public void formaPagamentoCartao() {
-        nomeCartao.setEnabled(true);
-        bandeiraCartao.setEnabled(true);
-        numeroCartao.setEnabled(true);
-        codigoPix.setEnabled(false);
+        nomeCartaoText.setEnabled(true);
+        bandeiraCartaoText.setEnabled(true);
+        numeroCartaoText.setEnabled(true);
+        codigoPixText.setEnabled(false);
     }
 
     public void formaPagamentoPix() {
-        nomeCartao.setEnabled(false);
-        bandeiraCartao.setEnabled(false);
-        numeroCartao.setEnabled(false);
-        codigoPix.setEnabled(true);
+        nomeCartaoText.setEnabled(false);
+        bandeiraCartaoText.setEnabled(false);
+        numeroCartaoText.setEnabled(false);
+        codigoPixText.setEnabled(true);
     }
 
     public void formaPagamentoDinheiro() {
-        nomeCartao.setEnabled(false);
-        bandeiraCartao.setEnabled(false);
-        numeroCartao.setEnabled(false);
-        codigoPix.setEnabled(false);
+        nomeCartaoText.setEnabled(false);
+        bandeiraCartaoText.setEnabled(false);
+        numeroCartaoText.setEnabled(false);
+        codigoPixText.setEnabled(false);
     }
 
     /**
@@ -83,15 +83,15 @@ public class CadastroVenda extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        codigo = new javax.swing.JTextField();
+        codigoText = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        cliente = new javax.swing.JComboBox<>();
-        gerente = new javax.swing.JComboBox<>();
-        dataVenda = new javax.swing.JSpinner();
+        clienteBox = new javax.swing.JComboBox<>();
+        gerenteBox = new javax.swing.JComboBox<>();
+        dataVendaBox = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        dataEntrega = new javax.swing.JTextField();
+        dataEntregaText = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         informacoesCliente = new javax.swing.JTextArea();
@@ -100,34 +100,34 @@ public class CadastroVenda extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        itensVenda = new javax.swing.JComboBox<>();
+        itensVendaBox = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         adicionarItem = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        quantidadeItemSpinner = new javax.swing.JSpinner();
         jLabel18 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         itensSelecionados = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jPanel5 = new javax.swing.JPanel();
-        formaPagamento = new javax.swing.JComboBox<>();
+        formaPagamentoBox = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        nomeCartao = new javax.swing.JTextField();
-        bandeiraCartao = new javax.swing.JTextField();
+        nomeCartaoText = new javax.swing.JTextField();
+        bandeiraCartaoText = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        numeroCartao = new javax.swing.JTextField();
+        numeroCartaoText = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        codigoPix = new javax.swing.JTextField();
+        codigoPixText = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         valorTotalText = new javax.swing.JTextField();
-        valorComDesconto = new javax.swing.JTextField();
+        valorComDescontoText = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        transportadora = new javax.swing.JComboBox<>();
+        transportadoraBox = new javax.swing.JComboBox<>();
         cadastrarVenda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -135,39 +135,39 @@ public class CadastroVenda extends javax.swing.JFrame {
 
         jLabel1.setText("Código");
 
-        codigo.setEditable(false);
+        codigoText.setEditable(false);
 
         jLabel2.setText("Cliente");
 
         jLabel3.setText("Gerente");
 
-        cliente.addActionListener(new java.awt.event.ActionListener() {
+        clienteBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clienteActionPerformed(evt);
+                clienteBoxActionPerformed(evt);
             }
         });
 
-        gerente.addFocusListener(new java.awt.event.FocusAdapter() {
+        gerenteBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                gerenteFocusLost(evt);
+                gerenteBoxFocusLost(evt);
             }
         });
-        gerente.addActionListener(new java.awt.event.ActionListener() {
+        gerenteBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gerenteActionPerformed(evt);
+                gerenteBoxActionPerformed(evt);
             }
         });
 
-        dataVenda.setModel(new javax.swing.SpinnerDateModel());
+        dataVendaBox.setModel(new javax.swing.SpinnerDateModel());
 
         jLabel4.setText("Data de venda");
 
         jLabel5.setText("Data de entrega");
 
-        dataEntrega.setEditable(false);
-        dataEntrega.addActionListener(new java.awt.event.ActionListener() {
+        dataEntregaText.setEditable(false);
+        dataEntregaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataEntregaActionPerformed(evt);
+                dataEntregaTextActionPerformed(evt);
             }
         });
 
@@ -179,15 +179,15 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(codigoText, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addComponent(cliente, 0, 200, Short.MAX_VALUE)
+                    .addComponent(clienteBox, 0, 200, Short.MAX_VALUE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(dataVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(dataVendaBox, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jLabel5)
-                    .addComponent(gerente, 0, 200, Short.MAX_VALUE)
-                    .addComponent(dataEntrega))
+                    .addComponent(gerenteBox, 0, 200, Short.MAX_VALUE)
+                    .addComponent(dataEntregaText))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -196,23 +196,23 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(codigoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(clienteBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gerente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(gerenteBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dataVendaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dataEntregaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -257,9 +257,9 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        itensVenda.addActionListener(new java.awt.event.ActionListener() {
+        itensVendaBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itensVendaActionPerformed(evt);
+                itensVendaBoxActionPerformed(evt);
             }
         });
 
@@ -272,7 +272,7 @@ public class CadastroVenda extends javax.swing.JFrame {
             }
         });
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        quantidadeItemSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jLabel18.setText("Quantidade");
 
@@ -284,13 +284,13 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(adicionarItem, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(itensVenda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(itensVendaBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel18))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jSpinner1))
+                    .addComponent(quantidadeItemSpinner))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -299,11 +299,11 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(itensVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(itensVendaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(quantidadeItemSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adicionarItem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -336,10 +336,10 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        formaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão de crédito", "PIX" }));
-        formaPagamento.addActionListener(new java.awt.event.ActionListener() {
+        formaPagamentoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão de crédito", "PIX" }));
+        formaPagamentoBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                formaPagamentoActionPerformed(evt);
+                formaPagamentoBoxActionPerformed(evt);
             }
         });
 
@@ -361,15 +361,15 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(formaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(formaPagamentoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(nomeCartao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeCartaoText, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(bandeiraCartao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bandeiraCartaoText, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
-                    .addComponent(numeroCartao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numeroCartaoText, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
-                    .addComponent(codigoPix, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(codigoPixText, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -378,23 +378,23 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(formaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(formaPagamentoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomeCartaoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bandeiraCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bandeiraCartaoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numeroCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numeroCartaoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(codigoPix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(codigoPixText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -402,7 +402,7 @@ public class CadastroVenda extends javax.swing.JFrame {
 
         valorTotalText.setEditable(false);
 
-        valorComDesconto.setEditable(false);
+        valorComDescontoText.setEditable(false);
 
         jLabel16.setText("Valor com desconto");
 
@@ -416,7 +416,7 @@ public class CadastroVenda extends javax.swing.JFrame {
                     .addComponent(jLabel15)
                     .addComponent(valorTotalText, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
-                    .addComponent(valorComDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valorComDescontoText, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -429,15 +429,15 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(valorComDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(valorComDescontoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel17.setText("Transportadora");
 
-        transportadora.addActionListener(new java.awt.event.ActionListener() {
+        transportadoraBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transportadoraActionPerformed(evt);
+                transportadoraBoxActionPerformed(evt);
             }
         });
 
@@ -449,7 +449,7 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
-                    .addComponent(transportadora, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(transportadoraBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -458,7 +458,7 @@ public class CadastroVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(transportadora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(transportadoraBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -521,34 +521,34 @@ public class CadastroVenda extends javax.swing.JFrame {
     private void adicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarItemActionPerformed
         // TODO add your handling code here:
 
-        controladorVendas.cadastrarItemVenda(Controller.ControladorProduto.getProdutoString(itensVenda.getSelectedItem().toString()), (Integer) jSpinner1.getValue());
-        model.addElement(itensVenda.getSelectedItem().toString());
+        controladorVendas.cadastrarItemVenda(Controller.ControladorProduto.getProdutoString(itensVendaBox.getSelectedItem().toString()), (Integer) quantidadeItemSpinner.getValue());
+        model.addElement(itensVendaBox.getSelectedItem().toString());
 
         valorTotalText.setText("R$ %.2f".formatted(controladorVendas.calcularValorTotal()));
-        valorComDesconto.setText("R$ %.2f".formatted(controladorVendas.calcularValorTotalDesconto(cliente.getSelectedItem().toString())));
+        valorComDescontoText.setText("R$ %.2f".formatted(controladorVendas.calcularValorTotalDesconto(clienteBox.getSelectedItem().toString())));
         jList1.setModel(model);
 
     }//GEN-LAST:event_adicionarItemActionPerformed
 
-    private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
+    private void clienteBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteBoxActionPerformed
         // TODO add your handling code here:
-        System.out.println(Controller.ControladorUsuario.buscarInfoClienteNome((String) cliente.getSelectedItem()));
-        informacoesCliente.setText(Controller.ControladorUsuario.buscarInfoClienteNome((String) cliente.getSelectedItem()));
-    }//GEN-LAST:event_clienteActionPerformed
+        System.out.println(Controller.ControladorUsuario.buscarInfoClienteNome((String) clienteBox.getSelectedItem()));
+        informacoesCliente.setText(Controller.ControladorUsuario.buscarInfoClienteNome((String) clienteBox.getSelectedItem()));
+    }//GEN-LAST:event_clienteBoxActionPerformed
 
-    private void gerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenteActionPerformed
+    private void gerenteBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenteBoxActionPerformed
         // TODO add your handling code here:
-        informacoesGerente.setText(Controller.ControladorUsuario.buscarInfoGerenteNome((String) gerente.getSelectedItem()).toString());
-    }//GEN-LAST:event_gerenteActionPerformed
+        informacoesGerente.setText(Controller.ControladorUsuario.buscarInfoGerenteNome((String) gerenteBox.getSelectedItem()).toString());
+    }//GEN-LAST:event_gerenteBoxActionPerformed
 
-    private void gerenteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gerenteFocusLost
+    private void gerenteBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gerenteBoxFocusLost
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_gerenteFocusLost
+    }//GEN-LAST:event_gerenteBoxFocusLost
 
-    private void formaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formaPagamentoActionPerformed
+    private void formaPagamentoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formaPagamentoBoxActionPerformed
         // TODO add your handling code here:
-        switch (formaPagamento.getSelectedIndex()) {
+        switch (formaPagamentoBox.getSelectedIndex()) {
             case 0:
                 formaPagamentoDinheiro();
                 break;
@@ -561,14 +561,15 @@ public class CadastroVenda extends javax.swing.JFrame {
             default:
                 throw new AssertionError();
         }
-    }//GEN-LAST:event_formaPagamentoActionPerformed
+    }//GEN-LAST:event_formaPagamentoBoxActionPerformed
 
     private void cadastrarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarVendaActionPerformed
         // TODO add your handling code here:
-        switch (formaPagamento.getSelectedIndex()) {
+
+        switch (formaPagamentoBox.getSelectedIndex()) {
             case 0:
 //                Dinheiro
-                formaPagamentoDinheiro();
+//                    public static void cadastrarVenda(int codigo, Cliente cliente, Gerente gerente, LocalDate dataVenda, LocalDate dataDaEntrega, ArrayList<ItemVenda> itensVenda, float valorTotal, float valorComDesconto, Pagamento formaPagamento, Transportadora transportadora)
                 break;
             case 1:
 //                Cartao
@@ -584,19 +585,19 @@ public class CadastroVenda extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Venda cadastrado com sucesso");
     }//GEN-LAST:event_cadastrarVendaActionPerformed
 
-    private void transportadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transportadoraActionPerformed
+    private void transportadoraBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transportadoraBoxActionPerformed
         // TODO add your handling code here:
-        dataEntrega.setText(Controller.ControladorTransportadora.getTempoEntrega(transportadora.getSelectedItem().toString()).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString());
+        dataEntregaText.setText(Controller.ControladorTransportadora.getTempoEntrega(transportadoraBox.getSelectedItem().toString()).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString());
 
-    }//GEN-LAST:event_transportadoraActionPerformed
+    }//GEN-LAST:event_transportadoraBoxActionPerformed
 
-    private void dataEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataEntregaActionPerformed
+    private void dataEntregaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataEntregaTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dataEntregaActionPerformed
+    }//GEN-LAST:event_dataEntregaTextActionPerformed
 
-    private void itensVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itensVendaActionPerformed
+    private void itensVendaBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itensVendaBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_itensVendaActionPerformed
+    }//GEN-LAST:event_itensVendaBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -674,19 +675,19 @@ public class CadastroVenda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionarItem;
-    private javax.swing.JTextField bandeiraCartao;
+    private javax.swing.JTextField bandeiraCartaoText;
     private javax.swing.JButton cadastrarVenda;
-    private javax.swing.JComboBox<String> cliente;
-    private javax.swing.JTextField codigo;
-    private javax.swing.JTextField codigoPix;
-    private javax.swing.JTextField dataEntrega;
-    private javax.swing.JSpinner dataVenda;
-    private javax.swing.JComboBox<String> formaPagamento;
-    private javax.swing.JComboBox<String> gerente;
+    private javax.swing.JComboBox<String> clienteBox;
+    private javax.swing.JTextField codigoPixText;
+    private javax.swing.JTextField codigoText;
+    private javax.swing.JTextField dataEntregaText;
+    private javax.swing.JSpinner dataVendaBox;
+    private javax.swing.JComboBox<String> formaPagamentoBox;
+    private javax.swing.JComboBox<String> gerenteBox;
     private javax.swing.JTextArea informacoesCliente;
     private javax.swing.JTextArea informacoesGerente;
     private javax.swing.JScrollPane itensSelecionados;
-    private javax.swing.JComboBox<String> itensVenda;
+    private javax.swing.JComboBox<String> itensVendaBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -715,11 +716,11 @@ public class CadastroVenda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField nomeCartao;
-    private javax.swing.JTextField numeroCartao;
-    private javax.swing.JComboBox<String> transportadora;
-    private javax.swing.JTextField valorComDesconto;
+    private javax.swing.JTextField nomeCartaoText;
+    private javax.swing.JTextField numeroCartaoText;
+    private javax.swing.JSpinner quantidadeItemSpinner;
+    private javax.swing.JComboBox<String> transportadoraBox;
+    private javax.swing.JTextField valorComDescontoText;
     private javax.swing.JTextField valorTotalText;
     // End of variables declaration//GEN-END:variables
 }
