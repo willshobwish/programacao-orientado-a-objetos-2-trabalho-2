@@ -3,6 +3,9 @@ package Controller;
 import Model.Comercio.ComercioEletronico;
 import Model.Fabricante.Fabricante;
 import Model.Produto.Produto;
+import Model.Venda.ItemVenda;
+import Model.Venda.Venda;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -16,7 +19,8 @@ Willian Yoshio Murayama
  */
 public class ControladorFabricante {
 
-    public static void cadastrarFabricante(int codigo, String cnpj, String nome, String descricao, String email, String telefone, String endereco) {
+    public static void cadastrarFabricante(int codigo, String cnpj, String nome, String descricao, String email,
+            String telefone, String endereco) {
         ComercioEletronico.cadastrarFabricante(codigo, cnpj, nome, descricao, email, telefone, endereco);
     }
 
@@ -53,24 +57,33 @@ public class ControladorFabricante {
         return nomesFabricante.toArray(new String[0]);
     }
 
-    public static ArrayList<Model.Fabricante.Fabricante> fabricantesProdutos() {
+    public static ArrayList<Model.Fabricante.Fabricante> listarTopFabricantes() {
+        Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
+        ArrayList<Produto> produtosVendidos = new ArrayList<Produto>();
         Map<Fabricante, Integer> map = new TreeMap<>();
         ArrayList<Fabricante> result = new ArrayList<>();
         ArrayList<Fabricante> aux = new ArrayList<>();
 
-        Iterator fabricantesCadastradas = Model.Comercio.ComercioEletronico.getFabricantes().iterator();
-        Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
+        while (vendas.hasNext()) {
+            Venda venda = (Venda) vendas.next();
+            Iterator itensVenda = venda.getItensVenda().iterator();
+            while (itensVenda.hasNext()) {
+                ItemVenda itemVenda = (ItemVenda) itensVenda.next();
+                produtosVendidos.add(itemVenda.getProduto());
+            }
+        }
 
-        while (produtos.hasNext()) {
-            Produto p = (Produto) produtos.next();
-            Fabricante fabricante = (Fabricante) fabricantesCadastradas.next();
-            map.put(fabricante, p.produtosFabricantes(fabricante));
+        int count = 0;
+
+        for (Produto p : produtosVendidos) {
+            map.put(p.getFabricante(), count);
+            count++;
         }
 
         map = ordenarValor(map);
         map.forEach((k, v) -> aux.add(k));
-        int count = 0;
 
+        count = 0;
         for (Fabricante t : aux) {
             result.add(t);
             count++;
@@ -82,24 +95,33 @@ public class ControladorFabricante {
         return result;
     }
 
-    public static ArrayList<Model.Fabricante.Fabricante> fabricantesValor() {
-        Map<Fabricante, Float> map = new TreeMap<>();
+    public static ArrayList<Model.Fabricante.Fabricante> listarFabricantesMaiorLucro() {
+        Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
+        ArrayList<Produto> produtosVendidos = new ArrayList<Produto>();
+        Map<Fabricante, Double> map = new TreeMap<>();
         ArrayList<Fabricante> result = new ArrayList<>();
         ArrayList<Fabricante> aux = new ArrayList<>();
 
-        Iterator fabricantesCadastradas = Model.Comercio.ComercioEletronico.getFabricantes().iterator();
-        Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
+        while (vendas.hasNext()) {
+            Venda venda = (Venda) vendas.next();
+            Iterator itensVenda = venda.getItensVenda().iterator();
+            while (itensVenda.hasNext()) {
+                ItemVenda itemVenda = (ItemVenda) itensVenda.next();
+                produtosVendidos.add(itemVenda.getProduto());
+            }
+        }
 
-        while (produtos.hasNext()) {
-            Produto p = (Produto) produtos.next();
-            Fabricante fabricante = (Fabricante) fabricantesCadastradas.next();
-            map.put(fabricante, p.valorTotalFabricante(fabricante));
+        int count = 0;
+
+        for (Produto p : produtosVendidos) {
+            map.put(p.getFabricante(), p.getValor());
+            count++;
         }
 
         map = ordenarValor(map);
         map.forEach((k, v) -> aux.add(k));
-        int count = 0;
 
+        count = 0;
         for (Fabricante t : aux) {
             result.add(t);
             count++;
