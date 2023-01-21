@@ -1,6 +1,7 @@
 package Model.Venda;
 
 import Model.Pagamento.Pagamento;
+import Model.Produto.Produto;
 import Model.Transportadora.Transportadora;
 import Model.Usuario.Cliente;
 import Model.Usuario.Gerente;
@@ -28,7 +29,9 @@ public class Venda implements Serializable {
     private Pagamento formaPagamento;
     private Transportadora transportadora;
 
-    public Venda(int codigo, Cliente cliente, Gerente gerente, LocalDate dataVenda, LocalDate dataDaEntrega, ArrayList itensVenda, double valorTotal, double valorComDesconto, Pagamento formaPagamento, Transportadora transportadora) {
+    public Venda(int codigo, Cliente cliente, Gerente gerente, LocalDate dataVenda, LocalDate dataDaEntrega,
+            ArrayList itensVenda, double valorTotal, double valorComDesconto, Pagamento formaPagamento,
+            Transportadora transportadora) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.gerente = gerente;
@@ -167,16 +170,19 @@ public class Venda implements Serializable {
             infoItensVenda += ((ItemVenda) itens.next()).toString() + "\n";
         }
         return """
-               Código: %d
-               Cliente: %s
-               Gerente: %s
-               Data da venda: %s
-               Data da entrega: %s
-               Itens venda: %s
-               Valor total: R$ %.2f
-               Valor com desconto: R$ %.2f
-               Forma de pagamento: 
-               Transportadora: %s
-               """.formatted(codigo, cliente.toString(), gerente.toString(), dataVenda.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(), dataDaEntrega.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(), infoItensVenda, valorTotal, valorComDesconto, transportadora.toString());
+                Código: %d
+                Cliente: %s
+                Gerente: %s
+                Data da venda: %s
+                Data da entrega: %s
+                Itens venda: %s
+                Valor total: R$ %.2f
+                Valor com desconto: R$ %.2f
+                Forma de pagamento:
+                Transportadora: %s
+                """.formatted(codigo, cliente.toString(), gerente.toString(),
+                dataVenda.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(),
+                dataDaEntrega.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(), infoItensVenda, valorTotal,
+                valorComDesconto, transportadora.toString());
     }
 }

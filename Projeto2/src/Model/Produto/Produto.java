@@ -4,6 +4,7 @@ import Model.Fabricante.Fabricante;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /*
@@ -44,7 +45,9 @@ public abstract class Produto implements Serializable {
                 Valor: R$ %.2f
                 Fabricante: %s
                 Disponivel: %b
-                """.formatted(codigo, nome, descricao, dataFabricacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(), valor, fabricante, disponivel);
+                """.formatted(codigo, nome, descricao,
+                dataFabricacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(), valor, fabricante,
+                disponivel);
     }
 
     public boolean estaDisponivel() {
@@ -107,9 +110,12 @@ public abstract class Produto implements Serializable {
         this.disponivel = disponivel;
     }
 
-    public int produtosFabricantes(Fabricante fabricante) {
+    public int produtosVendidosFabricantes(Fabricante fabricante) {
         int cont = 0;
         Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
+        Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
+        ArrayList<Produto> produtosVendidos = new ArrayList<>();
+
         while (produtos.hasNext()) {
             Produto p = (Produto) produtos.next();
             if (p.getFabricante().equals(fabricante)) {
