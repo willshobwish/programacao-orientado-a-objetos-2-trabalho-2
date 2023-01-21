@@ -11,10 +11,6 @@ public class CartaoCredito extends Pagamento {
     private String bandeira;
     private String numero;
 
-    public CartaoCredito(int codigoNota) {
-        super(codigoNota);
-    }
-
     public CartaoCredito(String nome, String bandeira, String numero, int codigoNota) {
         super(codigoNota);
         this.nome = nome;
