@@ -135,7 +135,7 @@ public class Venda implements Serializable {
     }
 
     public void adicionarItemVenda(ItemVenda itemVenda) {
-        itensVenda.add(itemVenda);
+        this.itensVenda.add(itemVenda);
     }
 
     public float calcularValorTotal() {
