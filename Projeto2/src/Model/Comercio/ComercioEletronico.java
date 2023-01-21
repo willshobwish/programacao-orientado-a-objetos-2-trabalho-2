@@ -65,6 +65,11 @@ public class ComercioEletronico {
         Controller.ControladorSerializable.salvarVendas(vendas);
     }
     
+    public static void cadastrarFabricante(int codigo, String cnpj, String nome, String descricao, String email, String telefone, String endereco) {
+        fabricantes.add(new Fabricante(codigo, cnpj, nome, descricao, email, telefone, endereco));
+        Controller.ControladorSerializable.salvarFabricantes(fabricantes);
+    }
+    
     public static ArrayList<Venda> getVendas() {
         return vendas;
     }

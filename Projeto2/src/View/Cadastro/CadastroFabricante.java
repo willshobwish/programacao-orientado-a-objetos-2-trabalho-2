@@ -18,7 +18,7 @@ public class CadastroFabricante extends javax.swing.JFrame {
      */
     public CadastroFabricante() {
         initComponents();
-        codigo.setText(Integer.toString(Controller.ControladorUsuario.getCodigoCliente()));
+        codigo.setText(Integer.toString(Controller.ControladorFabricante.getCodigoFabricante()));
     }
 
     /**
@@ -139,9 +139,8 @@ public class CadastroFabricante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-
-        JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso");
-
+        Controller.ControladorFabricante.cadastrarFabricante(Integer.valueOf(codigo.getText()), cnpj.getText(), nome.getText(), descricao.getText(), email.getText(), telefone.getText(), endereco.getText());
+        JOptionPane.showMessageDialog(this, "Fabricante cadastrado com sucesso");
     }//GEN-LAST:event_cadastrarActionPerformed
 
     /**

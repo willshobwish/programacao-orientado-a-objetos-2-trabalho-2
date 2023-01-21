@@ -1,14 +1,13 @@
 package Controller;
 
+import Model.Comercio.ComercioEletronico;
 import Model.Fabricante.Fabricante;
 import Model.Produto.Produto;
-
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.Iterator;
-import Model.Comercio.ComercioEletronico;
 
 /*
 Bruno Augusto Furquim
@@ -16,6 +15,14 @@ Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
 public class ControladorFabricante {
+
+    public static void cadastrarFabricante(int codigo, String cnpj, String nome, String descricao, String email, String telefone, String endereco) {
+        ComercioEletronico.cadastrarFabricante(codigo, cnpj, nome, descricao, email, telefone, endereco);
+    }
+
+    public static int getCodigoFabricante() {
+        return ComercioEletronico.getFabricantes().size();
+    }
 
     public static String listarFabricantes() {
         return Model.Comercio.ComercioEletronico.getFabricantes().toString();
@@ -85,10 +92,11 @@ public class ControladorFabricante {
         Comparator<Fabricante> valueComparator = new Comparator<Fabricante>() {
             public int compare(Fabricante k1, Fabricante k2) {
                 int compare = map.get(k1).compareTo(map.get(k2));
-                if (compare == 0)
+                if (compare == 0) {
                     return 1;
-                else
+                } else {
                     return compare;
+                }
             }
         };
         Map<Fabricante, Float> sortedByValues = new TreeMap<Fabricante, Float>(valueComparator);
