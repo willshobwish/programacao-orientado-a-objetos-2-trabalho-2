@@ -3,6 +3,8 @@ package Model.Produto;
 import Model.Fabricante.Fabricante;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /*
 Bruno Augusto Furquim
@@ -19,7 +21,13 @@ public abstract class Produto implements Serializable {
     protected Fabricante fabricante;
     protected boolean disponivel;
 
+<<<<<<< Updated upstream
     public Produto(int codigo, String nome, String descricao, LocalDate dataFabricacao, double valor, Fabricante fabricante, boolean disponivel) {
+=======
+    public Produto(int codigo, String nome, String descricao, LocalDate dataFabricacao, double valor,
+            Fabricante fabricante, boolean disponivel) {
+
+>>>>>>> Stashed changes
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -33,6 +41,7 @@ public abstract class Produto implements Serializable {
 
     public String toString() {
         return """
+<<<<<<< Updated upstream
                Codigo: %s
                Nome: %s
                Descricção: %s
@@ -41,6 +50,17 @@ public abstract class Produto implements Serializable {
                Fabricante: %s
                Disponivel: %b
                """.formatted(codigo, nome, descricao, dataFabricacao.getDayOfMonth(), dataFabricacao.getMonthValue(), dataFabricacao.getYear(), valor, fabricante, disponivel);
+=======
+                Codigo: %s
+                Nome: %s
+                Descrição: %s
+                Data de fabricação: %d/%02d/%d
+                Valor: R$ %.2f
+                Fabricante: %s
+                Disponivel: %b
+                """.formatted(codigo, nome, descricao, dataFabricacao.getDayOfMonth(), dataFabricacao.getMonthValue(),
+                dataFabricacao.getYear(), valor, fabricante, disponivel);
+>>>>>>> Stashed changes
     }
 
     public boolean estaDisponivel() {
@@ -103,4 +123,27 @@ public abstract class Produto implements Serializable {
         this.disponivel = disponivel;
     }
 
+    public int produtosFabricantes(Fabricante fabricante) {
+        int cont = 0;
+        Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
+        while (produtos.hasNext()) {
+            Produto p = (Produto) produtos.next();
+            if (p.getFabricante().equals(fabricante)) {
+                cont++;
+            }
+        }
+        return cont;
+    }
+
+    public float valorTotalFabricante(Fabricante fabricante) {
+        float valor = 0;
+        Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
+        while (produtos.hasNext()) {
+            Produto p = (Produto) produtos.next();
+            if (p.getFabricante().equals(fabricante)) {
+                valor += p.getValor();
+            }
+        }
+        return valor;
+    }
 }
