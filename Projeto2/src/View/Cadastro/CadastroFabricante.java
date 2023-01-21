@@ -4,6 +4,7 @@
  */
 package View.Cadastro;
 
+import Controller.ControladorFabricante;
 import javax.swing.JOptionPane;
 
 /*
@@ -18,7 +19,8 @@ public class CadastroFabricante extends javax.swing.JFrame {
      */
     public CadastroFabricante() {
         initComponents();
-        codigo.setText(Integer.toString(Controller.ControladorFabricante.getCodigoFabricante()));
+        ControladorFabricante controladorFabricante = new ControladorFabricante();
+        codigo.setText(Integer.toString(controladorFabricante.getCodigoFabricante()));
     }
 
     /**
