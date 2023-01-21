@@ -5,10 +5,10 @@
 package View.Cadastro;
 
 import Model.Comercio.ComercioEletronico;
-import Model.Fabricante.Fabricante;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /*
@@ -25,6 +25,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         initComponents();
         codigo.setText(Integer.toString(Controller.ControladorProduto.getCodigoProduto()));
         disponivel.setSelected(true);
+        fabricante.setModel(new DefaultComboBoxModel(Controller.ControladorFabricante.getFabricantesNomesArray()));
     }
 
     /**
@@ -177,8 +178,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         String descricaoProduto = descricao.getText();
         LocalDate dataFabricacaoProduto = ((Date) dataFabricacao.getValue()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         double valorProduto = Double.valueOf(valor.getText());
-//        Fabricante fabricanteProduto = ComercioEletronico.getFabricantes().get(fabricante.getSelectedIndex());
-        Fabricante fabricanteProduto = null;
+        String fabricanteProduto = fabricante.getSelectedItem().toString();
         boolean disponivelProduto;
         if (disponivel.isSelected()) {
             disponivelProduto = true;

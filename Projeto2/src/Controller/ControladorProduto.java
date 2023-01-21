@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Comercio.ComercioEletronico;
-import Model.Fabricante.Fabricante;
 import Model.Produto.Eletrodomesticos;
 import Model.Produto.Eletronicos;
 import static Model.Produto.FactoryProduto.factoryProduto;
@@ -45,9 +44,9 @@ public class ControladorProduto {
     }
 
     public static void cadastrarProduto(String tipoDeProduto, int codigo, String nome, String descricao,
-            LocalDate dataFabricacao, double valor, Fabricante fabricante, boolean disponivel) {
+            LocalDate dataFabricacao, double valor, String nomeFabricante, boolean disponivel) {
         ComercioEletronico.cadastrarProduto(
-                factoryProduto(tipoDeProduto, codigo, nome, descricao, dataFabricacao, valor, fabricante, disponivel));
+                factoryProduto(tipoDeProduto, codigo, nome, descricao, dataFabricacao, valor, Controller.ControladorFabricante.getFabricanteString(nomeFabricante), disponivel));
     }
 
     public static void cadastrarItemVenda(int codigoProduto, float valor, int quantidade) {

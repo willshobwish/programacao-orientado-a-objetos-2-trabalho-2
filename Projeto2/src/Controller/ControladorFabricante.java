@@ -24,8 +24,33 @@ public class ControladorFabricante {
         return ComercioEletronico.getFabricantes().size();
     }
 
-    public static String listarFabricantes() {
-        return Model.Comercio.ComercioEletronico.getFabricantes().toString();
+    public static String getInfoFabricante() {
+        Iterator fabricante = Model.Comercio.ComercioEletronico.getFabricantes().iterator();
+        String info = "";
+        while (fabricante.hasNext()) {
+            info += ((Fabricante) fabricante.next()).toString() + "\n";
+        }
+        return info;
+    }
+
+    public static Fabricante getFabricanteString(String nome) {
+        Iterator fabricantes = ComercioEletronico.getFabricantes().iterator();
+        while (fabricantes.hasNext()) {
+            Fabricante fabricanteTemp = (Fabricante) fabricantes.next();
+            if (fabricanteTemp.getNome().equals(nome)) {
+                return fabricanteTemp;
+            }
+        }
+        return null;
+    }
+
+    public static String[] getFabricantesNomesArray() {
+        Iterator fabricantes = Model.Comercio.ComercioEletronico.getFabricantes().iterator();
+        ArrayList<String> nomesFabricante = new ArrayList<>();
+        while (fabricantes.hasNext()) {
+            nomesFabricante.add(((Fabricante) fabricantes.next()).getNome());
+        }
+        return nomesFabricante.toArray(new String[0]);
     }
 
     public static ArrayList<Model.Fabricante.Fabricante> fabricantesProdutos() {
