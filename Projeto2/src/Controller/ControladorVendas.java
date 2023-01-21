@@ -6,6 +6,7 @@ import Model.Produto.Produto;
 import Model.Usuario.Cliente;
 import Model.Venda.ItemVenda;
 import Model.Venda.Venda;
+import Model.Produto.Produto;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,9 +24,12 @@ public class ControladorVendas {
         itensVenda = new ArrayList<ItemVenda>();
     }
 
-    public static void cadastrarVenda(int codigo, String nomeCliente, String nomeGerente, LocalDate dataVenda, LocalDate dataDaEntrega, double valorTotal, double valorComDesconto, Pagamento formaPagamento, String nomeTransportadora) {
+    public static void cadastrarVenda(int codigo, String nomeCliente, String nomeGerente, LocalDate dataVenda,
+            LocalDate dataDaEntrega, double valorTotal, double valorComDesconto, Pagamento formaPagamento,
+            String nomeTransportadora) {
         ComercioEletronico comercio = new ComercioEletronico();
-        comercio.cadastrarVenda(codigo, nomeCliente, nomeGerente, dataVenda, dataDaEntrega, itensVenda, valorTotal, valorComDesconto, formaPagamento, nomeTransportadora);
+        comercio.cadastrarVenda(codigo, nomeCliente, nomeGerente, dataVenda, dataDaEntrega, itensVenda, valorTotal,
+                valorComDesconto, formaPagamento, nomeTransportadora);
         itensVenda = new ArrayList<ItemVenda>();
     }
 
