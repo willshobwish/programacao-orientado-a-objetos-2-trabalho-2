@@ -21,13 +21,8 @@ public abstract class Produto implements Serializable {
     protected Fabricante fabricante;
     protected boolean disponivel;
 
-<<<<<<< Updated upstream
-    public Produto(int codigo, String nome, String descricao, LocalDate dataFabricacao, double valor, Fabricante fabricante, boolean disponivel) {
-=======
     public Produto(int codigo, String nome, String descricao, LocalDate dataFabricacao, double valor,
             Fabricante fabricante, boolean disponivel) {
-
->>>>>>> Stashed changes
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -41,16 +36,6 @@ public abstract class Produto implements Serializable {
 
     public String toString() {
         return """
-<<<<<<< Updated upstream
-               Codigo: %s
-               Nome: %s
-               Descricção: %s
-               Data de fabricação: %d de %d de %d
-               Valor: R$ %.2f
-               Fabricante: %s
-               Disponivel: %b
-               """.formatted(codigo, nome, descricao, dataFabricacao.getDayOfMonth(), dataFabricacao.getMonthValue(), dataFabricacao.getYear(), valor, fabricante, disponivel);
-=======
                 Codigo: %s
                 Nome: %s
                 Descrição: %s
@@ -60,7 +45,6 @@ public abstract class Produto implements Serializable {
                 Disponivel: %b
                 """.formatted(codigo, nome, descricao, dataFabricacao.getDayOfMonth(), dataFabricacao.getMonthValue(),
                 dataFabricacao.getYear(), valor, fabricante, disponivel);
->>>>>>> Stashed changes
     }
 
     public boolean estaDisponivel() {
