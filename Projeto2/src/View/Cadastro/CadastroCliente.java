@@ -22,7 +22,7 @@ public class CadastroCliente extends javax.swing.JFrame {
      */
     public CadastroCliente() {
         initComponents();
-        codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoCliente()));
+        codigo.setText(Integer.toString(Controller.ControladorUsuario.getCodigoCliente()));
     }
 
     /**
@@ -53,7 +53,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         dataCadastro = new javax.swing.JSpinner();
         cadastrar = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        clienteOuro = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de cliente");
@@ -89,10 +89,10 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setText("Cliente ouro");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        clienteOuro.setText("Cliente ouro");
+        clienteOuro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                clienteOuroActionPerformed(evt);
             }
         });
 
@@ -119,7 +119,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel7)
                     .addComponent(jLabel9)
-                    .addComponent(jCheckBox1)
+                    .addComponent(clienteOuro)
                     .addComponent(cadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dataNascimento)
                     .addComponent(dataCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
@@ -165,7 +165,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(clienteOuro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cadastrar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -182,12 +182,12 @@ public class CadastroCliente extends javax.swing.JFrame {
         Matcher matcher = pattern.matcher(email.getText());
         if (matcher.find()) {
             System.out.println("E-mail correto");
-            if (jCheckBox1.isSelected()) {
+            if (clienteOuro.isSelected()) {
                 Controller.ControladorUsuario.cadastrarClienteOuro(Integer.parseInt(codigo.getText()), nome.getText(), cpf.getText(), rg.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), cep.getText(), email.getText(), dateDataCadastro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             } else {
-                Controller.ControladorUsuario.cadastrarCliente(Integer.parseInt(codigo.getText()), nome.getText(), cpf.getText(), rg.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), cep.getText(), email.getText(), dateDataCadastro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+                Controller.ControladorUsuario.cadastrarClienteNormal(Integer.parseInt(codigo.getText()), nome.getText(), cpf.getText(), rg.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), cep.getText(), email.getText(), dateDataCadastro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             }
-            codigo.setText(Integer.toString(Controller.ControladorUsuario.codigoCliente()));
+            codigo.setText(Integer.toString(Controller.ControladorUsuario.getCodigoCliente()));
             JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso");
         } else {
             System.out.println("E-mail incorreto");
@@ -196,9 +196,9 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cadastrarActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void clienteOuroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteOuroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_clienteOuroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,13 +249,13 @@ public class CadastroCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrar;
     private javax.swing.JTextField cep;
+    private javax.swing.JCheckBox clienteOuro;
     private javax.swing.JTextField codigo;
     private javax.swing.JTextField cpf;
     private javax.swing.JSpinner dataCadastro;
     private javax.swing.JSpinner dataNascimento;
     private javax.swing.JTextField email;
     private javax.swing.JTextField endereco;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

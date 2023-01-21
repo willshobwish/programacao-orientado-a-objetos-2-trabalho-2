@@ -16,6 +16,6 @@ public class Vestuario extends Produto implements Serializable {
     }
 
     public double calcularValor() {
-        return (valor * 1.0525);
+        return (valor * 1.0115);
     }
 }

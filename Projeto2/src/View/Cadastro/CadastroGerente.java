@@ -201,7 +201,7 @@ public class CadastroGerente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Insira um e-mail correto\nExemplo: 'email@email.com'", "E-mail incorreto", JOptionPane.WARNING_MESSAGE);
         }
         if (!salarioCorreto) {
-            JOptionPane.showMessageDialog(this, "Insira um salário correto\nExemplo: '2,00'", "Salário incorreto", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Insira um salário correto\nExemplo: '2.00'", "Salário incorreto", JOptionPane.WARNING_MESSAGE);
         }
         if (emailCorreto && salarioCorreto) {
             Controller.ControladorUsuario.cadastrarGerente(Float.parseFloat(salario.getText()), pis.getText(), dateDataAdmissao.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Integer.parseInt(codigo.getText()), nome.getText(), cpf.getText(), rg.getText(), dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), endereco.getText(), cep.getText(), email.getText());

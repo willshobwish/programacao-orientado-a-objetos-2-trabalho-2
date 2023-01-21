@@ -8,6 +8,7 @@ Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
 public class Transportadora implements Serializable {
+
     private int codigo;
     private String cnpj;
     private String nome;
@@ -16,9 +17,7 @@ public class Transportadora implements Serializable {
     private String endereco;
     private int tempoDeEntrega;
 
-    public void cadastrarTransportadora(int codigo, String cnpj, String nome, String email, String telefone,
-            String endereco,
-            int tempoDeEntrega) {
+    public Transportadora(int codigo, String cnpj, String nome, String email, String telefone, String endereco, int tempoDeEntrega) {
         this.codigo = codigo;
         this.cnpj = cnpj;
         this.nome = nome;
@@ -86,13 +85,13 @@ public class Transportadora implements Serializable {
 
     public String toString() {
         return """
-                Codigo: %d
+                Código: %d
                 CNPJ: %s
                 Nome: %s
                 Email: %s
-                Teleone: %s
-                Endereco: %s
-                Tempo de Entrega: %d
+                Telefone: %s
+                Endereço: %s
+                Tempo de Entrega: %d dia(s)
                 """.formatted(codigo, cnpj, nome, email, telefone, endereco, tempoDeEntrega);
     }
 }

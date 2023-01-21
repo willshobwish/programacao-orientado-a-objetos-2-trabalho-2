@@ -19,15 +19,15 @@ public class SelectionSort implements SortStrategy {
             int index = i;
             for (int j = i + 1; j < VetorOrdenar.size(); j++) {
                 if (VetorOrdenar.get(j).getValor() < VetorOrdenar.get(index).getValor()) {
-//                    Procura o produto de menor valor
                     index = j;
                 }
             }
             Produto menorValor = VetorOrdenar.get(index);
+            VetorOrdenar.remove(index);
             VetorOrdenar.add(index, VetorOrdenar.get(i));
+            VetorOrdenar.remove(i);
             VetorOrdenar.add(i, menorValor);
         }
-
         return VetorOrdenar;
     }
 }

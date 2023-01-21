@@ -1,30 +1,29 @@
 package Model.Venda;
 
+import Model.Produto.Produto;
+
 /*
 Bruno Augusto Furquim
 Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
 public class ItemVenda {
-    private int codigoProduto;
-    private float valor;
+
+    private Produto produto;
+    private double valor;
     private int quantidade;
 
-    public void cadastrarItemVenda(int codigoProduto, float valor, int quantidade) {
-        this.codigoProduto = codigoProduto;
-        this.valor = valor;
+    public ItemVenda(Produto produto, int quantidade) {
+        this.produto = produto;
+        this.valor = produto.calcularValor();
         this.quantidade = quantidade;
     }
 
-    public int getcodigoProduto() {
-        return codigoProduto;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setcodigoProduto(int codigoProduto) {
-        this.codigoProduto = codigoProduto;
-    }
-
-    public float getValor() {
+    public double getValor() {
         return valor;
     }
 
@@ -40,7 +39,7 @@ public class ItemVenda {
         this.quantidade = quantidade;
     }
 
-    public float calcularTotal() {
+    public double calcularTotal() {
         return valor * quantidade;
     }
 }

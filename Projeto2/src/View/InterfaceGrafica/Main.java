@@ -4,11 +4,13 @@
  */
 package View.InterfaceGrafica;
 
+import Model.SortStrategy.Contexto;
 import View.Cadastro.CadastroCliente;
+import View.Cadastro.CadastroFabricante;
 import View.Cadastro.CadastroGerente;
 import View.Cadastro.CadastroProduto;
+import View.Cadastro.CadastroTransportadora;
 import View.Cadastro.CadastroVenda;
-import java.util.Iterator;
 
 /*
 Bruno Augusto Furquim
@@ -73,7 +75,7 @@ public class Main extends javax.swing.JFrame {
         jMenuItem23 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Trabalho 2 POO");
+        setTitle("Trabalho de Programação Orientado a Objetos 2");
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -107,9 +109,19 @@ public class Main extends javax.swing.JFrame {
         jMenu7.add(jMenuItem26);
 
         jMenuItem30.setText("Fabricante");
+        jMenuItem30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem30ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem30);
 
         jMenuItem31.setText("Transportadora");
+        jMenuItem31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem31ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem31);
 
         jMenuItem32.setText("Venda");
@@ -172,9 +184,19 @@ public class Main extends javax.swing.JFrame {
         jMenu2.setText("Ordenação");
 
         jMenuItem2.setText("Listar todos produtos por valor usando insertion sort");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuItem4.setText("Listar todos produtos por valor usando selection sort");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -182,6 +204,11 @@ public class Main extends javax.swing.JFrame {
         jMenu3.setText("Fabricantes");
 
         jMenuItem3.setText("Listar todos os fabricantes cadastrados");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuItem9.setText("Listar os fabricantes que tiveram mais produtos vendidos");
@@ -195,9 +222,19 @@ public class Main extends javax.swing.JFrame {
         jMenu4.setText("Transportadoras");
 
         jMenuItem5.setText("Listar todas as transportadoras");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem5);
 
         jMenuItem16.setText("Listar as transportadoras que possuem mais transportes realizados");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem16);
 
         jMenuBar1.add(jMenu4);
@@ -287,29 +324,12 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         // TODO add your handling code here:
-
-        String dados = """
-                       Todos os clientes cadastrados:
-                       
-                       """;
-        Iterator clientesCadastrados = Controller.ControladorUsuario.iteratorTodosClientes();
-        while (clientesCadastrados.hasNext()) {
-            dados += clientesCadastrados.next().toString() + "\n";
-        }
-        jTextArea1.setText(dados);
+        jTextArea1.setText("Todos os clientes cadastrados:\n" + Controller.ControladorUsuario.getInfoTodosClientesNormal());
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-        String dados = """
-                       Todos os gerentes cadastrados:
-                       
-                       """;
-        Iterator gerentesCadastrados = Controller.ControladorUsuario.iteratorTodosGerentes();
-        while (gerentesCadastrados.hasNext()) {
-            dados += gerentesCadastrados.next().toString() + "\n";
-        }
-        jTextArea1.setText(dados);
+        jTextArea1.setText("Todos os gerentes cadastrados:\n" + Controller.ControladorUsuario.getInfoTodosGerentes());
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
@@ -332,15 +352,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
         // TODO add your handling code here:
-        String dados = """
-                       Todos os clientes ouro cadastrados:
-                       
-                       """;
-        Iterator clientesOuroCadastrados = Controller.ControladorUsuario.iteratorTodosGerentes();
-        while (clientesOuroCadastrados.hasNext()) {
-            dados += clientesOuroCadastrados.next().toString() + "\n";
-        }
-        jTextArea1.setText(dados);
+        jTextArea1.setText("Todos os clientes ouro cadastrados:\n" + Controller.ControladorUsuario.getInfoTodosClientesOuro());
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void jMenuItem26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem26ActionPerformed
@@ -389,6 +401,49 @@ public class Main extends javax.swing.JFrame {
                            
                            """ + Controller.ControladorProduto.getInfoVestuario());
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        Contexto contexto = new Contexto();
+        contexto.selecionarEstrategia("insertion");
+        jTextArea1.setText("Produtos ordenados com o preço crescente utilizando o insertion sort:\n" + contexto.exibirOrdenacao());
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        Contexto contexto = new Contexto();
+        contexto.selecionarEstrategia("selection");
+        jTextArea1.setText("Produtos ordenados com o preço crescente utilizando o selection sort:\n" + contexto.exibirOrdenacao());
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("Todas as transportadoras:\n" + Controller.ControladorTransportadora.getInfoTodasTransportadoras());
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("Transportadoras com mais transportes realizados:\n" + Controller.ControladorTransportadora.getInfoTopTransportadoras());
+
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuItem31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem31ActionPerformed
+        // TODO add your handling code here:
+        CadastroTransportadora cadastroTransportadora = new CadastroTransportadora();
+        cadastroTransportadora.setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem31ActionPerformed
+
+    private void jMenuItem30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem30ActionPerformed
+        // TODO add your handling code here:
+        CadastroFabricante cadastroFabricante = new CadastroFabricante();
+        cadastroFabricante.setVisible(true);
+    }//GEN-LAST:event_jMenuItem30ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("Todos os fabricantes cadastrados:\n" + Controller.ControladorFabricante.getInfoFabricante());
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments

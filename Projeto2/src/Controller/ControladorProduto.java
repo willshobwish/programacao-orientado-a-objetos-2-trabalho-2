@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Comercio.ComercioEletronico;
-import Model.Fabricante.Fabricante;
 import Model.Produto.Eletrodomesticos;
 import Model.Produto.Eletronicos;
 import static Model.Produto.FactoryProduto.factoryProduto;
@@ -22,16 +21,50 @@ public class ControladorProduto {
         return ComercioEletronico.getProdutos().size();
     }
 
+    public static Produto getProdutoString(String nome) {
+        Iterator produtos = ComercioEletronico.getProdutos().iterator();
+        while (produtos.hasNext()) {
+            Produto produtoTemp = (Produto) produtos.next();
+            if (produtoTemp.getNome().equals(nome)) {
+                return produtoTemp;
+            }
+        }
+        return null;
+    }
+
+    public static double getValorProdutoNome(String nome) {
+        Iterator produtos = ComercioEletronico.getProdutos().iterator();
+        while (produtos.hasNext()) {
+            Produto produtoTemp = (Produto) produtos.next();
+            if (produtoTemp.getNome().equals(nome)) {
+                return produtoTemp.getValor();
+            }
+        }
+        return 0;
+    }
+
     public static void cadastrarProduto(String tipoDeProduto, int codigo, String nome, String descricao,
-            LocalDate dataFabricacao, double valor, Fabricante fabricante, boolean disponivel) {
+            LocalDate dataFabricacao, double valor, String nomeFabricante, boolean disponivel) {
         ComercioEletronico.cadastrarProduto(
-                factoryProduto(tipoDeProduto, codigo, nome, descricao, dataFabricacao, valor, fabricante, disponivel));
+                factoryProduto(tipoDeProduto, codigo, nome, descricao, dataFabricacao, valor, Controller.ControladorFabricante.getFabricanteString(nomeFabricante), disponivel));
+    }
+
+    public static void cadastrarItemVenda(int codigoProduto, float valor, int quantidade) {
+
+    }
+
+    public static String[] getProdutosNomesArray() {
+        Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
+        ArrayList<String> nomesProdutos = new ArrayList<>();
+        while (produtos.hasNext()) {
+            nomesProdutos.add(((Produto) produtos.next()).getNome());
+        }
+        return nomesProdutos.toArray(new String[0]);
     }
 
     public static ArrayList<Moveis> getMoveis() {
         ArrayList<Moveis> moveis = new ArrayList<Moveis>();
         Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
-
         while (produtos.hasNext()) {
             Produto produto = (Produto) produtos.next();
             if (produto instanceof Moveis) {
@@ -125,9 +158,9 @@ public class ControladorProduto {
 
     public static String getInfoProdutos() {
         String info = "";
-        Iterator vestuariosInfo = ComercioEletronico.getProdutos().iterator();
-        while (vestuariosInfo.hasNext()) {
-            info += vestuariosInfo.next().toString();
+        Iterator produtosInfo = ComercioEletronico.getProdutos().iterator();
+        while (produtosInfo.hasNext()) {
+            info += produtosInfo.next().toString();
             info += "\n";
         }
         return info;
