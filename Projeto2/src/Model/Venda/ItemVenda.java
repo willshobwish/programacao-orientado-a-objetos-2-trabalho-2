@@ -46,7 +46,8 @@ public class ItemVenda implements Serializable {
 
     public String toString() {
         return """
-               Produto: %s
+               Produto:
+               %s
                Valor: R$ %.2f
                Quantidade: %d""".formatted(produto.toString(), valor, quantidade);
     }

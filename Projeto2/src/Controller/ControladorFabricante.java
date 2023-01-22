@@ -24,7 +24,7 @@ public class ControladorFabricante {
         ComercioEletronico.cadastrarFabricante(codigo, cnpj, nome, descricao, email, telefone, endereco);
     }
 
-    public static int getCodigoFabricante() {
+    public int getCodigoFabricante() {
         return ComercioEletronico.getFabricantes().size();
     }
 

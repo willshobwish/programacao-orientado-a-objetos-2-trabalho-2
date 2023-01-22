@@ -49,7 +49,7 @@ public class CadastroVenda extends javax.swing.JFrame {
         formaPagamentoDinheiro();
 
 //Pega o codigo quando a janela eh criada
-        codigoText.setText(Integer.toString(Controller.ControladorProduto.getCodigoProduto()));
+        codigoText.setText(Integer.toString(Controller.ControladorVendas.getCodigoVenda()));
 
     }
 
@@ -582,20 +582,22 @@ public class CadastroVenda extends javax.swing.JFrame {
             case 0:
 //                Dinheiro
 //                cadastrarVenda(int codigo, String nomeCliente, String nomeGerente, LocalDate dataVenda, LocalDate dataDaEntrega, double valorTotal, double valorComDesconto, Pagamento formaPagamento, String nomeTransportadora)
-                Controller.ControladorVendas.cadastrarVenda(codigo, nomeCliente, nomeGerente, dataVenda, dataDaEntrega, valorTotal, valorComDesconto, formaPagamento, nomeTransportadora);
+                Controller.ControladorVendas.cadastrarVenda(codigo, nomeCliente, nomeGerente, dataVenda, dataDaEntrega, valorTotal, valorComDesconto, Controller.ControladorPagamento.cadastrarPagamentoDinheiro(Controller.ControladorVendas.getCodigoVenda()), nomeTransportadora);
                 break;
             case 1:
 //                Cartao
-                formaPagamentoCartao();
+                Controller.ControladorVendas.cadastrarVenda(codigo, nomeCliente, nomeGerente, dataVenda, dataDaEntrega, valorTotal, valorComDesconto, Controller.ControladorPagamento.cadastrarPagamentoCartao(nomeCartaoText.getText(), bandeiraCartaoText.getText(), numeroCartaoText.getText(), Controller.ControladorVendas.getCodigoVenda()), nomeTransportadora);
                 break;
             case 2:
 //                Pix
-                formaPagamentoPix();
+                Controller.ControladorVendas.cadastrarVenda(codigo, nomeCliente, nomeGerente, dataVenda, dataDaEntrega, valorTotal, valorComDesconto, Controller.ControladorPagamento.cadastrarPagamentoPix(codigoPixText.getText(), Controller.ControladorVendas.getCodigoVenda()), nomeTransportadora);
                 break;
             default:
                 throw new AssertionError();
         }
         JOptionPane.showMessageDialog(this, "Venda cadastrado com sucesso");
+        codigoText.setText(Integer.toString(Controller.ControladorVendas.getCodigoVenda()));
+
     }//GEN-LAST:event_cadastrarVendaActionPerformed
 
     private void transportadoraBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transportadoraBoxActionPerformed

@@ -4,6 +4,7 @@
  */
 package View.InterfaceGrafica;
 
+import Controller.ControladorTransportadora;
 import Model.SortStrategy.Contexto;
 import View.Cadastro.CadastroCliente;
 import View.Cadastro.CadastroFabricante;
@@ -212,6 +213,11 @@ public class Main extends javax.swing.JFrame {
         jMenu3.add(jMenuItem3);
 
         jMenuItem9.setText("Listar os fabricantes que tiveram mais produtos vendidos");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem9);
 
         jMenuItem11.setText("Listar os fabricantes que tiveram o maior lucro de produtos vendidos");
@@ -286,15 +292,35 @@ public class Main extends javax.swing.JFrame {
         jMenu6.add(jMenuItem19);
 
         jMenuItem20.setText("Listar vendas realizadas em um mês em específico e o total de lucro gerado no mês");
+        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem20ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem20);
 
         jMenuItem21.setText("Listar todas as vendas pagas em dinheiro");
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem21);
 
         jMenuItem22.setText("Listar todas as vendas pagas em cartão de crédito");
+        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem22ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem22);
 
         jMenuItem23.setText("Listar todas as vendas pagas em PIX");
+        jMenuItem23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem23ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem23);
 
         jMenuBar1.add(jMenu6);
@@ -428,7 +454,8 @@ public class Main extends javax.swing.JFrame {
     
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
         // TODO add your handling code here:
-        jTextArea1.setText("Transportadoras com mais transportes realizados:\n" + Controller.ControladorTransportadora.getInfoTopTransportadoras());
+        ControladorTransportadora controladorTransportadora = new ControladorTransportadora();
+        jTextArea1.setText("Transportadoras com mais transportes realizados:\n" + controladorTransportadora.getInfoTopTransportadoras());
         
     }//GEN-LAST:event_jMenuItem16ActionPerformed
     
@@ -454,6 +481,33 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         jTextArea1.setText("Todas as vendas realizadas:\n" + Controller.ControladorVendas.getInfoVendas());
     }//GEN-LAST:event_jMenuItem19ActionPerformed
+    
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("Fabricantes que tiveram mais produtos vendidos: \n" + Controller.ControladorFabricante.listarTopFabricantes().toString());
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("Listar todas as vendas pagas em dinheiro:\n" + Controller.ControladorVendas.listarVendasDinheiro());
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+    
+    private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("Listar todas as vendas pagas em cartão de crédito: \n" + Controller.ControladorVendas.listarVendasCredito());
+    }//GEN-LAST:event_jMenuItem22ActionPerformed
+    
+    private void jMenuItem23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem23ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText("Listar todas as vendas pagas em PIX: \n" + Controller.ControladorVendas.listarVendasPix());
+        
+    }//GEN-LAST:event_jMenuItem23ActionPerformed
+    
+    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
+        // TODO add your handling code here:
+        BuscarVendasMes buscarVendasMes = new BuscarVendasMes();
+        buscarVendasMes.setVisible(true);
+    }//GEN-LAST:event_jMenuItem20ActionPerformed
 
     /**
      * @param args the command line arguments

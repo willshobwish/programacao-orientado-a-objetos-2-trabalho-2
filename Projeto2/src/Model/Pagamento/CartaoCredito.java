@@ -1,11 +1,13 @@
 package Model.Pagamento;
 
+import java.io.Serializable;
+
 /*
 Bruno Augusto Furquim
 Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
-public class CartaoCredito extends Pagamento {
+public class CartaoCredito extends Pagamento implements Serializable {
 
     private String nome;
     private String bandeira;

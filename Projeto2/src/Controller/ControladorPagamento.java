@@ -11,15 +11,15 @@ Willian Yoshio Murayama
  */
 public class ControladorPagamento {
 
-    public Dinheiro cadastrarPagamentoDinheiro(int codigoNota) {
+    public static Dinheiro cadastrarPagamentoDinheiro(int codigoNota) {
         return new Dinheiro(codigoNota);
     }
 
-    public CartaoCredito cadastrarPagamentoCartao(String nome, String bandeira, String numero, int codigoNota) {
+    public static CartaoCredito cadastrarPagamentoCartao(String nome, String bandeira, String numero, int codigoNota) {
         return new CartaoCredito(nome, bandeira, numero, codigoNota);
     }
 
-    public Pix cadastrarPagamentoPix(String codigoPix, int codigoNota) {
+    public static Pix cadastrarPagamentoPix(String codigoPix, int codigoNota) {
         return new Pix(codigoPix, codigoNota);
     }
 }

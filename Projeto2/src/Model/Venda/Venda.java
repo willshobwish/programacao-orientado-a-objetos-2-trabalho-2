@@ -178,11 +178,10 @@ public class Venda implements Serializable {
                 Itens venda: %s
                 Valor total: R$ %.2f
                 Valor com desconto: R$ %.2f
-                Forma de pagamento:
-                Transportadora: %s
-                """.formatted(codigo, cliente.toString(), gerente.toString(),
+                Forma de pagamento: %s
+                Transportadora: %s""".formatted(codigo, cliente.toString(), gerente.toString(),
                 dataVenda.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(),
                 dataDaEntrega.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(), infoItensVenda, valorTotal,
-                valorComDesconto, transportadora.toString());
+                valorComDesconto, formaPagamento.toString(), transportadora.toString());
     }
 }

@@ -6,7 +6,6 @@ import Model.Produto.Produto;
 import Model.Usuario.Cliente;
 import Model.Venda.ItemVenda;
 import Model.Venda.Venda;
-import Model.Produto.Produto;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -59,7 +58,7 @@ public class ControladorVendas {
         Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
         String info = "";
         while (vendas.hasNext()) {
-            info += ((Venda) vendas.next()).toString() + "-----------------------------------";
+            info += ((Venda) vendas.next()).toString() + "-------------------------------------------------------------------------------\n";
         }
         return info;
     }
@@ -104,6 +103,18 @@ public class ControladorVendas {
         return vendasMes;
     }
 
+    public String getVendasMes(LocalDate mes) {
+        String info = "";
+        Iterator vendas = iteratorVendas();
+        while (vendas.hasNext()) {
+            Venda venda = (Venda) vendas.next();
+            if (venda.getDataVenda().getMonthValue() == mes.getMonthValue()) {
+                info += venda.toString() + "\n";
+            }
+        }
+        return info;
+    }
+
     public static String listarVendasDinheiro() {
         Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
         String vendasDinheiro = "";
@@ -141,5 +152,9 @@ public class ControladorVendas {
             }
         }
         return vendasPix;
+    }
+
+    public Iterator iteratorVendas() {
+        return ComercioEletronico.getVendas().iterator();
     }
 }

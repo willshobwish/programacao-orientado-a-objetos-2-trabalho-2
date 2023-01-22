@@ -1,11 +1,13 @@
 package Model.Pagamento;
 
+import java.io.Serializable;
+
 /*
 Bruno Augusto Furquim
 Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
-public abstract class Pagamento {
+public abstract class Pagamento implements Serializable {
 
     protected int codigoNota;
 
