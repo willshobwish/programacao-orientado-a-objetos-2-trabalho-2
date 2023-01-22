@@ -5,7 +5,6 @@
 package View.Cadastro;
 
 import Controller.ControladorVendas;
-import Model.Pagamento.Pagamento;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -577,7 +576,6 @@ public class CadastroVenda extends javax.swing.JFrame {
         LocalDate dataVenda = ((Date) dataVendaBox.getValue()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate dataDaEntrega = ((Date) dataVendaBox.getValue()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         double valorTotal = controladorVendas.calcularValorTotal(), valorComDesconto = controladorVendas.calcularValorTotalDesconto(clienteBox.getSelectedItem().toString());
-        Pagamento formaPagamento = null;
         switch (formaPagamentoBox.getSelectedIndex()) {
             case 0:
 //                Dinheiro
