@@ -17,9 +17,10 @@ public class CadastroFabricante extends javax.swing.JFrame {
     /**
      * Creates new form CadastroCliente
      */
+    ControladorFabricante controladorFabricante = new ControladorFabricante();
+
     public CadastroFabricante() {
         initComponents();
-        ControladorFabricante controladorFabricante = new ControladorFabricante();
         codigo.setText(Integer.toString(controladorFabricante.getCodigoFabricante()));
     }
 
@@ -141,7 +142,8 @@ public class CadastroFabricante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        Controller.ControladorFabricante.cadastrarFabricante(Integer.valueOf(codigo.getText()), cnpj.getText(), nome.getText(), descricao.getText(), email.getText(), telefone.getText(), endereco.getText());
+        controladorFabricante.cadastrarFabricante(Integer.valueOf(codigo.getText()), cnpj.getText(), nome.getText(), descricao.getText(), email.getText(), telefone.getText(), endereco.getText());
+        codigo.setText(Integer.toString(controladorFabricante.getCodigoFabricante()));
         JOptionPane.showMessageDialog(this, "Fabricante cadastrado com sucesso");
     }//GEN-LAST:event_cadastrarActionPerformed
 
