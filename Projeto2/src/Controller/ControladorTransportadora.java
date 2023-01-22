@@ -6,9 +6,11 @@ import Model.Venda.Venda;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /*
 Bruno Augusto Furquim
@@ -17,7 +19,7 @@ Willian Yoshio Murayama
  */
 public class ControladorTransportadora {
 
-    public static void cadastrarTransportadora(int codigo, String cnpj, String nome, String email, String telefone,
+    public void cadastrarTransportadora(int codigo, String cnpj, String nome, String email, String telefone,
             String endereco, int tempoDeEntrega) {
         ComercioEletronico.cadastrarTransportadora(codigo, cnpj, nome, email, telefone, endereco, tempoDeEntrega);
     }
@@ -42,49 +44,27 @@ public class ControladorTransportadora {
         return null;
     }
 
-    public ArrayList<Model.Transportadora.Transportadora> topTransportadoras() {
-        Map<Transportadora, Integer> map = new TreeMap<>();
-        ArrayList<Transportadora> result = new ArrayList<>();
-        ArrayList<Transportadora> aux = new ArrayList<>();
-        Iterator transportadorasCadastradas = Model.Comercio.ComercioEletronico.getTransportadoras().iterator();
-        Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
-
-        while (vendas.hasNext()) {
-            Venda venda = (Venda) vendas.next();
-            Transportadora transportadora = (Transportadora) transportadorasCadastradas.next();
-            map.put(transportadora, venda.vendasTransportadoras(transportadora));
-        }
-
-        map = ordenarValor(map);
-        map.forEach((k, v) -> aux.add(k));
-        int count = 0;
-
-        for (Transportadora t : aux) {
-            result.add(t);
-            count++;
-            if (count == 3) {
-                break;
-            }
-        }
-        return result;
-    }
-
-    public <Transportadora, Integer extends Comparable<Integer>> Map<Transportadora, Integer> ordenarValor(
-            final Map<Transportadora, Integer> map) {
-        Comparator<Transportadora> valueComparator = new Comparator<Transportadora>() {
-            public int compare(Transportadora k1, Transportadora k2) {
-                int compare = map.get(k1).compareTo(map.get(k2));
-                if (compare == 0) {
-                    return 1;
-                } else {
-                    return compare;
+    public String topTransportadoras() {
+        Iterator transportadoras = Model.Comercio.ComercioEletronico.getTransportadoras().iterator();
+        HashMap<Transportadora, Integer> mapa = new HashMap<>();
+        String info = "";
+        while (transportadoras.hasNext()) {
+            int contagem = 0;
+            Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
+            Transportadora transportadora = (Transportadora) transportadoras.next();
+            while (vendas.hasNext()) {
+                Venda venda = (Venda) vendas.next();
+                if (venda.getTransportadora().getNome().equals(transportadora.getNome())) {
+                    contagem++;
                 }
             }
-        };
-        Map<Transportadora, Integer> sortedByValues = new TreeMap<Transportadora, Integer>(valueComparator);
-        sortedByValues.putAll(map);
-
-        return sortedByValues;
+            mapa.put(transportadora, contagem);
+        }
+        Map<Transportadora, Integer> topTransportadorasMap = mapa.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        for (Map.Entry<Transportadora, Integer> entry : topTransportadorasMap.entrySet()) {
+            info += entry.getKey().toString() + "Quantidade de transporte: " + entry.getValue().toString() + "\n\n";
+        }
+        return info;
     }
 
     public static String[] getNomesTransportadoras() {
@@ -98,15 +78,6 @@ public class ControladorTransportadora {
 
     public static String getInfoTodasTransportadoras() {
         Iterator transportadoras = Model.Comercio.ComercioEletronico.getTransportadoras().iterator();
-        String info = "";
-        while (transportadoras.hasNext()) {
-            info += ((Transportadora) transportadoras.next()).toString() + '\n';
-        }
-        return info;
-    }
-
-    public String getInfoTopTransportadoras() {
-        Iterator transportadoras = topTransportadoras().iterator();
         String info = "";
         while (transportadoras.hasNext()) {
             info += ((Transportadora) transportadoras.next()).toString() + '\n';
