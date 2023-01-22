@@ -42,7 +42,7 @@ public class ControladorTransportadora {
         return null;
     }
 
-    public static ArrayList<Model.Transportadora.Transportadora> topTransportadoras() {
+    public ArrayList<Model.Transportadora.Transportadora> topTransportadoras() {
         Map<Transportadora, Integer> map = new TreeMap<>();
         ArrayList<Transportadora> result = new ArrayList<>();
         ArrayList<Transportadora> aux = new ArrayList<>();
@@ -69,7 +69,7 @@ public class ControladorTransportadora {
         return result;
     }
 
-    public static <Transportadora, Integer extends Comparable<Integer>> Map<Transportadora, Integer> ordenarValor(
+    public <Transportadora, Integer extends Comparable<Integer>> Map<Transportadora, Integer> ordenarValor(
             final Map<Transportadora, Integer> map) {
         Comparator<Transportadora> valueComparator = new Comparator<Transportadora>() {
             public int compare(Transportadora k1, Transportadora k2) {
@@ -105,7 +105,7 @@ public class ControladorTransportadora {
         return info;
     }
 
-    public static String getInfoTopTransportadoras() {
+    public String getInfoTopTransportadoras() {
         Iterator transportadoras = topTransportadoras().iterator();
         String info = "";
         while (transportadoras.hasNext()) {
@@ -126,36 +126,4 @@ public class ControladorTransportadora {
         }
         return agora.plusDays(transportadora.getTempoDeEntrega());
     }
-    // public static ArrayList<Transportadora> topTransportadoras() {
-    // Transportadora transportadora1 = new Transportadora();
-    // Transportadora transportadora2 = new Transportadora();
-    // Transportadora transportadora3 = new Transportadora();
-    // ArrayList<Transportadora> topTransportadoras = new
-    // ArrayList<Transportadora>();
-    // Iterator transportadorasCadastradas =
-    // Model.Comercio.ComercioEletronico.getTransportadoras().iterator();
-    // Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
-    // while (vendas.hasNext()) {
-    // Venda venda = (Venda) vendas.next();
-    // Transportadora transportadora = (Transportadora)
-    // transportadorasCadastradas.next();
-    // if (venda.vendasTransportadoras(transportadora) >
-    // venda.vendasTransportadoras(transportadora1)) {
-    // transportadora3 = transportadora2;
-    // transportadora2 = transportadora1;
-    // transportadora1 = transportadora;
-    // } else if (venda.vendasTransportadoras(transportadora) >
-    // venda.vendasTransportadoras(transportadora2)) {
-    // transportadora3 = transportadora2;
-    // transportadora2 = transportadora;
-    // } else if (venda.vendasTransportadoras(transportadora) >
-    // venda.vendasTransportadoras(transportadora3)) {
-    // transportadora3 = transportadora;
-    // }
-    // }
-    // topTransportadoras.add(transportadora1);
-    // topTransportadoras.add(transportadora2);
-    // topTransportadoras.add(transportadora3);
-    // return topTransportadoras;
-    // }
 }
