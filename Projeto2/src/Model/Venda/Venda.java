@@ -1,7 +1,6 @@
 package Model.Venda;
 
 import Model.Pagamento.Pagamento;
-import Model.Produto.Produto;
 import Model.Transportadora.Transportadora;
 import Model.Usuario.Cliente;
 import Model.Usuario.Gerente;
@@ -123,7 +122,6 @@ public class Venda implements Serializable {
 
     public Transportadora getTransportadora() {
         return transportadora;
-
     }
 
     public void setTransportadora(Transportadora transportadora) {

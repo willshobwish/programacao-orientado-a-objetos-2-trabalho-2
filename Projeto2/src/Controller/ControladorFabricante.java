@@ -2,15 +2,15 @@ package Controller;
 
 import Model.Comercio.ComercioEletronico;
 import Model.Fabricante.Fabricante;
-import Model.Produto.Produto;
 import Model.Venda.ItemVenda;
 import Model.Venda.Venda;
-
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /*
 Bruno Augusto Furquim
@@ -57,99 +57,31 @@ public class ControladorFabricante {
         return nomesFabricante.toArray(new String[0]);
     }
 
-    public static ArrayList<Model.Fabricante.Fabricante> listarTopFabricantes() {
-        Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
-        ArrayList<Produto> produtosVendidos = new ArrayList<Produto>();
-        Map<Fabricante, Integer> map = new TreeMap<>();
-        ArrayList<Fabricante> result = new ArrayList<>();
-        ArrayList<Fabricante> aux = new ArrayList<>();
-
-        while (vendas.hasNext()) {
-            Venda venda = (Venda) vendas.next();
-            Iterator itensVenda = venda.getItensVenda().iterator();
-            while (itensVenda.hasNext()) {
-                ItemVenda itemVenda = (ItemVenda) itensVenda.next();
-                produtosVendidos.add(itemVenda.getProduto());
-            }
-        }
-
-        int count = 0;
-
-        for (Produto p : produtosVendidos) {
-            map.put(p.getFabricante(), count);
-            count++;
-        }
-
-        map = ordenarValor(map);
-        map.forEach((k, v) -> aux.add(k));
-
-        count = 0;
-        for (Fabricante t : aux) {
-            result.add(t);
-            count++;
-            if (count == 3) {
-                break;
-            }
-        }
-
-        return result;
-    }
-
-    public static ArrayList<Model.Fabricante.Fabricante> listarFabricantesMaiorLucro() {
-        Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
-        ArrayList<Produto> produtosVendidos = new ArrayList<Produto>();
-        Map<Fabricante, Double> map = new TreeMap<>();
-        ArrayList<Fabricante> result = new ArrayList<>();
-        ArrayList<Fabricante> aux = new ArrayList<>();
-
-        while (vendas.hasNext()) {
-            Venda venda = (Venda) vendas.next();
-            Iterator itensVenda = venda.getItensVenda().iterator();
-            while (itensVenda.hasNext()) {
-                ItemVenda itemVenda = (ItemVenda) itensVenda.next();
-                produtosVendidos.add(itemVenda.getProduto());
-            }
-        }
-
-        int count = 0;
-
-        for (Produto p : produtosVendidos) {
-            map.put(p.getFabricante(), p.getValor());
-            count++;
-        }
-
-        map = ordenarValor(map);
-        map.forEach((k, v) -> aux.add(k));
-
-        count = 0;
-        for (Fabricante t : aux) {
-            result.add(t);
-            count++;
-            if (count == 3) {
-                break;
-            }
-        }
-
-        return result;
-    }
-
-    public static <Fabricante, Float extends Comparable<Float>> Map<Fabricante, Float> ordenarValor(
-            final Map<Fabricante, Float> map) {
-
-        Comparator<Fabricante> valueComparator = new Comparator<Fabricante>() {
-            public int compare(Fabricante k1, Fabricante k2) {
-                int compare = map.get(k1).compareTo(map.get(k2));
-                if (compare == 0) {
-                    return 1;
-                } else {
-                    return compare;
+    public String topFabricantes() {
+        Iterator fabricantes = Model.Comercio.ComercioEletronico.getFabricantes().iterator();
+        HashMap<Fabricante, Integer> mapa = new HashMap<>();
+        String info = "";
+        while (fabricantes.hasNext()) {
+            int contagem = 0;
+            Fabricante fabricante = (Fabricante) fabricantes.next();
+            Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
+            while (vendas.hasNext()) {
+                Venda venda = (Venda) vendas.next();
+                Iterator itensVenda = venda.getItensVenda().iterator();
+                while (itensVenda.hasNext()) {
+                    ItemVenda produtoIteracao = (ItemVenda) itensVenda.next();
+                    if (fabricante.getNome().equals(produtoIteracao.getProduto().getFabricante().getNome())) {
+                        contagem += produtoIteracao.getQuantidade();
+                    }
                 }
             }
-        };
-        Map<Fabricante, Float> sortedByValues = new TreeMap<Fabricante, Float>(valueComparator);
-        sortedByValues.putAll(map);
-
-        return sortedByValues;
-
+            mapa.put(fabricante, contagem);
+        }
+        Map<Fabricante, Integer> topFabricantesMap = mapa.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        for (Map.Entry<Fabricante, Integer> entry : topFabricantesMap .entrySet()) {
+            info += entry.getKey().toString() + "\n" + "Quantidade de vendas de produto: " + entry.getValue().toString() + "\n\n";
+        }
+        return info;
     }
+
 }
