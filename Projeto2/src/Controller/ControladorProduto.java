@@ -8,13 +8,15 @@ import Model.Produto.Produto;
 import Model.Produto.Vestuario;
 import Model.Venda.ItemVenda;
 import Model.Venda.Venda;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class ControladorProduto {
 
@@ -46,6 +48,33 @@ public class ControladorProduto {
             }
         }
         return 0;
+    }
+
+    public String topProdutos() {
+        Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
+        HashMap<Produto, Integer> mapa = new HashMap<>();
+        String info = "";
+        while (produtos.hasNext()) {
+            int contagem = 0;
+            Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
+            Produto produto = (Produto) produtos.next();
+            while (vendas.hasNext()) {
+                Venda venda = (Venda) vendas.next();
+                Iterator itensVenda = venda.getItensVenda().iterator();
+                while (itensVenda.hasNext()) {
+                    ItemVenda produtoIteracao = (ItemVenda) itensVenda.next();
+                    if (produto.getNome().equals(produtoIteracao.getProduto().getNome())) {
+                        contagem += produtoIteracao.getQuantidade();
+                    }
+                }
+            }
+            mapa.put(produto, contagem);
+        }
+        Map<Produto, Integer> topProdutosMap = mapa.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(10).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        for (Map.Entry<Produto, Integer> entry : topProdutosMap.entrySet()) {
+            info += entry.getKey().toString() + "Quantidade de vendas de produto: " + entry.getValue().toString() + "\n\n";
+        }
+        return info;
     }
 
     public static void cadastrarProduto(String tipoDeProduto, int codigo, String nome, String descricao,
