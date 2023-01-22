@@ -4,6 +4,7 @@
  */
 package View.Cadastro;
 
+import Controller.ControladorTransportadora;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -151,10 +152,12 @@ public class CadastroTransportadora extends javax.swing.JFrame {
         // TODO add your handling code here:
         Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
         Matcher matcher = pattern.matcher(email.getText());
+        ControladorTransportadora ControladorTransportadora = new ControladorTransportadora();
+
         if (matcher.find()) {
             System.out.println("E-mail correto");
             codigo.setText(Integer.toString(Controller.ControladorUsuario.getCodigoCliente()));
-            Controller.ControladorTransportadora.cadastrarTransportadora(Controller.ControladorUsuario.getCodigoCliente(), cnpj.getText(), nome.getText(), email.getText(), telefone.getText(), endereco.getText(), Integer.valueOf(tempoDeEntrega.getText()));
+            ControladorTransportadora.cadastrarTransportadora(Controller.ControladorUsuario.getCodigoCliente(), cnpj.getText(), nome.getText(), email.getText(), telefone.getText(), endereco.getText(), Integer.valueOf(tempoDeEntrega.getText()));
             JOptionPane.showMessageDialog(this, "Transportadora cadastrado com sucesso");
             codigo.setText(Integer.toString(Controller.ControladorTransportadora.getCodigoTransportadora()));
         } else {
