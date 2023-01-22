@@ -4,6 +4,8 @@
  */
 package View.InterfaceGrafica;
 
+import Controller.ControladorFabricante;
+import Controller.ControladorProduto;
 import Controller.ControladorTransportadora;
 import Model.SortStrategy.Contexto;
 import View.Cadastro.CadastroCliente;
@@ -42,9 +44,9 @@ public class Main extends javax.swing.JFrame {
         jMenu7 = new javax.swing.JMenu();
         jMenuItem24 = new javax.swing.JMenuItem();
         jMenuItem25 = new javax.swing.JMenuItem();
-        jMenuItem26 = new javax.swing.JMenuItem();
         jMenuItem30 = new javax.swing.JMenuItem();
         jMenuItem31 = new javax.swing.JMenuItem();
+        jMenuItem26 = new javax.swing.JMenuItem();
         jMenuItem32 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -101,14 +103,6 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu7.add(jMenuItem25);
 
-        jMenuItem26.setText("Produtos");
-        jMenuItem26.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem26ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem26);
-
         jMenuItem30.setText("Fabricante");
         jMenuItem30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +118,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jMenu7.add(jMenuItem31);
+
+        jMenuItem26.setText("Produtos");
+        jMenuItem26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem26ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem26);
 
         jMenuItem32.setText("Venda");
         jMenuItem32.addActionListener(new java.awt.event.ActionListener() {
@@ -178,6 +180,11 @@ public class Main extends javax.swing.JFrame {
         jMenu1.add(jMenuItem12);
 
         jMenuItem14.setText("Listar os dez produtos mais vendidos");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem14);
 
         jMenuBar1.add(jMenu1);
@@ -352,46 +359,46 @@ public class Main extends javax.swing.JFrame {
         CadastroCliente Cliente = new CadastroCliente();
         Cliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem24ActionPerformed
-    
+
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("Todos os clientes cadastrados:\n" + Controller.ControladorUsuario.getInfoTodosClientesNormal());
     }//GEN-LAST:event_jMenuItem17ActionPerformed
-    
+
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("Todos os gerentes cadastrados:\n" + Controller.ControladorUsuario.getInfoTodosGerentes());
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-    
+
     private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
         // TODO add your handling code here:
         CadastroGerente CadastroGerente = new CadastroGerente();
         CadastroGerente.setVisible(true);
     }//GEN-LAST:event_jMenuItem25ActionPerformed
-    
+
     private void jMenuItem32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem32ActionPerformed
         // TODO add your handling code here:
         CadastroVenda CadastroVenda = new CadastroVenda();
         CadastroVenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem32ActionPerformed
-    
+
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
         BuscarHistoricoVendas BuscarVendas = new BuscarHistoricoVendas();
         BuscarVendas.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
-    
+
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("Todos os clientes ouro cadastrados:\n" + Controller.ControladorUsuario.getInfoTodosClientesOuro());
     }//GEN-LAST:event_jMenuItem18ActionPerformed
-    
+
     private void jMenuItem26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem26ActionPerformed
         // TODO add your handling code here:
         CadastroProduto CadastroProduto = new CadastroProduto();
         CadastroProduto.setVisible(true);
     }//GEN-LAST:event_jMenuItem26ActionPerformed
-    
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
 
@@ -400,7 +407,7 @@ public class Main extends javax.swing.JFrame {
                            
                            """ + Controller.ControladorProduto.getInfoProdutos());
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-    
+
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("""
@@ -408,7 +415,7 @@ public class Main extends javax.swing.JFrame {
                            
                            """ + Controller.ControladorProduto.getInfoMoveis());
     }//GEN-LAST:event_jMenuItem8ActionPerformed
-    
+
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("""
@@ -416,7 +423,7 @@ public class Main extends javax.swing.JFrame {
                            
                            """ + Controller.ControladorProduto.getInfoEletrodomesticos());
     }//GEN-LAST:event_jMenuItem10ActionPerformed
-    
+
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("""
@@ -424,7 +431,7 @@ public class Main extends javax.swing.JFrame {
                            
                            """ + Controller.ControladorProduto.getInfoEletronicos());
     }//GEN-LAST:event_jMenuItem15ActionPerformed
-    
+
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("""
@@ -432,82 +439,89 @@ public class Main extends javax.swing.JFrame {
                            
                            """ + Controller.ControladorProduto.getInfoVestuario());
     }//GEN-LAST:event_jMenuItem12ActionPerformed
-    
+
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         Contexto contexto = new Contexto();
         contexto.selecionarEstrategia("insertion");
         jTextArea1.setText("Produtos ordenados com o preço crescente utilizando o insertion sort:\n" + contexto.exibirOrdenacao());
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-    
+
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         Contexto contexto = new Contexto();
         contexto.selecionarEstrategia("selection");
         jTextArea1.setText("Produtos ordenados com o preço crescente utilizando o selection sort:\n" + contexto.exibirOrdenacao());
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-    
+
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("Todas as transportadoras:\n" + Controller.ControladorTransportadora.getInfoTodasTransportadoras());
     }//GEN-LAST:event_jMenuItem5ActionPerformed
-    
+
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
         // TODO add your handling code here:
         ControladorTransportadora controladorTransportadora = new ControladorTransportadora();
-        jTextArea1.setText("Transportadoras com mais transportes realizados:\n" + controladorTransportadora.getInfoTopTransportadoras());
-        
+        jTextArea1.setText("Transportadoras com mais transportes realizados:\n" + controladorTransportadora.topTransportadoras());
+
     }//GEN-LAST:event_jMenuItem16ActionPerformed
-    
+
     private void jMenuItem31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem31ActionPerformed
         // TODO add your handling code here:
         CadastroTransportadora cadastroTransportadora = new CadastroTransportadora();
         cadastroTransportadora.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItem31ActionPerformed
-    
+
     private void jMenuItem30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem30ActionPerformed
         // TODO add your handling code here:
         CadastroFabricante cadastroFabricante = new CadastroFabricante();
         cadastroFabricante.setVisible(true);
     }//GEN-LAST:event_jMenuItem30ActionPerformed
-    
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("Todos os fabricantes cadastrados:\n" + Controller.ControladorFabricante.getInfoFabricante());
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-    
+
     private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("Todas as vendas realizadas:\n" + Controller.ControladorVendas.getInfoVendas());
     }//GEN-LAST:event_jMenuItem19ActionPerformed
-    
+
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
-        jTextArea1.setText("Fabricantes que tiveram mais produtos vendidos: \n" + Controller.ControladorFabricante.listarTopFabricantes().toString());
+        ControladorFabricante ControladorFabricante = new ControladorFabricante();
+        jTextArea1.setText("Fabricantes que tiveram mais produtos vendidos: \n" + ControladorFabricante.topFabricantes().toString());
     }//GEN-LAST:event_jMenuItem9ActionPerformed
-    
+
     private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("Listar todas as vendas pagas em dinheiro:\n" + Controller.ControladorVendas.listarVendasDinheiro());
     }//GEN-LAST:event_jMenuItem21ActionPerformed
-    
+
     private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("Listar todas as vendas pagas em cartão de crédito: \n" + Controller.ControladorVendas.listarVendasCredito());
     }//GEN-LAST:event_jMenuItem22ActionPerformed
-    
+
     private void jMenuItem23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem23ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("Listar todas as vendas pagas em PIX: \n" + Controller.ControladorVendas.listarVendasPix());
-        
+
     }//GEN-LAST:event_jMenuItem23ActionPerformed
-    
+
     private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
         // TODO add your handling code here:
         BuscarVendasMes buscarVendasMes = new BuscarVendasMes();
         buscarVendasMes.setVisible(true);
     }//GEN-LAST:event_jMenuItem20ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+        ControladorProduto ControladorProduto = new ControladorProduto();
+        jTextArea1.setText(ControladorProduto.topProdutos());
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -518,7 +532,7 @@ public class Main extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
