@@ -4,6 +4,7 @@ import Model.Usuario.Cliente;
 import Model.Usuario.ClienteNormal;
 import Model.Usuario.ClienteOuro;
 import Model.Usuario.Gerente;
+import Model.Venda.Venda;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -48,16 +49,6 @@ public class ControladorUsuario {
         return null;
     }
 
-//    public static String buscarInfoGerenteNome(String nome) {
-//        Iterator gerentes = iteratorTodosGerentes();
-//        while (gerentes.hasNext()) {
-//            Gerente gerente = (Gerente) gerentes.next();
-//            if (gerente.getNome().equals(nome)) {
-//                return gerente.toString();
-//            }
-//        }
-//        return "Informções do gerente não encontrado";
-//    }
     public static Cliente getClienteNome(String nome) {
         Iterator clientes = iteratorTodosClientes();
         while (clientes.hasNext()) {
@@ -99,6 +90,18 @@ public class ControladorUsuario {
             Object clienteObjeto = clientes.next();
             if (clienteObjeto instanceof ClienteOuro) {
                 info += ((ClienteOuro) clienteObjeto).toString() + '\n';
+            }
+        }
+        return info;
+    }
+
+    public static String getVendasCliente(String nome) {
+        String info = "";
+        Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
+        while (vendas.hasNext()) {
+            Venda venda = (Venda) vendas.next();
+            if (venda.getCliente().getNome().equals(nome)) {
+                info += venda.toString() + "\n";
             }
         }
         return info;

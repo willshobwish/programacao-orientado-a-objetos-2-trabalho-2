@@ -4,22 +4,23 @@
  */
 package View.InterfaceGrafica;
 
-import javax.swing.DefaultComboBoxModel;
+import Controller.ControladorVendas;
+import java.time.ZoneId;
+import java.util.Date;
 
 /*
 Bruno Augusto Furquim
 Giovanna Silva Custodio
 Willian Yoshio Murayama
  */
-public class BuscarHistoricoVendas extends javax.swing.JFrame {
+public class BuscarVendasMes extends javax.swing.JFrame {
 
     /**
      * Creates new form BuscarVendas
      */
-    public BuscarHistoricoVendas() {
+    public BuscarVendasMes() {
         initComponents();
-        DefaultComboBoxModel modelClientes = new DefaultComboBoxModel(Controller.ControladorUsuario.getClientesNomesArray());
-        cliente.setModel(modelClientes);
+
     }
 
     /**
@@ -32,17 +33,17 @@ public class BuscarHistoricoVendas extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        cliente = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        mes = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Listar o histórico de vendas de um cliente específico");
+        setTitle("Lucro gerado em um mês");
 
-        jLabel1.setText("Cliente");
+        jLabel1.setText("Mês");
 
-        jButton1.setText("Buscar histórico de vendas");
+        jButton1.setText("Buscar histórico do mês");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -53,6 +54,8 @@ public class BuscarHistoricoVendas extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        mes.setModel(new javax.swing.SpinnerDateModel());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,12 +63,12 @@ public class BuscarHistoricoVendas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(mes)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -74,11 +77,11 @@ public class BuscarHistoricoVendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -87,7 +90,9 @@ public class BuscarHistoricoVendas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        jTextArea1.setText(Controller.ControladorUsuario.getVendasCliente(cliente.getSelectedItem().toString()));
+        ;
+        ControladorVendas controladorVendas = new ControladorVendas();
+        jTextArea1.setText(controladorVendas.getVendasMes(((Date) mes.getValue()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -107,30 +112,32 @@ public class BuscarHistoricoVendas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BuscarHistoricoVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarVendasMes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BuscarHistoricoVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarVendasMes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BuscarHistoricoVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarVendasMes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BuscarHistoricoVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarVendasMes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarHistoricoVendas().setVisible(true);
+                new BuscarVendasMes().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cliente;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JSpinner mes;
     // End of variables declaration//GEN-END:variables
 }
