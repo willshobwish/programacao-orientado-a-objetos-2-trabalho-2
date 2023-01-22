@@ -6,9 +6,15 @@ import Model.Produto.Eletronicos;
 import Model.Produto.Moveis;
 import Model.Produto.Produto;
 import Model.Produto.Vestuario;
+import Model.Venda.ItemVenda;
+import Model.Venda.Venda;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class ControladorProduto {
 
@@ -42,8 +48,10 @@ public class ControladorProduto {
         return 0;
     }
 
-    public static void cadastrarProduto(String tipoDeProduto, int codigo, String nome, String descricao, LocalDate dataFabricacao, double valor, String nomeFabricante, boolean disponivel) {
-        ComercioEletronico.cadastrarProduto(tipoDeProduto, codigo, nome, descricao, dataFabricacao, valor, nomeFabricante, disponivel);
+    public static void cadastrarProduto(String tipoDeProduto, int codigo, String nome, String descricao,
+            LocalDate dataFabricacao, double valor, String nomeFabricante, boolean disponivel) {
+        ComercioEletronico.cadastrarProduto(tipoDeProduto, codigo, nome, descricao, dataFabricacao, valor,
+                nomeFabricante, disponivel);
     }
 
     public static void cadastrarItemVenda(int codigoProduto, float valor, int quantidade) {
@@ -164,5 +172,63 @@ public class ControladorProduto {
             info += "\n";
         }
         return info;
+    }
+
+    public static ArrayList<Produto> getTopDezProdutos() {
+        Iterator vendas = Model.Comercio.ComercioEletronico.getVendas().iterator();
+        ArrayList<Produto> produtosVendidos = new ArrayList<Produto>();
+
+        Map<Produto, Integer> map = new TreeMap<>();
+        ArrayList<Produto> result = new ArrayList<>();
+        ArrayList<Produto> aux = new ArrayList<>();
+
+        while (vendas.hasNext()) {
+            Venda venda = (Venda) vendas.next();
+            Iterator itensVenda = venda.getItensVenda().iterator();
+            while (itensVenda.hasNext()) {
+                ItemVenda itemVenda = (ItemVenda) itensVenda.next();
+                produtosVendidos.add(itemVenda.getProduto());
+            }
+        }
+
+        int cont = 0;
+        for (Produto produto : produtosVendidos) {
+            map.put(produto, cont);
+            cont++;
+        }
+
+        map = ordenarValor(map);
+        map.forEach((k, v) -> aux.add(k));
+
+        cont = 0;
+        for (Produto p : aux) {
+            result.add(p);
+            cont++;
+            if (cont == 10) {
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    public static <Produto, Integer extends Comparable<Integer>> Map<Produto, Integer> ordenarValor(
+            final Map<Produto, Integer> map) {
+
+        Comparator<Produto> valueComparator = new Comparator<Produto>() {
+            public int compare(Produto k1, Produto k2) {
+                int compare = map.get(k1).compareTo(map.get(k2));
+                if (compare == 0) {
+                    return 1;
+                } else {
+                    return compare;
+                }
+            }
+        };
+
+        Map<Produto, Integer> sortedByValues = new TreeMap<Produto, Integer>(valueComparator);
+        sortedByValues.putAll(map);
+
+        return sortedByValues;
     }
 }
