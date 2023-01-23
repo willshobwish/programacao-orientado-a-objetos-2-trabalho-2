@@ -162,6 +162,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar os fabricantes que tiveram o maior lucro de produtos vendidos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem11ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
