@@ -28,11 +28,6 @@ public class ControladorTransportadora {
         return Model.Comercio.ComercioEletronico.getTransportadoras().size();
     }
 
-    public static String listarTransportadoras() {
-        String transportadoras = Model.Comercio.ComercioEletronico.getTransportadoras().toString();
-        return transportadoras;
-    }
-
     public static Transportadora getTransportadoraNome(String nome) {
         Iterator transportadoras = Model.Comercio.ComercioEletronico.getTransportadoras().iterator();
         while (transportadoras.hasNext()) {
@@ -44,7 +39,7 @@ public class ControladorTransportadora {
         return null;
     }
 
-    public String topTransportadoras() {
+    public String getInfoTopTransportadoras() {
         Iterator transportadoras = Model.Comercio.ComercioEletronico.getTransportadoras().iterator();
         HashMap<Transportadora, Integer> mapa = new HashMap<>();
         String info = "";

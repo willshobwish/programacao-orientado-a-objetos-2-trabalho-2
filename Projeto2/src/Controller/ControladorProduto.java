@@ -50,7 +50,7 @@ public class ControladorProduto {
         return 0;
     }
 
-    public String topProdutos() {
+    public String getInfoTopProdutos() {
         Iterator produtos = Model.Comercio.ComercioEletronico.getProdutos().iterator();
         HashMap<Produto, Integer> mapa = new HashMap<>();
         String info = "";
@@ -70,6 +70,7 @@ public class ControladorProduto {
             }
             mapa.put(produto, contagem);
         }
+//        Cria um outro Hashmap com os valores ordenados de forma decrescente 
         Map<Produto, Integer> topProdutosMap = mapa.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(10).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
         for (Map.Entry<Produto, Integer> entry : topProdutosMap.entrySet()) {
             info += entry.getKey().toString() + "Quantidade de vendas de produto: " + entry.getValue().toString() + "\n\n";
@@ -81,10 +82,6 @@ public class ControladorProduto {
             LocalDate dataFabricacao, double valor, String nomeFabricante, boolean disponivel) {
         ComercioEletronico.cadastrarProduto(tipoDeProduto, codigo, nome, descricao, dataFabricacao, valor,
                 nomeFabricante, disponivel);
-    }
-
-    public static void cadastrarItemVenda(int codigoProduto, float valor, int quantidade) {
-
     }
 
     public static String[] getProdutosNomesArray() {

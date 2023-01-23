@@ -102,14 +102,18 @@ public class ControladorVendas {
 
     public String getVendasMes(LocalDate mes) {
         String info = "";
+        double lucro = 0;
         Iterator vendas = iteratorVendas();
         while (vendas.hasNext()) {
             Venda venda = (Venda) vendas.next();
             if (venda.getDataVenda().getMonthValue() == mes.getMonthValue()) {
                 info += venda.toString() + "\n";
+                lucro += venda.getValorComDesconto();
             }
         }
-        return info;
+        return """
+               %sLucro total do mês: R$ %.2f
+               """.formatted(info, lucro);
     }
 
     public static String listarVendasDinheiro() {
