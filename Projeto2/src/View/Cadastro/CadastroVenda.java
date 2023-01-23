@@ -24,7 +24,7 @@ public class CadastroVenda extends javax.swing.JFrame {
      * Creates new form CadastroCliente
      */
     ControladorVendas controladorVendas = new ControladorVendas();
-    DefaultListModel<String> model = new DefaultListModel<>();
+    DefaultListModel<String> itensVendaModel = new DefaultListModel<>();
 
     double valorTotal;
 
@@ -527,11 +527,11 @@ public class CadastroVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         controladorVendas.cadastrarItemVenda(Controller.ControladorProduto.getProdutoString(itensVendaBox.getSelectedItem().toString()), (Integer) quantidadeItemSpinner.getValue());
-        model.addElement(itensVendaBox.getSelectedItem().toString());
+        itensVendaModel.addElement(itensVendaBox.getSelectedItem().toString());
 
         valorTotalText.setText("R$ %.2f".formatted(controladorVendas.calcularValorTotal()));
         valorComDescontoText.setText("R$ %.2f".formatted(controladorVendas.calcularValorTotalDesconto(clienteBox.getSelectedItem().toString())));
-        jList1.setModel(model);
+        jList1.setModel(itensVendaModel);
 
     }//GEN-LAST:event_adicionarItemActionPerformed
 
@@ -572,14 +572,12 @@ public class CadastroVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
         int codigo = Integer.parseInt(codigoText.getText());
         String nomeGerente = gerenteBox.getSelectedItem().toString(), nomeCliente = clienteBox.getSelectedItem().toString(), nomeTransportadora = transportadoraBox.getSelectedItem().toString();
-//        dateDataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
         LocalDate dataVenda = ((Date) dataVendaBox.getValue()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate dataDaEntrega = ((Date) dataVendaBox.getValue()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         double valorTotal = controladorVendas.calcularValorTotal(), valorComDesconto = controladorVendas.calcularValorTotalDesconto(clienteBox.getSelectedItem().toString());
         switch (formaPagamentoBox.getSelectedIndex()) {
             case 0:
 //                Dinheiro
-//                cadastrarVenda(int codigo, String nomeCliente, String nomeGerente, LocalDate dataVenda, LocalDate dataDaEntrega, double valorTotal, double valorComDesconto, Pagamento formaPagamento, String nomeTransportadora)
                 Controller.ControladorVendas.cadastrarVenda(codigo, nomeCliente, nomeGerente, dataVenda, dataDaEntrega, valorTotal, valorComDesconto, Controller.ControladorPagamento.cadastrarPagamentoDinheiro(Controller.ControladorVendas.getCodigoVenda()), nomeTransportadora);
                 break;
             case 1:

@@ -20,6 +20,7 @@ public class InsertionSort implements SortStrategy {
                 }
             }
             Produto temp = VetorOrdenar.get(indexMinimo);
+//            Necessario remover o objeto antes de inserir no mesmo indice
             VetorOrdenar.remove(indexMinimo);
             VetorOrdenar.add(indexMinimo, VetorOrdenar.get(i));
             VetorOrdenar.remove(i);

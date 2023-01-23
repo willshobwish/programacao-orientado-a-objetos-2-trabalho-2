@@ -23,6 +23,7 @@ public class SelectionSort implements SortStrategy {
                 }
             }
             Produto menorValor = VetorOrdenar.get(index);
+//            Necessario remover o objeto antes de inserir no mesmo indice
             VetorOrdenar.remove(index);
             VetorOrdenar.add(index, VetorOrdenar.get(i));
             VetorOrdenar.remove(i);
